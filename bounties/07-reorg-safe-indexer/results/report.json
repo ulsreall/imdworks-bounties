@@ -1,0 +1,902 @@
+{
+  "all_passed": true,
+  "bounty": {
+    "brief_hash": "0x533fdd66afcc4bd6d66fc155745d28fba018887c90e5c3817ceff9b8fa382eaa",
+    "escrow": "0xd93aEd6f9F89699969B4967364D464fe7856EFaE",
+    "number": 7,
+    "reward": "1 USDG",
+    "title": "Implement a reorg-safe bounty event indexer"
+  },
+  "commit": "773da262b7b80286b1bf5b690cfefe5a699618e6",
+  "fixture": {
+    "branch_A_hashes": {
+      "10": "0xb72df40066223b08692a6ac99595a391484ed2cb8c41ce313b13447064e53f73",
+      "11": "0x8b95c8dd6445380e036b7b0b355657b0453b4714afbefff8a2d41b1e72a4ab17",
+      "12": "0x3cfaa0b89978e76a78d6b319b2f539472abe44b56fa5b440d047d936dd1336f3",
+      "13": "0x334d8c9eb3d03180f50e259903dda6112268e50de6f8c012b7236c3ca97d5393",
+      "14": "0x4704dcd1129b5f20eef5ea86cb94fb2500bd340e4709ed0f5bdd931aa9b235f0"
+    },
+    "branch_B_hashes": {
+      "10": "0x5672af7e38c11bd65ac17d0fbaa2eb783fc8b56e5e0c57189890537765b8718b",
+      "11": "0x717266c0a0605bfd901800e9daac97738c7470b549b27f081110c00f5e11b846",
+      "12": "0x3ea822d5c0c48ccb1d43dfec43c192eee57de7eaeddb4efa7f13ade9a2ae4181",
+      "13": "0xfcdd0172f802d8be595085fbca95c7e8b2e8083b74c62c83f4e4a962cc8d38af",
+      "14": "0x4981829ae788cb86f5cc213d0d8a25cad1a95dc1fab227fcdea4f1e20d50f4c8"
+    },
+    "canonical": "A",
+    "common_ancestor": 9,
+    "escrow": "0x2ea0bd248d5042b37f3329389ae1deda5ae1f07c",
+    "fixture_version": "imdworks.bounty07.chainfixture.v1",
+    "fork_range": [
+      10,
+      14
+    ],
+    "head": 14
+  },
+  "negative_cases": [
+    {
+      "assertions": [
+        {
+          "desc": "height-only checkpoint DB DIFFERS from canonical replay after reorg",
+          "detail": "mismatched tables: ['checkpoint', 'blocks', 'events', 'bounties', 'submissions', 'credits', 'liabilities']",
+          "id": "N1.detected",
+          "ok": true
+        },
+        {
+          "desc": "orphaned branch-A log is silently retained (no block-hash check)",
+          "detail": "events=10",
+          "id": "N1.orphan_log_survives",
+          "ok": true
+        },
+        {
+          "desc": "wrong (branch-A) winner ALICE survives -> would double-pay",
+          "detail": "0x1111111111111111111111111111111111111111",
+          "id": "N1.wrong_winner_kept",
+          "ok": true
+        },
+        {
+          "desc": "negative case FAILS the equality assertion as designed (suite passes iff so)",
+          "detail": "confirmed breakdown of the height-only design",
+          "id": "N1.fails_assertion_intentionally",
+          "ok": true
+        }
+      ],
+      "evidence": {
+        "mismatched_tables": [
+          "checkpoint",
+          "blocks",
+          "events",
+          "bounties",
+          "submissions",
+          "credits",
+          "liabilities"
+        ],
+        "sample": {
+          "blocks": [
+            "blocks[10] incremental=['{\"block_hash\": \"0xb72df40066223b08692a6ac99595a391484ed2cb8c41ce313b13447064e53f73\", \"block_number\": 10, \"parent_hash\": \"0xf57f32f8ce267a0e99cdeb90b544f47990019fcef381c89f41f616042477eb98\"}'] canonical=['{\"block_hash\": \"0x5672af7e38c11bd65ac17d0fbaa2eb783fc8b56e5e0c57189890537765b8718b\", \"block_number\": 10, \"parent_hash\": \"0xf57f32f8ce267a0e99cdeb90b544f47990019fcef381c89f41f616042477eb98\"}']",
+            "blocks[11] incremental=['{\"block_hash\": \"0x8b95c8dd6445380e036b7b0b355657b0453b4714afbefff8a2d41b1e72a4ab17\", \"block_number\": 11, \"parent_hash\": \"0xb72df40066223b08692a6ac99595a391484ed2cb8c41ce313b13447064e53f73\"}'] canonical=['{\"block_hash\": \"0x717266c0a0605bfd901800e9daac97738c7470b549b27f081110c00f5e11b846\", \"block_number\": 11, \"parent_hash\": \"0x5672af7e38c11bd65ac17d0fbaa2eb783fc8b56e5e0c57189890537765b8718b\"}']",
+            "blocks[12] incremental=['{\"block_hash\": \"0x3cfaa0b89978e76a78d6b319b2f539472abe44b56fa5b440d047d936dd1336f3\", \"block_number\": 12, \"parent_hash\": \"0x8b95c8dd6445380e036b7b0b355657b0453b4714afbefff8a2d41b1e72a4ab17\"}'] canonical=['{\"block_hash\": \"0x3ea822d5c0c48ccb1d43dfec43c192eee57de7eaeddb4efa7f13ade9a2ae4181\", \"block_number\": 12, \"parent_hash\": \"0x717266c0a0605bfd901800e9daac97738c7470b549b27f081110c00f5e11b846\"}']"
+          ],
+          "bounties": [
+            "bounties[1] incremental=['{\"added\": 1000, \"awarded\": 1000, \"bounty_id\": 1, \"brief_hash\": \"0xe13b797e7cf0d94a5793ba95d23c5a4726be7ce1b66634fdb06faa2fd9c2bfb8\", \"created_block\": 2, \"creator\": \"0x5f1f9bfad4ae9580519710f5ae1747ee4cbc1e97\", \"deadline\": 1760000000, \"last_block\": 12, \"refunded\": 0, \"reward\": 1000, \"state\": \"awarded\", \"uri\": \"ipfs://bafybrief1\", \"winner\": \"0x1111111111111111111111111111111111111111\"}'] canonical=['{\"added\": 500, \"awarded\": 1500, \"bounty_id\": 1, \"brief_hash\": \"0xe13b797e7cf0d94a5793ba95d23c5a4726be7ce1b66634fdb06faa2fd9c2bfb8\", \"created_block\": 2, \"creator\": \"0x5f1f9bfad4ae9580519710f5ae1747ee4cbc1e97\", \"deadline\": 1760000000, \"last_block\": 11, \"refunded\": 0, \"reward\": 1000, \"state\": \"awarded\", \"uri\": \"ipfs://bafybrief1\", \"winner\": \"0x2222222222222222222222222222222222222222\"}']",
+            "bounties[2] incremental=['{\"added\": 300, \"awarded\": 0, \"bounty_id\": 2, \"brief_hash\": \"0xe33d6f0b116bc4295c8be1bdc634c1baa7f5de92d1c7afe432a0b0e959a1d03b\", \"created_block\": 8, \"creator\": \"0x5f1f9bfad4ae9580519710f5ae1747ee4cbc1e97\", \"deadline\": 1760500000, \"last_block\": 14, \"refunded\": 0, \"reward\": 700, \"state\": \"open\", \"uri\": \"ipfs://bafybrief2\", \"winner\": null}'] canonical=['{\"added\": 300, \"awarded\": 0, \"bounty_id\": 2, \"brief_hash\": \"0xe33d6f0b116bc4295c8be1bdc634c1baa7f5de92d1c7afe432a0b0e959a1d03b\", \"created_block\": 8, \"creator\": \"0x5f1f9bfad4ae9580519710f5ae1747ee4cbc1e97\", \"deadline\": 1760500000, \"last_block\": 14, \"refunded\": 200, \"reward\": 700, \"state\": \"refunded\", \"uri\": \"ipfs://bafybrief2\", \"winner\": null}']"
+          ],
+          "checkpoint": [
+            "checkpoint[1] incremental=['{\"last_block_hash\": \"0x4704dcd1129b5f20eef5ea86cb94fb2500bd340e4709ed0f5bdd931aa9b235f0\", \"last_block_number\": 14, \"last_block_parent_hash\": \"0x334d8c9eb3d03180f50e259903dda6112268e50de6f8c012b7236c3ca97d5393\"}'] canonical=['{\"last_block_hash\": \"0x4981829ae788cb86f5cc213d0d8a25cad1a95dc1fab227fcdea4f1e20d50f4c8\", \"last_block_number\": 14, \"last_block_parent_hash\": \"0xfcdd0172f802d8be595085fbca95c7e8b2e8083b74c62c83f4e4a962cc8d38af\"}']"
+          ],
+          "credits": [
+            "row_count incremental=1 canonical=2",
+            "credits[0x1111111111111111111111111111111111111111] extra-in-incremental {\"awarded\": 1000, \"refunded\": 0, \"wallet\": \"0x1111111111111111111111111111111111111111\", \"withdrawable\": 600, \"withdrawn\": 400}",
+            "credits[0x2222222222222222222222222222222222222222] missing-in-incremental (canonical {\"awarded\": 1500, \"refunded\": 0, \"wallet\": \"0x2222222222222222222222222222222222222222\", \"withdrawable\": 1400, \"withdrawn\": 100})"
+          ],
+          "events": [
+            "events[0x011295ae6597a0e25288f10489a36ba974d4920639b992aba0a3662697304979,0] missing-in-incremental (canonical {\"address\": \"0x2ea0bd248d5042b37f3329389ae1deda5ae1f07c\", \"block_hash\": \"0x5672af7e38c11bd65ac17d0fbaa2eb783fc8b56e5e0c57189890537765b8718b\", \"block_number\": 10, \"data\": \"0x0000000000000000000000002222222222222222222222222222222222222222811f94910ce04a8a5dc7d86122a7a86c2fc391855c5179e3ff4f2137b7b3c9d000000000000000000000000000000000000000000000000000000000000000600000000000000000000000000000000000000000000000000000000000000011697066733a2f2f776f726b2d626f622d42000000000000000000000000000000\", \"log_index\": 0, \"name\": \"WorkSubmitted\", \"parent_hash\": \"0xf57f32f8ce267a0e99cdeb90b544f47990019fcef381c89f41f616042477eb98\", \"topics\": \"[\\\"0xa1fa4bb861df659c2f4a5e2b8d051e741df8c8f79e3d614e7d519ce97d5c3546\\\", \\\"0x0000000000000000000000000000000000000000000000000000000000000001\\\", \\\"0x0000000000000000000000002222222222222222222222222222222222222222\\\"]\", \"tx_hash\": \"0x011295ae6597a0e25288f10489a36ba974d4920639b992aba0a3662697304979\", \"tx_index\": 0})",
+            "events[0x1a2f7041dd4f48b08518d7bbe6692bdd7ea158bcf5ca38ef94c5a08fadc9f344,0] extra-in-incremental {\"address\": \"0x2ea0bd248d5042b37f3329389ae1deda5ae1f07c\", \"block_hash\": \"0x4704dcd1129b5f20eef5ea86cb94fb2500bd340e4709ed0f5bdd931aa9b235f0\", \"block_number\": 14, \"data\": \"0x000000000000000000000000000000000000000000000000000000000000012c00000000000000000000000000000000000000000000000000000000000003e8\", \"log_index\": 0, \"name\": \"RewardAdded\", \"parent_hash\": \"0x334d8c9eb3d03180f50e259903dda6112268e50de6f8c012b7236c3ca97d5393\", \"topics\": \"[\\\"0xf979594eaf8798a86d4124dd97d78527ad29ec9e2264300a3339cc8608b2b896\\\", \\\"0x0000000000000000000000000000000000000000000000000000000000000002\\\"]\", \"tx_hash\": \"0x1a2f7041dd4f48b08518d7bbe6692bdd7ea158bcf5ca38ef94c5a08fadc9f344\", \"tx_index\": 0}",
+            "events[0x29e530b5e38341886dc0ddc284c63cc63e6db71198f79f22e9ed6b9913f8463b,0] missing-in-incremental (canonical {\"address\": \"0x2ea0bd248d5042b37f3329389ae1deda5ae1f07c\", \"block_hash\": \"0x4981829ae788cb86f5cc213d0d8a25cad1a95dc1fab227fcdea4f1e20d50f4c8\", \"block_number\": 14, \"data\": \"0x000000000000000000000000000000000000000000000000000000000000012c00000000000000000000000000000000000000000000000000000000000003e8\", \"log_index\": 0, \"name\": \"RewardAdded\", \"parent_hash\": \"0xfcdd0172f802d8be595085fbca95c7e8b2e8083b74c62c83f4e4a962cc8d38af\", \"topics\": \"[\\\"0xf979594eaf8798a86d4124dd97d78527ad29ec9e2264300a3339cc8608b2b896\\\", \\\"0x0000000000000000000000000000000000000000000000000000000000000002\\\"]\", \"tx_hash\": \"0x29e530b5e38341886dc0ddc284c63cc63e6db71198f79f22e9ed6b9913f8463b\", \"tx_index\": 0})"
+          ],
+          "liabilities": [
+            "liabilities[1] incremental=['{\"bounty_id\": 1, \"funded\": 2000, \"outstanding\": 1000, \"paid_out\": 1000}'] canonical=['{\"bounty_id\": 1, \"funded\": 1500, \"outstanding\": 0, \"paid_out\": 1500}']",
+            "liabilities[2] incremental=['{\"bounty_id\": 2, \"funded\": 1000, \"outstanding\": 1000, \"paid_out\": 0}'] canonical=['{\"bounty_id\": 2, \"funded\": 1000, \"outstanding\": 800, \"paid_out\": 200}']"
+          ],
+          "submissions": [
+            "submissions[0x011295ae6597a0e25288f10489a36ba974d4920639b992aba0a3662697304979,0] missing-in-incremental (canonical {\"block_number\": 10, \"bounty_id\": 1, \"log_index\": 0, \"proof_hash\": \"0x811f94910ce04a8a5dc7d86122a7a86c2fc391855c5179e3ff4f2137b7b3c9d0\", \"submitter\": \"0x2222222222222222222222222222222222222222\", \"tx_hash\": \"0x011295ae6597a0e25288f10489a36ba974d4920639b992aba0a3662697304979\", \"uri\": \"ipfs://work-bob-B\", \"worker\": \"0x2222222222222222222222222222222222222222\"})",
+            "submissions[0x8f6f7a7e5c671d45bf887ced00539f33184dca24700e96d29b4d90a3352ff605,0] extra-in-incremental {\"block_number\": 11, \"bounty_id\": 1, \"log_index\": 0, \"proof_hash\": \"0x57fbbcb1dd8bc287286b02f643942b14b361426e779f7ea7ae939be9b58441cf\", \"submitter\": \"0x1111111111111111111111111111111111111111\", \"tx_hash\": \"0x8f6f7a7e5c671d45bf887ced00539f33184dca24700e96d29b4d90a3352ff605\", \"uri\": \"ipfs://work-alice-A\", \"worker\": \"0x1111111111111111111111111111111111111111\"}"
+          ]
+        },
+        "stats": {
+          "ckpt_hash": "0x4704dcd1129b5f20eef5ea86cb94fb2500bd340e4709ed0f5bdd931aa9b235f0",
+          "ckpt_num": 14,
+          "counts": {
+            "blocks": 15,
+            "bounties": 2,
+            "credits": 1,
+            "events": 10,
+            "liabilities": 2,
+            "staged_blocks": 0,
+            "submissions": 2
+          },
+          "events_max_block": 14
+        }
+      },
+      "name": "N1 negative: height-only checkpoint across a reorg",
+      "passed": true,
+      "steps": [
+        "-m src.naive_checkpoint --db /root/imdworks-work/bounties/07-reorg-safe-indexer/results/n1_heightonly.db --canonical-branch A --action reconcile --impl height-only  -> rc=0",
+        "-m src.naive_checkpoint --db /root/imdworks-work/bounties/07-reorg-safe-indexer/results/n1_heightonly.db --canonical-branch B --action reconcile --impl height-only  -> rc=0"
+      ]
+    },
+    {
+      "assertions": [
+        {
+          "desc": "process died between the two commits (rc=137)",
+          "detail": "rc=137",
+          "id": "N2.crash_exit",
+          "ok": true
+        },
+        {
+          "desc": "logs for 10..14 are durable while the checkpoint is still 9 (log/checkpoint desync)",
+          "detail": "events_max_block=14 ckpt=9",
+          "id": "N2.desync",
+          "ok": true
+        },
+        {
+          "desc": "restart re-writes the same logs -> duplicated event rows (double-counted)",
+          "detail": "events incremental=15 canonical=10",
+          "id": "N2.duplicate_detected",
+          "ok": true
+        },
+        {
+          "desc": "non-atomic DB DIFFERS from canonical replay",
+          "detail": "mismatched tables: ['events', 'bounties', 'credits', 'liabilities']",
+          "id": "N2.detected",
+          "ok": true
+        },
+        {
+          "desc": "negative case FAILS the equality assertion as designed (suite passes iff so)",
+          "detail": "confirmed breakdown of the split-commit design",
+          "id": "N2.fails_assertion_intentionally",
+          "ok": true
+        }
+      ],
+      "evidence": {
+        "after_restart": {
+          "ckpt_hash": "0x4704dcd1129b5f20eef5ea86cb94fb2500bd340e4709ed0f5bdd931aa9b235f0",
+          "ckpt_num": 14,
+          "counts": {
+            "blocks": 15,
+            "bounties": 2,
+            "credits": 1,
+            "events": 15,
+            "liabilities": 2,
+            "staged_blocks": 0,
+            "submissions": 2
+          },
+          "events_max_block": 14
+        },
+        "crash_rc": 137,
+        "desync": {
+          "ckpt_hash": "0xf57f32f8ce267a0e99cdeb90b544f47990019fcef381c89f41f616042477eb98",
+          "ckpt_num": 9,
+          "counts": {
+            "blocks": 15,
+            "bounties": 2,
+            "credits": 0,
+            "events": 10,
+            "liabilities": 2,
+            "staged_blocks": 5,
+            "submissions": 1
+          },
+          "events_max_block": 14
+        },
+        "mismatched_tables": [
+          "events",
+          "bounties",
+          "credits",
+          "liabilities"
+        ],
+        "sample": {
+          "bounties": [
+            "bounties[1] incremental=['{\"added\": 1500, \"awarded\": 2000, \"bounty_id\": 1, \"brief_hash\": \"0xe13b797e7cf0d94a5793ba95d23c5a4726be7ce1b66634fdb06faa2fd9c2bfb8\", \"created_block\": 2, \"creator\": \"0x5f1f9bfad4ae9580519710f5ae1747ee4cbc1e97\", \"deadline\": 1760000000, \"last_block\": 12, \"refunded\": 0, \"reward\": 1000, \"state\": \"awarded\", \"uri\": \"ipfs://bafybrief1\", \"winner\": \"0x1111111111111111111111111111111111111111\"}'] canonical=['{\"added\": 1000, \"awarded\": 1000, \"bounty_id\": 1, \"brief_hash\": \"0xe13b797e7cf0d94a5793ba95d23c5a4726be7ce1b66634fdb06faa2fd9c2bfb8\", \"created_block\": 2, \"creator\": \"0x5f1f9bfad4ae9580519710f5ae1747ee4cbc1e97\", \"deadline\": 1760000000, \"last_block\": 12, \"refunded\": 0, \"reward\": 1000, \"state\": \"awarded\", \"uri\": \"ipfs://bafybrief1\", \"winner\": \"0x1111111111111111111111111111111111111111\"}']",
+            "bounties[2] incremental=['{\"added\": 600, \"awarded\": 0, \"bounty_id\": 2, \"brief_hash\": \"0xe33d6f0b116bc4295c8be1bdc634c1baa7f5de92d1c7afe432a0b0e959a1d03b\", \"created_block\": 8, \"creator\": \"0x5f1f9bfad4ae9580519710f5ae1747ee4cbc1e97\", \"deadline\": 1760500000, \"last_block\": 14, \"refunded\": 0, \"reward\": 700, \"state\": \"open\", \"uri\": \"ipfs://bafybrief2\", \"winner\": null}'] canonical=['{\"added\": 300, \"awarded\": 0, \"bounty_id\": 2, \"brief_hash\": \"0xe33d6f0b116bc4295c8be1bdc634c1baa7f5de92d1c7afe432a0b0e959a1d03b\", \"created_block\": 8, \"creator\": \"0x5f1f9bfad4ae9580519710f5ae1747ee4cbc1e97\", \"deadline\": 1760500000, \"last_block\": 14, \"refunded\": 0, \"reward\": 700, \"state\": \"open\", \"uri\": \"ipfs://bafybrief2\", \"winner\": null}']"
+          ],
+          "credits": [
+            "credits[0x1111111111111111111111111111111111111111] incremental=['{\"awarded\": 2000, \"refunded\": 0, \"wallet\": \"0x1111111111111111111111111111111111111111\", \"withdrawable\": 1200, \"withdrawn\": 800}'] canonical=['{\"awarded\": 1000, \"refunded\": 0, \"wallet\": \"0x1111111111111111111111111111111111111111\", \"withdrawable\": 600, \"withdrawn\": 400}']"
+          ],
+          "events": [
+            "row_count incremental=15 canonical=10",
+            "events[0x1a2f7041dd4f48b08518d7bbe6692bdd7ea158bcf5ca38ef94c5a08fadc9f344,0] duplicate-row-count incremental=2 canonical=1",
+            "events[0x6fad0cafa782a330a9282b5668bb3636253aef781e1d2c4056afb8a5b1a8ab38,0] duplicate-row-count incremental=2 canonical=1"
+          ],
+          "liabilities": [
+            "liabilities[1] incremental=['{\"bounty_id\": 1, \"funded\": 2500, \"outstanding\": 500, \"paid_out\": 2000}'] canonical=['{\"bounty_id\": 1, \"funded\": 2000, \"outstanding\": 1000, \"paid_out\": 1000}']",
+            "liabilities[2] incremental=['{\"bounty_id\": 2, \"funded\": 1300, \"outstanding\": 1300, \"paid_out\": 0}'] canonical=['{\"bounty_id\": 2, \"funded\": 1000, \"outstanding\": 1000, \"paid_out\": 0}']"
+          ]
+        }
+      },
+      "name": "N2 negative: non-atomic log/checkpoint commit across a crash",
+      "passed": true,
+      "steps": [
+        "-m src.naive_checkpoint --db /root/imdworks-work/bounties/07-reorg-safe-indexer/results/n2_natomic.db --canonical-branch A --action ingest --impl nonatomic --batch-range 1 9  -> rc=0",
+        "-m src.naive_checkpoint --db /root/imdworks-work/bounties/07-reorg-safe-indexer/results/n2_natomic.db --canonical-branch A --action ingest --impl nonatomic --batch-range 10 14 --fault-crash-at after_events_before_checkpoint  -> rc=137",
+        "-m src.naive_checkpoint --db /root/imdworks-work/bounties/07-reorg-safe-indexer/results/n2_natomic.db --canonical-branch A --action reconcile --impl nonatomic  -> rc=0"
+      ]
+    }
+  ],
+  "positive_scenarios": [
+    {
+      "assertions": [
+        {
+          "desc": "checkpoint advanced to chain head (14)",
+          "detail": "14",
+          "id": "S1.ckpt_height",
+          "ok": true
+        },
+        {
+          "desc": "table 'checkpoint' == canonical replay",
+          "detail": "identical",
+          "id": "S1.eq.checkpoint",
+          "ok": true
+        },
+        {
+          "desc": "table 'blocks' == canonical replay",
+          "detail": "identical",
+          "id": "S1.eq.blocks",
+          "ok": true
+        },
+        {
+          "desc": "table 'events' == canonical replay",
+          "detail": "identical",
+          "id": "S1.eq.events",
+          "ok": true
+        },
+        {
+          "desc": "table 'bounties' == canonical replay",
+          "detail": "identical",
+          "id": "S1.eq.bounties",
+          "ok": true
+        },
+        {
+          "desc": "table 'submissions' == canonical replay",
+          "detail": "identical",
+          "id": "S1.eq.submissions",
+          "ok": true
+        },
+        {
+          "desc": "table 'credits' == canonical replay",
+          "detail": "identical",
+          "id": "S1.eq.credits",
+          "ok": true
+        },
+        {
+          "desc": "table 'liabilities' == canonical replay",
+          "detail": "identical",
+          "id": "S1.eq.liabilities",
+          "ok": true
+        },
+        {
+          "desc": "table 'staged_blocks' == canonical replay",
+          "detail": "identical",
+          "id": "S1.eq.staged_blocks",
+          "ok": true
+        },
+        {
+          "desc": "database EXACTLY matches canonical replay (all tables)",
+          "detail": "all tables identical",
+          "id": "S1.exact_db",
+          "ok": true
+        },
+        {
+          "desc": "bounty 1 winner is ALICE (branch A)",
+          "detail": "0x1111111111111111111111111111111111111111",
+          "id": "S1.winner_alice",
+          "ok": true
+        },
+        {
+          "desc": "bounty 1 awarded == 1000",
+          "detail": "1000",
+          "id": "S1.awarded_1000",
+          "ok": true
+        }
+      ],
+      "evidence": {
+        "stats": {
+          "ckpt_hash": "0x4704dcd1129b5f20eef5ea86cb94fb2500bd340e4709ed0f5bdd931aa9b235f0",
+          "ckpt_num": 14,
+          "counts": {
+            "blocks": 15,
+            "bounties": 2,
+            "credits": 1,
+            "events": 10,
+            "liabilities": 2,
+            "staged_blocks": 0,
+            "submissions": 2
+          },
+          "events_max_block": 14
+        }
+      },
+      "name": "S1 normal indexing",
+      "passed": true,
+      "steps": [
+        "-m src.indexer --db /root/imdworks-work/bounties/07-reorg-safe-indexer/results/s1_incremental.db --canonical-branch A --action reconcile  -> rc=0"
+      ]
+    },
+    {
+      "assertions": [
+        {
+          "desc": "re-delivery adds no event rows",
+          "detail": "10 -> 10",
+          "id": "S2.no_duplicate_events",
+          "ok": true
+        },
+        {
+          "desc": "re-delivery adds no submission rows",
+          "detail": "2 -> 2",
+          "id": "S2.no_duplicate_submissions",
+          "ok": true
+        },
+        {
+          "desc": "table 'checkpoint' == canonical replay",
+          "detail": "identical",
+          "id": "S2.eq.checkpoint",
+          "ok": true
+        },
+        {
+          "desc": "table 'blocks' == canonical replay",
+          "detail": "identical",
+          "id": "S2.eq.blocks",
+          "ok": true
+        },
+        {
+          "desc": "table 'events' == canonical replay",
+          "detail": "identical",
+          "id": "S2.eq.events",
+          "ok": true
+        },
+        {
+          "desc": "table 'bounties' == canonical replay",
+          "detail": "identical",
+          "id": "S2.eq.bounties",
+          "ok": true
+        },
+        {
+          "desc": "table 'submissions' == canonical replay",
+          "detail": "identical",
+          "id": "S2.eq.submissions",
+          "ok": true
+        },
+        {
+          "desc": "table 'credits' == canonical replay",
+          "detail": "identical",
+          "id": "S2.eq.credits",
+          "ok": true
+        },
+        {
+          "desc": "table 'liabilities' == canonical replay",
+          "detail": "identical",
+          "id": "S2.eq.liabilities",
+          "ok": true
+        },
+        {
+          "desc": "table 'staged_blocks' == canonical replay",
+          "detail": "identical",
+          "id": "S2.eq.staged_blocks",
+          "ok": true
+        },
+        {
+          "desc": "database EXACTLY matches canonical replay (all tables)",
+          "detail": "all tables identical",
+          "id": "S2.exact_db",
+          "ok": true
+        },
+        {
+          "desc": "event/submission counts equal canonical replay",
+          "detail": "events=10 subs=2",
+          "id": "S2.counts_match_oracle",
+          "ok": true
+        }
+      ],
+      "evidence": {
+        "after": {
+          "ckpt_hash": "0x4704dcd1129b5f20eef5ea86cb94fb2500bd340e4709ed0f5bdd931aa9b235f0",
+          "ckpt_num": 14,
+          "counts": {
+            "blocks": 15,
+            "bounties": 2,
+            "credits": 1,
+            "events": 10,
+            "liabilities": 2,
+            "staged_blocks": 0,
+            "submissions": 2
+          },
+          "events_max_block": 14
+        },
+        "before": {
+          "ckpt_hash": "0x4704dcd1129b5f20eef5ea86cb94fb2500bd340e4709ed0f5bdd931aa9b235f0",
+          "ckpt_num": 14,
+          "counts": {
+            "blocks": 15,
+            "bounties": 2,
+            "credits": 1,
+            "events": 10,
+            "liabilities": 2,
+            "staged_blocks": 0,
+            "submissions": 2
+          },
+          "events_max_block": 14
+        }
+      },
+      "name": "S2 duplicate log delivery",
+      "passed": true,
+      "steps": [
+        "-m src.indexer --db /root/imdworks-work/bounties/07-reorg-safe-indexer/results/s2_incremental.db --canonical-branch A --action reconcile  -> rc=0",
+        "-m src.indexer --db /root/imdworks-work/bounties/07-reorg-safe-indexer/results/s2_incremental.db --canonical-branch A --action ingest --batch-range 10 14  -> rc=0",
+        "-m src.indexer --db /root/imdworks-work/bounties/07-reorg-safe-indexer/results/s2_incremental.db --canonical-branch A --action ingest --batch-range 10 14  -> rc=0"
+      ]
+    },
+    {
+      "assertions": [
+        {
+          "desc": "later batch staged, checkpoint held at 9",
+          "detail": "ckpt=9 staged=2",
+          "id": "S3.gap_staged",
+          "ok": true
+        },
+        {
+          "desc": "checkpoint advanced to 14, staging drained",
+          "detail": "ckpt=14 staged=0",
+          "id": "S3.caught_up",
+          "ok": true
+        },
+        {
+          "desc": "table 'checkpoint' == canonical replay",
+          "detail": "identical",
+          "id": "S3.eq.checkpoint",
+          "ok": true
+        },
+        {
+          "desc": "table 'blocks' == canonical replay",
+          "detail": "identical",
+          "id": "S3.eq.blocks",
+          "ok": true
+        },
+        {
+          "desc": "table 'events' == canonical replay",
+          "detail": "identical",
+          "id": "S3.eq.events",
+          "ok": true
+        },
+        {
+          "desc": "table 'bounties' == canonical replay",
+          "detail": "identical",
+          "id": "S3.eq.bounties",
+          "ok": true
+        },
+        {
+          "desc": "table 'submissions' == canonical replay",
+          "detail": "identical",
+          "id": "S3.eq.submissions",
+          "ok": true
+        },
+        {
+          "desc": "table 'credits' == canonical replay",
+          "detail": "identical",
+          "id": "S3.eq.credits",
+          "ok": true
+        },
+        {
+          "desc": "table 'liabilities' == canonical replay",
+          "detail": "identical",
+          "id": "S3.eq.liabilities",
+          "ok": true
+        },
+        {
+          "desc": "table 'staged_blocks' == canonical replay",
+          "detail": "identical",
+          "id": "S3.eq.staged_blocks",
+          "ok": true
+        },
+        {
+          "desc": "database EXACTLY matches canonical replay (all tables)",
+          "detail": "all tables identical",
+          "id": "S3.exact_db",
+          "ok": true
+        }
+      ],
+      "evidence": {
+        "after_gap_filled": {
+          "ckpt_hash": "0x4704dcd1129b5f20eef5ea86cb94fb2500bd340e4709ed0f5bdd931aa9b235f0",
+          "ckpt_num": 14,
+          "counts": {
+            "blocks": 15,
+            "bounties": 2,
+            "credits": 1,
+            "events": 10,
+            "liabilities": 2,
+            "staged_blocks": 0,
+            "submissions": 2
+          },
+          "events_max_block": 14
+        },
+        "after_later_batch": {
+          "ckpt_hash": "0xf57f32f8ce267a0e99cdeb90b544f47990019fcef381c89f41f616042477eb98",
+          "ckpt_num": 9,
+          "counts": {
+            "blocks": 10,
+            "bounties": 2,
+            "credits": 0,
+            "events": 5,
+            "liabilities": 2,
+            "staged_blocks": 2,
+            "submissions": 1
+          },
+          "events_max_block": 8
+        }
+      },
+      "name": "S3 out-of-order batches",
+      "passed": true,
+      "steps": [
+        "-m src.indexer --db /root/imdworks-work/bounties/07-reorg-safe-indexer/results/s3_incremental.db --canonical-branch A --action ingest --batch-range 1 9  -> rc=0",
+        "-m src.indexer --db /root/imdworks-work/bounties/07-reorg-safe-indexer/results/s3_incremental.db --canonical-branch A --action ingest --batch-range 13 14  -> rc=0",
+        "-m src.indexer --db /root/imdworks-work/bounties/07-reorg-safe-indexer/results/s3_incremental.db --canonical-branch A --action ingest --batch-range 10 12  -> rc=0"
+      ]
+    },
+    {
+      "assertions": [
+        {
+          "desc": "indexer process died at the log/checkpoint boundary (rc=137)",
+          "detail": "rc=137 stderr=",
+          "id": "S4.crash_exit",
+          "ok": true
+        },
+        {
+          "desc": "checkpoint still at 9 after the crash",
+          "detail": "9",
+          "id": "S4.checkpoint_not_advanced",
+          "ok": true
+        },
+        {
+          "desc": "no events committed for the orphaned batch (no event at height >= 10)",
+          "detail": "events_max_block=8 events=5",
+          "id": "S4.no_partial_logs",
+          "ok": true
+        },
+        {
+          "desc": "after restart checkpoint == 14 and no duplicates",
+          "detail": "ckpt=14",
+          "id": "S4.recovered",
+          "ok": true
+        },
+        {
+          "desc": "table 'checkpoint' == canonical replay",
+          "detail": "identical",
+          "id": "S4.eq.checkpoint",
+          "ok": true
+        },
+        {
+          "desc": "table 'blocks' == canonical replay",
+          "detail": "identical",
+          "id": "S4.eq.blocks",
+          "ok": true
+        },
+        {
+          "desc": "table 'events' == canonical replay",
+          "detail": "identical",
+          "id": "S4.eq.events",
+          "ok": true
+        },
+        {
+          "desc": "table 'bounties' == canonical replay",
+          "detail": "identical",
+          "id": "S4.eq.bounties",
+          "ok": true
+        },
+        {
+          "desc": "table 'submissions' == canonical replay",
+          "detail": "identical",
+          "id": "S4.eq.submissions",
+          "ok": true
+        },
+        {
+          "desc": "table 'credits' == canonical replay",
+          "detail": "identical",
+          "id": "S4.eq.credits",
+          "ok": true
+        },
+        {
+          "desc": "table 'liabilities' == canonical replay",
+          "detail": "identical",
+          "id": "S4.eq.liabilities",
+          "ok": true
+        },
+        {
+          "desc": "table 'staged_blocks' == canonical replay",
+          "detail": "identical",
+          "id": "S4.eq.staged_blocks",
+          "ok": true
+        },
+        {
+          "desc": "database EXACTLY matches canonical replay (all tables)",
+          "detail": "all tables identical",
+          "id": "S4.exact_db",
+          "ok": true
+        }
+      ],
+      "evidence": {
+        "after_crash": {
+          "ckpt_hash": "0xf57f32f8ce267a0e99cdeb90b544f47990019fcef381c89f41f616042477eb98",
+          "ckpt_num": 9,
+          "counts": {
+            "blocks": 10,
+            "bounties": 2,
+            "credits": 0,
+            "events": 5,
+            "liabilities": 2,
+            "staged_blocks": 5,
+            "submissions": 1
+          },
+          "events_max_block": 8
+        },
+        "after_restart": {
+          "ckpt_hash": "0x4704dcd1129b5f20eef5ea86cb94fb2500bd340e4709ed0f5bdd931aa9b235f0",
+          "ckpt_num": 14,
+          "counts": {
+            "blocks": 15,
+            "bounties": 2,
+            "credits": 1,
+            "events": 10,
+            "liabilities": 2,
+            "staged_blocks": 0,
+            "submissions": 2
+          },
+          "events_max_block": 14
+        },
+        "crash_rc": 137
+      },
+      "name": "S4 restart between log write and checkpoint",
+      "passed": true,
+      "steps": [
+        "-m src.indexer --db /root/imdworks-work/bounties/07-reorg-safe-indexer/results/s4_incremental.db --canonical-branch A --action ingest --batch-range 1 9  -> rc=0",
+        "-m src.indexer --db /root/imdworks-work/bounties/07-reorg-safe-indexer/results/s4_incremental.db --canonical-branch A --action ingest --batch-range 10 14 --fault-crash-at after_events_before_checkpoint  -> rc=137",
+        "-m src.indexer --db /root/imdworks-work/bounties/07-reorg-safe-indexer/results/s4_incremental.db --canonical-branch A --action reconcile  -> rc=0",
+        "-m src.indexer --db /root/imdworks-work/bounties/07-reorg-safe-indexer/results/s4_incremental.db --canonical-branch A --action ingest --batch-range 10 14  -> rc=0"
+      ]
+    },
+    {
+      "assertions": [
+        {
+          "desc": "checkpoint hash is branch-B block 14 (orphaned branch-A tip discarded)",
+          "detail": "0x4981829ae788cb86f5cc213d0d8a25cad1a95dc1fab227fcdea4f1e20d50f4c8",
+          "id": "S5.checkpoint_rewound_and_moved",
+          "ok": true
+        },
+        {
+          "desc": "bounty 1 winner recomputed to BOB (branch B)",
+          "detail": "0x2222222222222222222222222222222222222222",
+          "id": "S5.winner_is_bob",
+          "ok": true
+        },
+        {
+          "desc": "branch-A payout (ALICE 1000) no longer credited",
+          "detail": "[{'wallet': '0x2222222222222222222222222222222222222222', 'awarded': 1500, 'refunded': 0, 'withdrawn': 100, 'withdrawable': 1400}, {'wallet': '0x5f1f9bfad4ae9580519710f5ae1747ee4cbc1e97', 'awarded': 0, 'refunded': 200, 'withdrawn': 0, 'withdrawable': 200}]",
+          "id": "S5.no_orphan_award",
+          "ok": true
+        },
+        {
+          "desc": "no branch-A log survives in the canonical event set",
+          "detail": "clean",
+          "id": "S5.no_orphan_event",
+          "ok": true
+        },
+        {
+          "desc": "table 'checkpoint' == canonical replay",
+          "detail": "identical",
+          "id": "S5.eq.checkpoint",
+          "ok": true
+        },
+        {
+          "desc": "table 'blocks' == canonical replay",
+          "detail": "identical",
+          "id": "S5.eq.blocks",
+          "ok": true
+        },
+        {
+          "desc": "table 'events' == canonical replay",
+          "detail": "identical",
+          "id": "S5.eq.events",
+          "ok": true
+        },
+        {
+          "desc": "table 'bounties' == canonical replay",
+          "detail": "identical",
+          "id": "S5.eq.bounties",
+          "ok": true
+        },
+        {
+          "desc": "table 'submissions' == canonical replay",
+          "detail": "identical",
+          "id": "S5.eq.submissions",
+          "ok": true
+        },
+        {
+          "desc": "table 'credits' == canonical replay",
+          "detail": "identical",
+          "id": "S5.eq.credits",
+          "ok": true
+        },
+        {
+          "desc": "table 'liabilities' == canonical replay",
+          "detail": "identical",
+          "id": "S5.eq.liabilities",
+          "ok": true
+        },
+        {
+          "desc": "table 'staged_blocks' == canonical replay",
+          "detail": "identical",
+          "id": "S5.eq.staged_blocks",
+          "ok": true
+        },
+        {
+          "desc": "database EXACTLY matches canonical replay (all tables)",
+          "detail": "all tables identical",
+          "id": "S5.exact_db",
+          "ok": true
+        }
+      ],
+      "evidence": {
+        "after_reorg": {
+          "ckpt_hash": "0x4981829ae788cb86f5cc213d0d8a25cad1a95dc1fab227fcdea4f1e20d50f4c8",
+          "ckpt_num": 14,
+          "counts": {
+            "blocks": 15,
+            "bounties": 2,
+            "credits": 2,
+            "events": 10,
+            "liabilities": 2,
+            "staged_blocks": 0,
+            "submissions": 2
+          },
+          "events_max_block": 14
+        },
+        "before_reorg": {
+          "ckpt_hash": "0x4704dcd1129b5f20eef5ea86cb94fb2500bd340e4709ed0f5bdd931aa9b235f0",
+          "ckpt_num": 14,
+          "counts": {
+            "blocks": 15,
+            "bounties": 2,
+            "credits": 1,
+            "events": 10,
+            "liabilities": 2,
+            "staged_blocks": 0,
+            "submissions": 2
+          },
+          "events_max_block": 14
+        }
+      },
+      "name": "S5 five-block reorg",
+      "passed": true,
+      "steps": [
+        "-m src.indexer --db /root/imdworks-work/bounties/07-reorg-safe-indexer/results/s5_incremental.db --canonical-branch A --action reconcile  -> rc=0",
+        "-m src.indexer --db /root/imdworks-work/bounties/07-reorg-safe-indexer/results/s5_incremental.db --canonical-branch B --action reconcile  -> rc=0"
+      ]
+    },
+    {
+      "assertions": [
+        {
+          "desc": "crash during branch-B re-index (rc=137)",
+          "detail": "rc=137",
+          "id": "S6.crash_exit",
+          "ok": true
+        },
+        {
+          "desc": "rewound to 9 before the crash, no branch-B logs half-applied",
+          "detail": "ckpt=9 events_max_block=8",
+          "id": "S6.reorg_then_crash",
+          "ok": true
+        },
+        {
+          "desc": "table 'checkpoint' == canonical replay",
+          "detail": "identical",
+          "id": "S6.eq.checkpoint",
+          "ok": true
+        },
+        {
+          "desc": "table 'blocks' == canonical replay",
+          "detail": "identical",
+          "id": "S6.eq.blocks",
+          "ok": true
+        },
+        {
+          "desc": "table 'events' == canonical replay",
+          "detail": "identical",
+          "id": "S6.eq.events",
+          "ok": true
+        },
+        {
+          "desc": "table 'bounties' == canonical replay",
+          "detail": "identical",
+          "id": "S6.eq.bounties",
+          "ok": true
+        },
+        {
+          "desc": "table 'submissions' == canonical replay",
+          "detail": "identical",
+          "id": "S6.eq.submissions",
+          "ok": true
+        },
+        {
+          "desc": "table 'credits' == canonical replay",
+          "detail": "identical",
+          "id": "S6.eq.credits",
+          "ok": true
+        },
+        {
+          "desc": "table 'liabilities' == canonical replay",
+          "detail": "identical",
+          "id": "S6.eq.liabilities",
+          "ok": true
+        },
+        {
+          "desc": "table 'staged_blocks' == canonical replay",
+          "detail": "identical",
+          "id": "S6.eq.staged_blocks",
+          "ok": true
+        },
+        {
+          "desc": "database EXACTLY matches canonical replay (all tables)",
+          "detail": "all tables identical",
+          "id": "S6.exact_db",
+          "ok": true
+        }
+      ],
+      "evidence": {
+        "after_crash": {
+          "ckpt_hash": "0xf57f32f8ce267a0e99cdeb90b544f47990019fcef381c89f41f616042477eb98",
+          "ckpt_num": 9,
+          "counts": {
+            "blocks": 10,
+            "bounties": 2,
+            "credits": 0,
+            "events": 5,
+            "liabilities": 2,
+            "staged_blocks": 5,
+            "submissions": 1
+          },
+          "events_max_block": 8
+        },
+        "after_recovery": {
+          "ckpt_hash": "0x4981829ae788cb86f5cc213d0d8a25cad1a95dc1fab227fcdea4f1e20d50f4c8",
+          "ckpt_num": 14,
+          "counts": {
+            "blocks": 15,
+            "bounties": 2,
+            "credits": 2,
+            "events": 10,
+            "liabilities": 2,
+            "staged_blocks": 0,
+            "submissions": 2
+          },
+          "events_max_block": 14
+        },
+        "crash_rc": 137
+      },
+      "name": "S6 reorg + duplicate + restart",
+      "passed": true,
+      "steps": [
+        "-m src.indexer --db /root/imdworks-work/bounties/07-reorg-safe-indexer/results/s6_incremental.db --canonical-branch A --action reconcile  -> rc=0",
+        "-m src.indexer --db /root/imdworks-work/bounties/07-reorg-safe-indexer/results/s6_incremental.db --canonical-branch A --action ingest --batch-range 10 14  -> rc=0",
+        "-m src.indexer --db /root/imdworks-work/bounties/07-reorg-safe-indexer/results/s6_incremental.db --canonical-branch A --action ingest --batch-range 10 14  -> rc=0",
+        "-m src.indexer --db /root/imdworks-work/bounties/07-reorg-safe-indexer/results/s6_incremental.db --canonical-branch B --action reconcile --fault-crash-at after_events_before_checkpoint  -> rc=137",
+        "-m src.indexer --db /root/imdworks-work/bounties/07-reorg-safe-indexer/results/s6_incremental.db --canonical-branch B --action reconcile  -> rc=0",
+        "-m src.indexer --db /root/imdworks-work/bounties/07-reorg-safe-indexer/results/s6_incremental.db --canonical-branch B --action ingest --batch-range 10 14  -> rc=0"
+      ]
+    }
+  ],
+  "python": "3.11.16",
+  "sqlite": "3.53.1",
+  "totals": {
+    "checks": 81,
+    "failed": 0,
+    "negatives_detected": true,
+    "positive_passed": true
+  }
+}
