@@ -85,7 +85,8 @@ def main() -> int:
             print("ERR", proc.stderr.strip()[:200])
             out.append({"number": n, "error": proc.stderr.strip()[:300]})
             continue
-        tx = json.loads(proc.stdout)["transactionHash"]
+        raw_out = proc.stdout.strip()
+        tx = json.loads(raw_out)["transactionHash"] if raw_out.startswith("{") else raw_out
         time.sleep(2.5)
         rec = subprocess.run([CAST, "receipt", tx, "--rpc-url", RPC, "--json"],
                              capture_output=True, text=True)
@@ -97,7 +98,7 @@ def main() -> int:
         print(f"tx={tx[:18]}… {status}")
         sync = {"status": None}
         try:
-            code, resp = curl_json("POST", f"/api/escrow/{bid}/sync")
+            code, resp = curl_json("POST", f"/api/escrow/{bid}/sync", {"tx": tx})
             sync = {"status": code, "body": resp}
         except RuntimeError as exc:
             sync = {"error": str(exc)[:300]}
