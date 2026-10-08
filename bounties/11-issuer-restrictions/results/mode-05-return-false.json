@@ -1,0 +1,1 @@
+{"mode":"returns-false","deposit":"blocked","award_refund_while_restricted":"works","withdraw":"blocked, credit preserved","failed_withdraw_preserves_credit":true,"recovery_requires_issuer_action":true,"class":"unsupported"}

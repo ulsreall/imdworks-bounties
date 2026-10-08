@@ -1,0 +1,47 @@
+{
+  "case_id": "09_expiry_exact_boundary",
+  "variant": "hardened",
+  "exchanges": [
+    {
+      "ts": 1791451881.2530441,
+      "method": "POST",
+      "path": "/nonce",
+      "request_body": {
+        "address": "0x62BD10C2fA700B336980e228091A74f47B3C6269",
+        "origin": "https://app.imdworks.fun",
+        "chain_id": "31337"
+      },
+      "status": 200,
+      "response_body": {
+        "nonce": "0x389f22ba264d1b729121ee4cd08f0349",
+        "address": "0x62bd10c2fa700b336980e228091a74f47b3c6269",
+        "origin": "https://app.imdworks.fun",
+        "chain_id": "31337",
+        "issued_at": 1791451881.2526605,
+        "expires_at": 1791451883.2526605,
+        "ttl": 2.0,
+        "message_template": "IMD Works sign-in\nnonce: 0x389f22ba264d1b729121ee4cd08f0349\norigin: https://app.imdworks.fun\nchain_id: 31337"
+      },
+      "thread": null
+    },
+    {
+      "ts": 1791451883.3045125,
+      "method": "POST",
+      "path": "/verify",
+      "request_body": {
+        "address": "0x62BD10C2fA700B336980e228091A74f47B3C6269",
+        "message": "IMD Works sign-in\nnonce: 0x389f22ba264d1b729121ee4cd08f0349\norigin: https://app.imdworks.fun\nchain_id: 31337",
+        "signature": "0xe20cf050e6c1f5bd4edaed7422f8265163b4507ad66c81036b6e326f48a0ce603e193c3e3809d4647549f609f1bd616624088e50592f4fcfa7bee2489deab23e1c",
+        "origin": "https://app.imdworks.fun",
+        "chain_id": "31337"
+      },
+      "status": 400,
+      "response_body": {
+        "error": "nonce_expired",
+        "now": 1791451883.304003,
+        "expires_at": 1791451883.2526605
+      },
+      "thread": null
+    }
+  ]
+}

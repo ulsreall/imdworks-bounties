@@ -1,0 +1,23 @@
+{
+  "case_id": "16_nonce_never_issued",
+  "variant": "hardened",
+  "exchanges": [
+    {
+      "ts": 1791451884.476879,
+      "method": "POST",
+      "path": "/verify",
+      "request_body": {
+        "address": "0x62BD10C2fA700B336980e228091A74f47B3C6269",
+        "message": "IMD Works sign-in\nnonce: 0x310adc03a17ff49db997fe591b7ef456\norigin: https://app.imdworks.fun\nchain_id: 31337",
+        "signature": "0xd621b10575a6220f4b15c748e49558681dae9f6afb95f34d167c0108214ba28f4a3c1174ed95f1e029aa87781f93bb03bc2f47c60946c3a1dae0235cb1d1cf041b",
+        "origin": "https://app.imdworks.fun",
+        "chain_id": "31337"
+      },
+      "status": 400,
+      "response_body": {
+        "error": "unknown_nonce"
+      },
+      "thread": null
+    }
+  ]
+}

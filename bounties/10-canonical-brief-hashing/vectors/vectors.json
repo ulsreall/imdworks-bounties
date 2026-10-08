@@ -1,0 +1,1704 @@
+{
+  "spec": "CANONICAL BRIEF FORM v1",
+  "generated_by": "scripts/gen_vectors.py",
+  "oracle": "cast keccak (foundry/alloy) over the exact canonical bytes on stdin",
+  "count": 86,
+  "valid_count": 70,
+  "invalid_count": 16,
+  "vectors": [
+    {
+      "name": "ascii-minimal",
+      "category": "ascii",
+      "brief": {
+        "title": "Implement a canonical decimal parser",
+        "description": "Write a parser with tests.",
+        "criteria": "Tests must pass.",
+        "reward": "1",
+        "currency": "USDG",
+        "deadline": "2026-10-14T23:59:59Z",
+        "repo_url": "https://github.com/ulsreall/imdworks-bounties"
+      },
+      "valid": true,
+      "note": "",
+      "expected_hash": "0x2d50ea35b70c81acb3eaa54373393cddca285dbb37c3d5efd3e410e530abc490",
+      "oracle": "cast keccak (alloy)",
+      "canonical_json": "{\"criteria\":\"Tests must pass.\",\"currency\":\"USDG\",\"deadline\":\"2026-10-14T23:59:59Z\",\"description\":\"Write a parser with tests.\",\"repo_url\":\"https://github.com/ulsreall/imdworks-bounties\",\"reward\":\"1\",\"title\":\"Implement a canonical decimal parser\"}",
+      "canonical_bytes_hex": "7b226372697465726961223a225465737473206d75737420706173732e222c2263757272656e6379223a2255534447222c22646561646c696e65223a22323032362d31302d31345432333a35393a35395a222c226465736372697074696f6e223a22577269746520612070617273657220776974682074657374732e222c227265706f5f75726c223a2268747470733a2f2f6769746875622e636f6d2f756c737265616c6c2f696d64776f726b732d626f756e74696573222c22726577617264223a2231222c227469746c65223a22496d706c656d656e7420612063616e6f6e6963616c20646563696d616c20706172736572227d"
+    },
+    {
+      "name": "ascii-min-reward-zero",
+      "category": "ascii",
+      "brief": {
+        "title": "Implement a canonical decimal parser",
+        "description": "Write a parser with tests.",
+        "criteria": "Tests must pass.",
+        "reward": "0",
+        "currency": "USDG",
+        "deadline": "2026-10-14T23:59:59Z",
+        "repo_url": "https://github.com/ulsreall/imdworks-bounties"
+      },
+      "valid": true,
+      "note": "0 is a valid amount",
+      "expected_hash": "0xc52682ec44c66c212416705b3521645042bb3ce612c0202613da60d219eb2fe2",
+      "oracle": "cast keccak (alloy)",
+      "canonical_json": "{\"criteria\":\"Tests must pass.\",\"currency\":\"USDG\",\"deadline\":\"2026-10-14T23:59:59Z\",\"description\":\"Write a parser with tests.\",\"repo_url\":\"https://github.com/ulsreall/imdworks-bounties\",\"reward\":\"0\",\"title\":\"Implement a canonical decimal parser\"}",
+      "canonical_bytes_hex": "7b226372697465726961223a225465737473206d75737420706173732e222c2263757272656e6379223a2255534447222c22646561646c696e65223a22323032362d31302d31345432333a35393a35395a222c226465736372697074696f6e223a22577269746520612070617273657220776974682074657374732e222c227265706f5f75726c223a2268747470733a2f2f6769746875622e636f6d2f756c737265616c6c2f696d64776f726b732d626f756e74696573222c22726577617264223a2230222c227469746c65223a22496d706c656d656e7420612063616e6f6e6963616c20646563696d616c20706172736572227d"
+    },
+    {
+      "name": "ascii-max-reward",
+      "category": "decimal-boundaries",
+      "brief": {
+        "title": "Implement a canonical decimal parser",
+        "description": "Write a parser with tests.",
+        "criteria": "Tests must pass.",
+        "reward": "115792089237316195423570985008687907853269984665640564039457584007913129.639935",
+        "currency": "USDG",
+        "deadline": "2026-10-14T23:59:59Z",
+        "repo_url": "https://github.com/ulsreall/imdworks-bounties"
+      },
+      "valid": true,
+      "note": "exactly 2**256-1 micro-units",
+      "expected_hash": "0x3ddfc68afd317d3bb086c7ae06a6baf19c6b573e0eb398c16da10ed400c9c9a1",
+      "oracle": "cast keccak (alloy)",
+      "canonical_json": "{\"criteria\":\"Tests must pass.\",\"currency\":\"USDG\",\"deadline\":\"2026-10-14T23:59:59Z\",\"description\":\"Write a parser with tests.\",\"repo_url\":\"https://github.com/ulsreall/imdworks-bounties\",\"reward\":\"115792089237316195423570985008687907853269984665640564039457584007913129.639935\",\"title\":\"Implement a canonical decimal parser\"}",
+      "canonical_bytes_hex": "7b226372697465726961223a225465737473206d75737420706173732e222c2263757272656e6379223a2255534447222c22646561646c696e65223a22323032362d31302d31345432333a35393a35395a222c226465736372697074696f6e223a22577269746520612070617273657220776974682074657374732e222c227265706f5f75726c223a2268747470733a2f2f6769746875622e636f6d2f756c737265616c6c2f696d64776f726b732d626f756e74696573222c22726577617264223a223131353739323038393233373331363139353432333537303938353030383638373930373835333236393938343636353634303536343033393435373538343030373931333132392e363339393335222c227469746c65223a22496d706c656d656e7420612063616e6f6e6963616c20646563696d616c20706172736572227d"
+    },
+    {
+      "name": "ascii-reward-six-decimals",
+      "category": "decimal-boundaries",
+      "brief": {
+        "title": "Implement a canonical decimal parser",
+        "description": "Write a parser with tests.",
+        "criteria": "Tests must pass.",
+        "reward": "0.000001",
+        "currency": "USDG",
+        "deadline": "2026-10-14T23:59:59Z",
+        "repo_url": "https://github.com/ulsreall/imdworks-bounties"
+      },
+      "valid": true,
+      "note": "",
+      "expected_hash": "0x8ebca763a8aef410d8c8356d4d71dc3f2ea28fc658a22c3bd288ac110c12f90a",
+      "oracle": "cast keccak (alloy)",
+      "canonical_json": "{\"criteria\":\"Tests must pass.\",\"currency\":\"USDG\",\"deadline\":\"2026-10-14T23:59:59Z\",\"description\":\"Write a parser with tests.\",\"repo_url\":\"https://github.com/ulsreall/imdworks-bounties\",\"reward\":\"0.000001\",\"title\":\"Implement a canonical decimal parser\"}",
+      "canonical_bytes_hex": "7b226372697465726961223a225465737473206d75737420706173732e222c2263757272656e6379223a2255534447222c22646561646c696e65223a22323032362d31302d31345432333a35393a35395a222c226465736372697074696f6e223a22577269746520612070617273657220776974682074657374732e222c227265706f5f75726c223a2268747470733a2f2f6769746875622e636f6d2f756c737265616c6c2f696d64776f726b732d626f756e74696573222c22726577617264223a22302e303030303031222c227469746c65223a22496d706c656d656e7420612063616e6f6e6963616c20646563696d616c20706172736572227d"
+    },
+    {
+      "name": "ascii-reward-trailing-zeros",
+      "category": "decimal-boundaries",
+      "brief": {
+        "title": "Implement a canonical decimal parser",
+        "description": "Write a parser with tests.",
+        "criteria": "Tests must pass.",
+        "reward": "1.500000",
+        "currency": "USDG",
+        "deadline": "2026-10-14T23:59:59Z",
+        "repo_url": "https://github.com/ulsreall/imdworks-bounties"
+      },
+      "valid": true,
+      "note": "",
+      "expected_hash": "0xa37567f3d723e4bc585c3c50184d2afbdb512dba6abbd6ef976241bc068fbf44",
+      "oracle": "cast keccak (alloy)",
+      "canonical_json": "{\"criteria\":\"Tests must pass.\",\"currency\":\"USDG\",\"deadline\":\"2026-10-14T23:59:59Z\",\"description\":\"Write a parser with tests.\",\"repo_url\":\"https://github.com/ulsreall/imdworks-bounties\",\"reward\":\"1.500000\",\"title\":\"Implement a canonical decimal parser\"}",
+      "canonical_bytes_hex": "7b226372697465726961223a225465737473206d75737420706173732e222c2263757272656e6379223a2255534447222c22646561646c696e65223a22323032362d31302d31345432333a35393a35395a222c226465736372697074696f6e223a22577269746520612070617273657220776974682074657374732e222c227265706f5f75726c223a2268747470733a2f2f6769746875622e636f6d2f756c737265616c6c2f696d64776f726b732d626f756e74696573222c22726577617264223a22312e353030303030222c227469746c65223a22496d706c656d656e7420612063616e6f6e6963616c20646563696d616c20706172736572227d"
+    },
+    {
+      "name": "ascii-long-title",
+      "category": "ascii",
+      "brief": {
+        "title": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "description": "Write a parser with tests.",
+        "criteria": "Tests must pass.",
+        "reward": "1",
+        "currency": "USDG",
+        "deadline": "2026-10-14T23:59:59Z",
+        "repo_url": "https://github.com/ulsreall/imdworks-bounties"
+      },
+      "valid": true,
+      "note": "200 char upper bound",
+      "expected_hash": "0x4f2e0b6ce06acaed549e0971b3cadb6be41b20eddf6b9ba5a8550ab6558710aa",
+      "oracle": "cast keccak (alloy)",
+      "canonical_json": "{\"criteria\":\"Tests must pass.\",\"currency\":\"USDG\",\"deadline\":\"2026-10-14T23:59:59Z\",\"description\":\"Write a parser with tests.\",\"repo_url\":\"https://github.com/ulsreall/imdworks-bounties\",\"reward\":\"1\",\"title\":\"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\"}",
+      "canonical_bytes_hex": "7b226372697465726961223a225465737473206d75737420706173732e222c2263757272656e6379223a2255534447222c22646561646c696e65223a22323032362d31302d31345432333a35393a35395a222c226465736372697074696f6e223a22577269746520612070617273657220776974682074657374732e222c227265706f5f75726c223a2268747470733a2f2f6769746875622e636f6d2f756c737265616c6c2f696d64776f726b732d626f756e74696573222c22726577617264223a2231222c227469746c65223a224141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141227d"
+    },
+    {
+      "name": "ascii-long-description",
+      "category": "ascii",
+      "brief": {
+        "title": "Implement a canonical decimal parser",
+        "description": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "criteria": "Tests must pass.",
+        "reward": "1",
+        "currency": "USDG",
+        "deadline": "2026-10-14T23:59:59Z",
+        "repo_url": "https://github.com/ulsreall/imdworks-bounties"
+      },
+      "valid": true,
+      "note": "",
+      "expected_hash": "0x91ce581395eab1e169a138ee67f34230d7062074bd2b5b083a0fc994be53e8cc",
+      "oracle": "cast keccak (alloy)",
+      "canonical_json": "{\"criteria\":\"Tests must pass.\",\"currency\":\"USDG\",\"deadline\":\"2026-10-14T23:59:59Z\",\"description\":\"dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd\",\"repo_url\":\"https://github.com/ulsreall/imdworks-bounties\",\"reward\":\"1\",\"title\":\"Implement a canonical decimal parser\"}",
+      "canonical_bytes_hex": "7b226372697465726961223a225465737473206d75737420706173732e222c2263757272656e6379223a2255534447222c22646561646c696e65223a22323032362d31302d31345432333a35393a35395a222c226465736372697074696f6e223a226464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464646464222c227265706f5f75726c223a2268747470733a2f2f6769746875622e636f6d2f756c737265616c6c2f696d64776f726b732d626f756e74696573222c22726577617264223a2231222c227469746c65223a22496d706c656d656e7420612063616e6f6e6963616c20646563696d616c20706172736572227d"
+    },
+    {
+      "name": "ascii-empty-description",
+      "category": "ascii",
+      "brief": {
+        "title": "Implement a canonical decimal parser",
+        "description": "",
+        "criteria": "Tests must pass.",
+        "reward": "1",
+        "currency": "USDG",
+        "deadline": "2026-10-14T23:59:59Z",
+        "repo_url": "https://github.com/ulsreall/imdworks-bounties"
+      },
+      "valid": true,
+      "note": "",
+      "expected_hash": "0xcb8a254f657574b1804c09a720814a46928f83b66f3d195cd7e6cde6277b36c0",
+      "oracle": "cast keccak (alloy)",
+      "canonical_json": "{\"criteria\":\"Tests must pass.\",\"currency\":\"USDG\",\"deadline\":\"2026-10-14T23:59:59Z\",\"description\":\"\",\"repo_url\":\"https://github.com/ulsreall/imdworks-bounties\",\"reward\":\"1\",\"title\":\"Implement a canonical decimal parser\"}",
+      "canonical_bytes_hex": "7b226372697465726961223a225465737473206d75737420706173732e222c2263757272656e6379223a2255534447222c22646561646c696e65223a22323032362d31302d31345432333a35393a35395a222c226465736372697074696f6e223a22222c227265706f5f75726c223a2268747470733a2f2f6769746875622e636f6d2f756c737265616c6c2f696d64776f726b732d626f756e74696573222c22726577617264223a2231222c227469746c65223a22496d706c656d656e7420612063616e6f6e6963616c20646563696d616c20706172736572227d"
+    },
+    {
+      "name": "ascii-null-repo",
+      "category": "ascii",
+      "brief": {
+        "title": "Implement a canonical decimal parser",
+        "description": "Write a parser with tests.",
+        "criteria": "Tests must pass.",
+        "reward": "1",
+        "currency": "USDG",
+        "deadline": "2026-10-14T23:59:59Z",
+        "repo_url": null
+      },
+      "valid": true,
+      "note": "",
+      "expected_hash": "0xb26f01e03a3e95c65a2723ad844b47ab085997fba76347e3863516ef8d92ece9",
+      "oracle": "cast keccak (alloy)",
+      "canonical_json": "{\"criteria\":\"Tests must pass.\",\"currency\":\"USDG\",\"deadline\":\"2026-10-14T23:59:59Z\",\"description\":\"Write a parser with tests.\",\"repo_url\":null,\"reward\":\"1\",\"title\":\"Implement a canonical decimal parser\"}",
+      "canonical_bytes_hex": "7b226372697465726961223a225465737473206d75737420706173732e222c2263757272656e6379223a2255534447222c22646561646c696e65223a22323032362d31302d31345432333a35393a35395a222c226465736372697074696f6e223a22577269746520612070617273657220776974682074657374732e222c227265706f5f75726c223a6e756c6c2c22726577617264223a2231222c227469746c65223a22496d706c656d656e7420612063616e6f6e6963616c20646563696d616c20706172736572227d"
+    },
+    {
+      "name": "ascii-repo-query",
+      "category": "ascii",
+      "brief": {
+        "title": "Implement a canonical decimal parser",
+        "description": "Write a parser with tests.",
+        "criteria": "Tests must pass.",
+        "reward": "1",
+        "currency": "USDG",
+        "deadline": "2026-10-14T23:59:59Z",
+        "repo_url": "https://github.com/x/y/tree/main?tab=readme#top"
+      },
+      "valid": true,
+      "note": "",
+      "expected_hash": "0x1a02c75762e47d7dd044b88338ed1152e2d1ff21402cbe60ad1a89fcfb96d42a",
+      "oracle": "cast keccak (alloy)",
+      "canonical_json": "{\"criteria\":\"Tests must pass.\",\"currency\":\"USDG\",\"deadline\":\"2026-10-14T23:59:59Z\",\"description\":\"Write a parser with tests.\",\"repo_url\":\"https://github.com/x/y/tree/main?tab=readme#top\",\"reward\":\"1\",\"title\":\"Implement a canonical decimal parser\"}",
+      "canonical_bytes_hex": "7b226372697465726961223a225465737473206d75737420706173732e222c2263757272656e6379223a2255534447222c22646561646c696e65223a22323032362d31302d31345432333a35393a35395a222c226465736372697074696f6e223a22577269746520612070617273657220776974682074657374732e222c227265706f5f75726c223a2268747470733a2f2f6769746875622e636f6d2f782f792f747265652f6d61696e3f7461623d726561646d6523746f70222c22726577617264223a2231222c227469746c65223a22496d706c656d656e7420612063616e6f6e6963616c20646563696d616c20706172736572227d"
+    },
+    {
+      "name": "currency-usdc",
+      "category": "ascii",
+      "brief": {
+        "title": "Implement a canonical decimal parser",
+        "description": "Write a parser with tests.",
+        "criteria": "Tests must pass.",
+        "reward": "1",
+        "currency": "USDC",
+        "deadline": "2026-10-14T23:59:59Z",
+        "repo_url": "https://github.com/ulsreall/imdworks-bounties"
+      },
+      "valid": true,
+      "note": "",
+      "expected_hash": "0x8c73753c90aabcf853fdedf3edd793d9dfad5a51c044c552def965682361db81",
+      "oracle": "cast keccak (alloy)",
+      "canonical_json": "{\"criteria\":\"Tests must pass.\",\"currency\":\"USDC\",\"deadline\":\"2026-10-14T23:59:59Z\",\"description\":\"Write a parser with tests.\",\"repo_url\":\"https://github.com/ulsreall/imdworks-bounties\",\"reward\":\"1\",\"title\":\"Implement a canonical decimal parser\"}",
+      "canonical_bytes_hex": "7b226372697465726961223a225465737473206d75737420706173732e222c2263757272656e6379223a2255534443222c22646561646c696e65223a22323032362d31302d31345432333a35393a35395a222c226465736372697074696f6e223a22577269746520612070617273657220776974682074657374732e222c227265706f5f75726c223a2268747470733a2f2f6769746875622e636f6d2f756c737265616c6c2f696d64776f726b732d626f756e74696573222c22726577617264223a2231222c227469746c65223a22496d706c656d656e7420612063616e6f6e6963616c20646563696d616c20706172736572227d"
+    },
+    {
+      "name": "deadline-leap-day",
+      "category": "ascii",
+      "brief": {
+        "title": "Implement a canonical decimal parser",
+        "description": "Write a parser with tests.",
+        "criteria": "Tests must pass.",
+        "reward": "1",
+        "currency": "USDG",
+        "deadline": "2028-02-29T00:00:00Z",
+        "repo_url": "https://github.com/ulsreall/imdworks-bounties"
+      },
+      "valid": true,
+      "note": "",
+      "expected_hash": "0x4ea9eb42e63a1ac955646ec142eace0d956f45ab713aefa59928c8c5abce9c99",
+      "oracle": "cast keccak (alloy)",
+      "canonical_json": "{\"criteria\":\"Tests must pass.\",\"currency\":\"USDG\",\"deadline\":\"2028-02-29T00:00:00Z\",\"description\":\"Write a parser with tests.\",\"repo_url\":\"https://github.com/ulsreall/imdworks-bounties\",\"reward\":\"1\",\"title\":\"Implement a canonical decimal parser\"}",
+      "canonical_bytes_hex": "7b226372697465726961223a225465737473206d75737420706173732e222c2263757272656e6379223a2255534447222c22646561646c696e65223a22323032382d30322d32395430303a30303a30305a222c226465736372697074696f6e223a22577269746520612070617273657220776974682074657374732e222c227265706f5f75726c223a2268747470733a2f2f6769746875622e636f6d2f756c737265616c6c2f696d64776f726b732d626f756e74696573222c22726577617264223a2231222c227469746c65223a22496d706c656d656e7420612063616e6f6e6963616c20646563696d616c20706172736572227d"
+    },
+    {
+      "name": "deadline-epoch",
+      "category": "ascii",
+      "brief": {
+        "title": "Implement a canonical decimal parser",
+        "description": "Write a parser with tests.",
+        "criteria": "Tests must pass.",
+        "reward": "1",
+        "currency": "USDG",
+        "deadline": "1970-01-01T00:00:00Z",
+        "repo_url": "https://github.com/ulsreall/imdworks-bounties"
+      },
+      "valid": true,
+      "note": "",
+      "expected_hash": "0xa89d13214ef9f1bacdf1ed45a3fb8ecb043287fed33ec90f135cba76866545bf",
+      "oracle": "cast keccak (alloy)",
+      "canonical_json": "{\"criteria\":\"Tests must pass.\",\"currency\":\"USDG\",\"deadline\":\"1970-01-01T00:00:00Z\",\"description\":\"Write a parser with tests.\",\"repo_url\":\"https://github.com/ulsreall/imdworks-bounties\",\"reward\":\"1\",\"title\":\"Implement a canonical decimal parser\"}",
+      "canonical_bytes_hex": "7b226372697465726961223a225465737473206d75737420706173732e222c2263757272656e6379223a2255534447222c22646561646c696e65223a22313937302d30312d30315430303a30303a30305a222c226465736372697074696f6e223a22577269746520612070617273657220776974682074657374732e222c227265706f5f75726c223a2268747470733a2f2f6769746875622e636f6d2f756c737265616c6c2f696d64776f726b732d626f756e74696573222c22726577617264223a2231222c227469746c65223a22496d706c656d656e7420612063616e6f6e6963616c20646563696d616c20706172736572227d"
+    },
+    {
+      "name": "unicode-latin1-accent",
+      "category": "unicode",
+      "brief": {
+        "title": "Café onboarding: 1 café",
+        "description": "Write a parser with tests.",
+        "criteria": "Tests must pass.",
+        "reward": "1",
+        "currency": "USDG",
+        "deadline": "2026-10-14T23:59:59Z",
+        "repo_url": "https://github.com/ulsreall/imdworks-bounties"
+      },
+      "valid": true,
+      "note": "",
+      "expected_hash": "0x25a3a7e45ebe700c782f4defd31984023f5779aa4721f3f10ef24b594ab81b8f",
+      "oracle": "cast keccak (alloy)",
+      "canonical_json": "{\"criteria\":\"Tests must pass.\",\"currency\":\"USDG\",\"deadline\":\"2026-10-14T23:59:59Z\",\"description\":\"Write a parser with tests.\",\"repo_url\":\"https://github.com/ulsreall/imdworks-bounties\",\"reward\":\"1\",\"title\":\"Café onboarding: 1 café\"}",
+      "canonical_bytes_hex": "7b226372697465726961223a225465737473206d75737420706173732e222c2263757272656e6379223a2255534447222c22646561646c696e65223a22323032362d31302d31345432333a35393a35395a222c226465736372697074696f6e223a22577269746520612070617273657220776974682074657374732e222c227265706f5f75726c223a2268747470733a2f2f6769746875622e636f6d2f756c737265616c6c2f696d64776f726b732d626f756e74696573222c22726577617264223a2231222c227469746c65223a22436166c3a9206f6e626f617264696e673a203120636166c3a9227d"
+    },
+    {
+      "name": "unicode-cjk",
+      "category": "unicode",
+      "brief": {
+        "title": "规范十进制解析器",
+        "description": "Write a parser with tests.",
+        "criteria": "提交必须通过全部测试。",
+        "reward": "1",
+        "currency": "USDG",
+        "deadline": "2026-10-14T23:59:59Z",
+        "repo_url": "https://github.com/ulsreall/imdworks-bounties"
+      },
+      "valid": true,
+      "note": "",
+      "expected_hash": "0xc662e4e2d9d63953ddc06028aaa25720c132225457f84fab94d8b7c33574f6e5",
+      "oracle": "cast keccak (alloy)",
+      "canonical_json": "{\"criteria\":\"提交必须通过全部测试。\",\"currency\":\"USDG\",\"deadline\":\"2026-10-14T23:59:59Z\",\"description\":\"Write a parser with tests.\",\"repo_url\":\"https://github.com/ulsreall/imdworks-bounties\",\"reward\":\"1\",\"title\":\"规范十进制解析器\"}",
+      "canonical_bytes_hex": "7b226372697465726961223a22e68f90e4baa4e5bf85e9a1bbe9809ae8bf87e585a8e983a8e6b58be8af95e38082222c2263757272656e6379223a2255534447222c22646561646c696e65223a22323032362d31302d31345432333a35393a35395a222c226465736372697074696f6e223a22577269746520612070617273657220776974682074657374732e222c227265706f5f75726c223a2268747470733a2f2f6769746875622e636f6d2f756c737265616c6c2f696d64776f726b732d626f756e74696573222c22726577617264223a2231222c227469746c65223a22e8a784e88c83e58d81e8bf9be588b6e8a7a3e69e90e599a8227d"
+    },
+    {
+      "name": "unicode-astral-emoji",
+      "category": "unicode-astral",
+      "brief": {
+        "title": "Ship it 🚀 ASAP",
+        "description": "emoji at the end 😀",
+        "criteria": "Tests must pass.",
+        "reward": "1",
+        "currency": "USDG",
+        "deadline": "2026-10-14T23:59:59Z",
+        "repo_url": "https://github.com/ulsreall/imdworks-bounties"
+      },
+      "valid": true,
+      "note": "",
+      "expected_hash": "0xfa55fdb02356f9d7552dcb0f23c29827cca297e2d74b2cefc905a1de2ac489d0",
+      "oracle": "cast keccak (alloy)",
+      "canonical_json": "{\"criteria\":\"Tests must pass.\",\"currency\":\"USDG\",\"deadline\":\"2026-10-14T23:59:59Z\",\"description\":\"emoji at the end 😀\",\"repo_url\":\"https://github.com/ulsreall/imdworks-bounties\",\"reward\":\"1\",\"title\":\"Ship it 🚀 ASAP\"}",
+      "canonical_bytes_hex": "7b226372697465726961223a225465737473206d75737420706173732e222c2263757272656e6379223a2255534447222c22646561646c696e65223a22323032362d31302d31345432333a35393a35395a222c226465736372697074696f6e223a22656d6f6a692061742074686520656e6420f09f9880222c227265706f5f75726c223a2268747470733a2f2f6769746875622e636f6d2f756c737265616c6c2f696d64776f726b732d626f756e74696573222c22726577617264223a2231222c227469746c65223a225368697020697420f09f9a802041534150227d"
+    },
+    {
+      "name": "unicode-rtl-arabic",
+      "category": "unicode",
+      "brief": {
+        "title": "مقدار عشري قانوني",
+        "description": "Write a parser with tests.",
+        "criteria": "Tests must pass.",
+        "reward": "1",
+        "currency": "USDG",
+        "deadline": "2026-10-14T23:59:59Z",
+        "repo_url": "https://github.com/ulsreall/imdworks-bounties"
+      },
+      "valid": true,
+      "note": "",
+      "expected_hash": "0xcf5474b0f177c72275f4415107e4a82007e1bebee1045369e62f21cbbb698625",
+      "oracle": "cast keccak (alloy)",
+      "canonical_json": "{\"criteria\":\"Tests must pass.\",\"currency\":\"USDG\",\"deadline\":\"2026-10-14T23:59:59Z\",\"description\":\"Write a parser with tests.\",\"repo_url\":\"https://github.com/ulsreall/imdworks-bounties\",\"reward\":\"1\",\"title\":\"مقدار عشري قانوني\"}",
+      "canonical_bytes_hex": "7b226372697465726961223a225465737473206d75737420706173732e222c2263757272656e6379223a2255534447222c22646561646c696e65223a22323032362d31302d31345432333a35393a35395a222c226465736372697074696f6e223a22577269746520612070617273657220776974682074657374732e222c227265706f5f75726c223a2268747470733a2f2f6769746875622e636f6d2f756c737265616c6c2f696d64776f726b732d626f756e74696573222c22726577617264223a2231222c227469746c65223a22d985d982d8afd8a7d8b120d8b9d8b4d8b1d98a20d982d8a7d986d988d986d98a227d"
+    },
+    {
+      "name": "unicode-circled-digits",
+      "category": "unicode",
+      "brief": {
+        "title": "① ② ③ canonical",
+        "description": "Write a parser with tests.",
+        "criteria": "Tests must pass.",
+        "reward": "1",
+        "currency": "USDG",
+        "deadline": "2026-10-14T23:59:59Z",
+        "repo_url": "https://github.com/ulsreall/imdworks-bounties"
+      },
+      "valid": true,
+      "note": "",
+      "expected_hash": "0x1aefcd128d76b93ea38a7c27251b8bfc8a009b07f3d4192a341a8b5c095083e6",
+      "oracle": "cast keccak (alloy)",
+      "canonical_json": "{\"criteria\":\"Tests must pass.\",\"currency\":\"USDG\",\"deadline\":\"2026-10-14T23:59:59Z\",\"description\":\"Write a parser with tests.\",\"repo_url\":\"https://github.com/ulsreall/imdworks-bounties\",\"reward\":\"1\",\"title\":\"① ② ③ canonical\"}",
+      "canonical_bytes_hex": "7b226372697465726961223a225465737473206d75737420706173732e222c2263757272656e6379223a2255534447222c22646561646c696e65223a22323032362d31302d31345432333a35393a35395a222c226465736372697074696f6e223a22577269746520612070617273657220776974682074657374732e222c227265706f5f75726c223a2268747470733a2f2f6769746875622e636f6d2f756c737265616c6c2f696d64776f726b732d626f756e74696573222c22726577617264223a2231222c227469746c65223a22e291a020e291a120e291a22063616e6f6e6963616c227d"
+    },
+    {
+      "name": "unicode-variation-selector",
+      "category": "unicode",
+      "brief": {
+        "title": "emoji with VS16 ♥️",
+        "description": "Write a parser with tests.",
+        "criteria": "Tests must pass.",
+        "reward": "1",
+        "currency": "USDG",
+        "deadline": "2026-10-14T23:59:59Z",
+        "repo_url": "https://github.com/ulsreall/imdworks-bounties"
+      },
+      "valid": true,
+      "note": "",
+      "expected_hash": "0x859bbb324b4e7d581bff3fdbe1c0a4f95b029a944054c0dd46abc2996c069187",
+      "oracle": "cast keccak (alloy)",
+      "canonical_json": "{\"criteria\":\"Tests must pass.\",\"currency\":\"USDG\",\"deadline\":\"2026-10-14T23:59:59Z\",\"description\":\"Write a parser with tests.\",\"repo_url\":\"https://github.com/ulsreall/imdworks-bounties\",\"reward\":\"1\",\"title\":\"emoji with VS16 ♥️\"}",
+      "canonical_bytes_hex": "7b226372697465726961223a225465737473206d75737420706173732e222c2263757272656e6379223a2255534447222c22646561646c696e65223a22323032362d31302d31345432333a35393a35395a222c226465736372697074696f6e223a22577269746520612070617273657220776974682074657374732e222c227265706f5f75726c223a2268747470733a2f2f6769746875622e636f6d2f756c737265616c6c2f696d64776f726b732d626f756e74696573222c22726577617264223a2231222c227469746c65223a22656d6f6a692077697468205653313620e299a5efb88f227d"
+    },
+    {
+      "name": "unicode-zwj-sequence",
+      "category": "unicode",
+      "brief": {
+        "title": "Implement a canonical decimal parser",
+        "description": "family 👨‍👩‍👧‍👦 and skin tone 👍🏽",
+        "criteria": "Tests must pass.",
+        "reward": "1",
+        "currency": "USDG",
+        "deadline": "2026-10-14T23:59:59Z",
+        "repo_url": "https://github.com/ulsreall/imdworks-bounties"
+      },
+      "valid": true,
+      "note": "",
+      "expected_hash": "0xc8c86eea7e415aa834055d5271f457ecff8362d9a29b7aec951a3589b3b89a5f",
+      "oracle": "cast keccak (alloy)",
+      "canonical_json": "{\"criteria\":\"Tests must pass.\",\"currency\":\"USDG\",\"deadline\":\"2026-10-14T23:59:59Z\",\"description\":\"family 👨‍👩‍👧‍👦 and skin tone 👍🏽\",\"repo_url\":\"https://github.com/ulsreall/imdworks-bounties\",\"reward\":\"1\",\"title\":\"Implement a canonical decimal parser\"}",
+      "canonical_bytes_hex": "7b226372697465726961223a225465737473206d75737420706173732e222c2263757272656e6379223a2255534447222c22646561646c696e65223a22323032362d31302d31345432333a35393a35395a222c226465736372697074696f6e223a2266616d696c7920f09f91a8e2808df09f91a9e2808df09f91a7e2808df09f91a620616e6420736b696e20746f6e6520f09f918df09f8fbd222c227265706f5f75726c223a2268747470733a2f2f6769746875622e636f6d2f756c737265616c6c2f696d64776f726b732d626f756e74696573222c22726577617264223a2231222c227469746c65223a22496d706c656d656e7420612063616e6f6e6963616c20646563696d616c20706172736572227d"
+    },
+    {
+      "name": "unicode-fullwidth-latin",
+      "category": "unicode",
+      "brief": {
+        "title": "ＦＵＬＬＷＩＤＴＨ ｔｅｘｔ",
+        "description": "Write a parser with tests.",
+        "criteria": "Tests must pass.",
+        "reward": "1",
+        "currency": "USDG",
+        "deadline": "2026-10-14T23:59:59Z",
+        "repo_url": "https://github.com/ulsreall/imdworks-bounties"
+      },
+      "valid": true,
+      "note": "",
+      "expected_hash": "0xd68bbbe66666ce67986ed80548487f9fe30924da94c1e41d4e80a78f9587e39f",
+      "oracle": "cast keccak (alloy)",
+      "canonical_json": "{\"criteria\":\"Tests must pass.\",\"currency\":\"USDG\",\"deadline\":\"2026-10-14T23:59:59Z\",\"description\":\"Write a parser with tests.\",\"repo_url\":\"https://github.com/ulsreall/imdworks-bounties\",\"reward\":\"1\",\"title\":\"ＦＵＬＬＷＩＤＴＨ ｔｅｘｔ\"}",
+      "canonical_bytes_hex": "7b226372697465726961223a225465737473206d75737420706173732e222c2263757272656e6379223a2255534447222c22646561646c696e65223a22323032362d31302d31345432333a35393a35395a222c226465736372697074696f6e223a22577269746520612070617273657220776974682074657374732e222c227265706f5f75726c223a2268747470733a2f2f6769746875622e636f6d2f756c737265616c6c2f696d64776f726b732d626f756e74696573222c22726577617264223a2231222c227469746c65223a22efbca6efbcb5efbcacefbcacefbcb7efbca9efbca4efbcb4efbca820efbd94efbd85efbd98efbd94227d"
+    },
+    {
+      "name": "unicode-nfd-accent",
+      "category": "unicode",
+      "brief": {
+        "title": "Café",
+        "description": "e + combining acute",
+        "criteria": "must fold to NFC",
+        "reward": "1",
+        "currency": "USDG",
+        "deadline": "2026-10-14T23:59:59Z",
+        "repo_url": null
+      },
+      "valid": true,
+      "note": "decomposed input, canonical bytes are NFC",
+      "expected_hash": "0x8fefd51d4068ae9af5fb30593565c4d22cea4cc2daf9f474ae73e68f4b3c2071",
+      "oracle": "cast keccak (alloy)",
+      "canonical_json": "{\"criteria\":\"must fold to NFC\",\"currency\":\"USDG\",\"deadline\":\"2026-10-14T23:59:59Z\",\"description\":\"e + combining acute\",\"repo_url\":null,\"reward\":\"1\",\"title\":\"Café\"}",
+      "canonical_bytes_hex": "7b226372697465726961223a226d75737420666f6c6420746f204e4643222c2263757272656e6379223a2255534447222c22646561646c696e65223a22323032362d31302d31345432333a35393a35395a222c226465736372697074696f6e223a2265202b20636f6d62696e696e67206163757465222c227265706f5f75726c223a6e756c6c2c22726577617264223a2231222c227469746c65223a22436166c3a9227d"
+    },
+    {
+      "name": "unicode-nfc-accent-same-as-nfd-vector",
+      "category": "unicode",
+      "brief": {
+        "title": "Café",
+        "description": "Write a parser with tests.",
+        "criteria": "Tests must pass.",
+        "reward": "1",
+        "currency": "USDG",
+        "deadline": "2026-10-14T23:59:59Z",
+        "repo_url": "https://github.com/ulsreall/imdworks-bounties"
+      },
+      "valid": true,
+      "note": "must equal unicode-nfd-accent hash",
+      "expected_hash": "0x6be321ad0f54b9fc7a4143108d9b4c4ca32d0919b94695fc6280437b0eaa9a02",
+      "oracle": "cast keccak (alloy)",
+      "canonical_json": "{\"criteria\":\"Tests must pass.\",\"currency\":\"USDG\",\"deadline\":\"2026-10-14T23:59:59Z\",\"description\":\"Write a parser with tests.\",\"repo_url\":\"https://github.com/ulsreall/imdworks-bounties\",\"reward\":\"1\",\"title\":\"Café\"}",
+      "canonical_bytes_hex": "7b226372697465726961223a225465737473206d75737420706173732e222c2263757272656e6379223a2255534447222c22646561646c696e65223a22323032362d31302d31345432333a35393a35395a222c226465736372697074696f6e223a22577269746520612070617273657220776974682074657374732e222c227265706f5f75726c223a2268747470733a2f2f6769746875622e636f6d2f756c737265616c6c2f696d64776f726b732d626f756e74696573222c22726577617264223a2231222c227469746c65223a22436166c3a9227d"
+    },
+    {
+      "name": "unicode-ligature-ffi",
+      "category": "unicode",
+      "brief": {
+        "title": "eﬃcient",
+        "description": "Write a parser with tests.",
+        "criteria": "Tests must pass.",
+        "reward": "1",
+        "currency": "USDG",
+        "deadline": "2026-10-14T23:59:59Z",
+        "repo_url": "https://github.com/ulsreall/imdworks-bounties"
+      },
+      "valid": true,
+      "note": "U+FB03 is NOT folded to ffi",
+      "expected_hash": "0x89bfe6a1a2de61f2afbca7a4e128fc9a6795250f988060b1695b01f9c91baa73",
+      "oracle": "cast keccak (alloy)",
+      "canonical_json": "{\"criteria\":\"Tests must pass.\",\"currency\":\"USDG\",\"deadline\":\"2026-10-14T23:59:59Z\",\"description\":\"Write a parser with tests.\",\"repo_url\":\"https://github.com/ulsreall/imdworks-bounties\",\"reward\":\"1\",\"title\":\"eﬃcient\"}",
+      "canonical_bytes_hex": "7b226372697465726961223a225465737473206d75737420706173732e222c2263757272656e6379223a2255534447222c22646561646c696e65223a22323032362d31302d31345432333a35393a35395a222c226465736372697074696f6e223a22577269746520612070617273657220776974682074657374732e222c227265706f5f75726c223a2268747470733a2f2f6769746875622e636f6d2f756c737265616c6c2f696d64776f726b732d626f756e74696573222c22726577617264223a2231222c227469746c65223a2265efac836369656e74227d"
+    },
+    {
+      "name": "unicode-nbsp",
+      "category": "unicode",
+      "brief": {
+        "title": "non breaking space",
+        "description": "Write a parser with tests.",
+        "criteria": "Tests must pass.",
+        "reward": "1",
+        "currency": "USDG",
+        "deadline": "2026-10-14T23:59:59Z",
+        "repo_url": "https://github.com/ulsreall/imdworks-bounties"
+      },
+      "valid": true,
+      "note": "",
+      "expected_hash": "0x05854e40ae7eb34a296ff50044cdf6c1f14b163f59ed0a60e310c127e4e91af1",
+      "oracle": "cast keccak (alloy)",
+      "canonical_json": "{\"criteria\":\"Tests must pass.\",\"currency\":\"USDG\",\"deadline\":\"2026-10-14T23:59:59Z\",\"description\":\"Write a parser with tests.\",\"repo_url\":\"https://github.com/ulsreall/imdworks-bounties\",\"reward\":\"1\",\"title\":\"non breaking space\"}",
+      "canonical_bytes_hex": "7b226372697465726961223a225465737473206d75737420706173732e222c2263757272656e6379223a2255534447222c22646561646c696e65223a22323032362d31302d31345432333a35393a35395a222c226465736372697074696f6e223a22577269746520612070617273657220776974682074657374732e222c227265706f5f75726c223a2268747470733a2f2f6769746875622e636f6d2f756c737265616c6c2f696d64776f726b732d626f756e74696573222c22726577617264223a2231222c227469746c65223a226e6f6ec2a0627265616b696e67207370616365227d"
+    },
+    {
+      "name": "newline-lf",
+      "category": "newline",
+      "brief": {
+        "title": "Implement a canonical decimal parser",
+        "description": "line1\nline2\nline3",
+        "criteria": "Tests must pass.",
+        "reward": "1",
+        "currency": "USDG",
+        "deadline": "2026-10-14T23:59:59Z",
+        "repo_url": "https://github.com/ulsreall/imdworks-bounties"
+      },
+      "valid": true,
+      "note": "",
+      "expected_hash": "0x58dfdce32ce17e1f8565d9773e2f1062600fba8373b8af41c27e8e2ea2bef1c2",
+      "oracle": "cast keccak (alloy)",
+      "canonical_json": "{\"criteria\":\"Tests must pass.\",\"currency\":\"USDG\",\"deadline\":\"2026-10-14T23:59:59Z\",\"description\":\"line1\\nline2\\nline3\",\"repo_url\":\"https://github.com/ulsreall/imdworks-bounties\",\"reward\":\"1\",\"title\":\"Implement a canonical decimal parser\"}",
+      "canonical_bytes_hex": "7b226372697465726961223a225465737473206d75737420706173732e222c2263757272656e6379223a2255534447222c22646561646c696e65223a22323032362d31302d31345432333a35393a35395a222c226465736372697074696f6e223a226c696e65315c6e6c696e65325c6e6c696e6533222c227265706f5f75726c223a2268747470733a2f2f6769746875622e636f6d2f756c737265616c6c2f696d64776f726b732d626f756e74696573222c22726577617264223a2231222c227469746c65223a22496d706c656d656e7420612063616e6f6e6963616c20646563696d616c20706172736572227d"
+    },
+    {
+      "name": "newline-crlf-collapses",
+      "category": "newline",
+      "brief": {
+        "title": "Implement a canonical decimal parser",
+        "description": "line1\r\nline2\r\nline3",
+        "criteria": "Tests must pass.",
+        "reward": "1",
+        "currency": "USDG",
+        "deadline": "2026-10-14T23:59:59Z",
+        "repo_url": "https://github.com/ulsreall/imdworks-bounties"
+      },
+      "valid": true,
+      "note": "must equal newline-lf hash",
+      "expected_hash": "0x58dfdce32ce17e1f8565d9773e2f1062600fba8373b8af41c27e8e2ea2bef1c2",
+      "oracle": "cast keccak (alloy)",
+      "canonical_json": "{\"criteria\":\"Tests must pass.\",\"currency\":\"USDG\",\"deadline\":\"2026-10-14T23:59:59Z\",\"description\":\"line1\\nline2\\nline3\",\"repo_url\":\"https://github.com/ulsreall/imdworks-bounties\",\"reward\":\"1\",\"title\":\"Implement a canonical decimal parser\"}",
+      "canonical_bytes_hex": "7b226372697465726961223a225465737473206d75737420706173732e222c2263757272656e6379223a2255534447222c22646561646c696e65223a22323032362d31302d31345432333a35393a35395a222c226465736372697074696f6e223a226c696e65315c6e6c696e65325c6e6c696e6533222c227265706f5f75726c223a2268747470733a2f2f6769746875622e636f6d2f756c737265616c6c2f696d64776f726b732d626f756e74696573222c22726577617264223a2231222c227469746c65223a22496d706c656d656e7420612063616e6f6e6963616c20646563696d616c20706172736572227d"
+    },
+    {
+      "name": "newline-cr-only",
+      "category": "newline",
+      "brief": {
+        "title": "Implement a canonical decimal parser",
+        "description": "line1\rline2",
+        "criteria": "Tests must pass.",
+        "reward": "1",
+        "currency": "USDG",
+        "deadline": "2026-10-14T23:59:59Z",
+        "repo_url": "https://github.com/ulsreall/imdworks-bounties"
+      },
+      "valid": true,
+      "note": "old mac endings",
+      "expected_hash": "0x39a865fc0d8a9dd61bf23819f50e29664c471c8caf442ffcedca404bb5573bfe",
+      "oracle": "cast keccak (alloy)",
+      "canonical_json": "{\"criteria\":\"Tests must pass.\",\"currency\":\"USDG\",\"deadline\":\"2026-10-14T23:59:59Z\",\"description\":\"line1\\nline2\",\"repo_url\":\"https://github.com/ulsreall/imdworks-bounties\",\"reward\":\"1\",\"title\":\"Implement a canonical decimal parser\"}",
+      "canonical_bytes_hex": "7b226372697465726961223a225465737473206d75737420706173732e222c2263757272656e6379223a2255534447222c22646561646c696e65223a22323032362d31302d31345432333a35393a35395a222c226465736372697074696f6e223a226c696e65315c6e6c696e6532222c227265706f5f75726c223a2268747470733a2f2f6769746875622e636f6d2f756c737265616c6c2f696d64776f726b732d626f756e74696573222c22726577617264223a2231222c227469746c65223a22496d706c656d656e7420612063616e6f6e6963616c20646563696d616c20706172736572227d"
+    },
+    {
+      "name": "newline-tab-kept",
+      "category": "newline",
+      "brief": {
+        "title": "Implement a canonical decimal parser",
+        "description": "col1\tcol2",
+        "criteria": "Tests must pass.",
+        "reward": "1",
+        "currency": "USDG",
+        "deadline": "2026-10-14T23:59:59Z",
+        "repo_url": "https://github.com/ulsreall/imdworks-bounties"
+      },
+      "valid": true,
+      "note": "",
+      "expected_hash": "0x16d799c6fc2b776887d6db8e27b0ea84249f132768a2bbbb434711a1a095bc50",
+      "oracle": "cast keccak (alloy)",
+      "canonical_json": "{\"criteria\":\"Tests must pass.\",\"currency\":\"USDG\",\"deadline\":\"2026-10-14T23:59:59Z\",\"description\":\"col1\\tcol2\",\"repo_url\":\"https://github.com/ulsreall/imdworks-bounties\",\"reward\":\"1\",\"title\":\"Implement a canonical decimal parser\"}",
+      "canonical_bytes_hex": "7b226372697465726961223a225465737473206d75737420706173732e222c2263757272656e6379223a2255534447222c22646561646c696e65223a22323032362d31302d31345432333a35393a35395a222c226465736372697074696f6e223a22636f6c315c74636f6c32222c227265706f5f75726c223a2268747470733a2f2f6769746875622e636f6d2f756c737265616c6c2f696d64776f726b732d626f756e74696573222c22726577617264223a2231222c227469746c65223a22496d706c656d656e7420612063616e6f6e6963616c20646563696d616c20706172736572227d"
+    },
+    {
+      "name": "control-chars-stripped",
+      "category": "control-chars",
+      "brief": {
+        "title": "Implement a canonical decimal parser",
+        "description": "a\u0000b\u0007c\u001bd",
+        "criteria": "Tests must pass.",
+        "reward": "1",
+        "currency": "USDG",
+        "deadline": "2026-10-14T23:59:59Z",
+        "repo_url": "https://github.com/ulsreall/imdworks-bounties"
+      },
+      "valid": true,
+      "note": "C0 controls removed",
+      "expected_hash": "0xe88744bf9e179b6e0cb504b63df7147f31331b12e393001f145aa16072641c16",
+      "oracle": "cast keccak (alloy)",
+      "canonical_json": "{\"criteria\":\"Tests must pass.\",\"currency\":\"USDG\",\"deadline\":\"2026-10-14T23:59:59Z\",\"description\":\"abcd\",\"repo_url\":\"https://github.com/ulsreall/imdworks-bounties\",\"reward\":\"1\",\"title\":\"Implement a canonical decimal parser\"}",
+      "canonical_bytes_hex": "7b226372697465726961223a225465737473206d75737420706173732e222c2263757272656e6379223a2255534447222c22646561646c696e65223a22323032362d31302d31345432333a35393a35395a222c226465736372697074696f6e223a2261626364222c227265706f5f75726c223a2268747470733a2f2f6769746875622e636f6d2f756c737265616c6c2f696d64776f726b732d626f756e74696573222c22726577617264223a2231222c227469746c65223a22496d706c656d656e7420612063616e6f6e6963616c20646563696d616c20706172736572227d"
+    },
+    {
+      "name": "meta-basic",
+      "category": "meta",
+      "brief": {
+        "title": "Implement a canonical decimal parser",
+        "description": "Write a parser with tests.",
+        "criteria": "Tests must pass.",
+        "reward": "1",
+        "currency": "USDG",
+        "deadline": "2026-10-14T23:59:59Z",
+        "repo_url": "https://github.com/ulsreall/imdworks-bounties",
+        "meta": {
+          "tags": "python",
+          "lang": "en"
+        }
+      },
+      "valid": true,
+      "note": "",
+      "expected_hash": "0xaae10b5f0fa360d35062a9ee3b89fd9037d3b0548be3934b1020dfa113e747ae",
+      "oracle": "cast keccak (alloy)",
+      "canonical_json": "{\"criteria\":\"Tests must pass.\",\"currency\":\"USDG\",\"deadline\":\"2026-10-14T23:59:59Z\",\"description\":\"Write a parser with tests.\",\"meta\":{\"lang\":\"en\",\"tags\":\"python\"},\"repo_url\":\"https://github.com/ulsreall/imdworks-bounties\",\"reward\":\"1\",\"title\":\"Implement a canonical decimal parser\"}",
+      "canonical_bytes_hex": "7b226372697465726961223a225465737473206d75737420706173732e222c2263757272656e6379223a2255534447222c22646561646c696e65223a22323032362d31302d31345432333a35393a35395a222c226465736372697074696f6e223a22577269746520612070617273657220776974682074657374732e222c226d657461223a7b226c616e67223a22656e222c2274616773223a22707974686f6e227d2c227265706f5f75726c223a2268747470733a2f2f6769746875622e636f6d2f756c737265616c6c2f696d64776f726b732d626f756e74696573222c22726577617264223a2231222c227469746c65223a22496d706c656d656e7420612063616e6f6e6963616c20646563696d616c20706172736572227d"
+    },
+    {
+      "name": "meta-empty-object",
+      "category": "meta",
+      "brief": {
+        "title": "Implement a canonical decimal parser",
+        "description": "Write a parser with tests.",
+        "criteria": "Tests must pass.",
+        "reward": "1",
+        "currency": "USDG",
+        "deadline": "2026-10-14T23:59:59Z",
+        "repo_url": "https://github.com/ulsreall/imdworks-bounties",
+        "meta": {}
+      },
+      "valid": true,
+      "note": "empty meta is dropped",
+      "expected_hash": "0x2d50ea35b70c81acb3eaa54373393cddca285dbb37c3d5efd3e410e530abc490",
+      "oracle": "cast keccak (alloy)",
+      "canonical_json": "{\"criteria\":\"Tests must pass.\",\"currency\":\"USDG\",\"deadline\":\"2026-10-14T23:59:59Z\",\"description\":\"Write a parser with tests.\",\"repo_url\":\"https://github.com/ulsreall/imdworks-bounties\",\"reward\":\"1\",\"title\":\"Implement a canonical decimal parser\"}",
+      "canonical_bytes_hex": "7b226372697465726961223a225465737473206d75737420706173732e222c2263757272656e6379223a2255534447222c22646561646c696e65223a22323032362d31302d31345432333a35393a35395a222c226465736372697074696f6e223a22577269746520612070617273657220776974682074657374732e222c227265706f5f75726c223a2268747470733a2f2f6769746875622e636f6d2f756c737265616c6c2f696d64776f726b732d626f756e74696573222c22726577617264223a2231222c227469746c65223a22496d706c656d656e7420612063616e6f6e6963616c20646563696d616c20706172736572227d"
+    },
+    {
+      "name": "meta-astral-vs-bmp-keys",
+      "category": "meta-key-order",
+      "brief": {
+        "title": "Implement a canonical decimal parser",
+        "description": "Write a parser with tests.",
+        "criteria": "Tests must pass.",
+        "reward": "1",
+        "currency": "USDG",
+        "deadline": "2026-10-14T23:59:59Z",
+        "repo_url": "https://github.com/ulsreall/imdworks-bounties",
+        "meta": {
+          "😀z": "astral",
+          "～x": "bmp-fullwidth",
+          "a": "ascii"
+        }
+      },
+      "valid": true,
+      "note": "UTF-16 order differs from code point order",
+      "expected_hash": "0x9f4cba4b14813fe7b685020d879491b6e631f926e9b26ac635423fa042eb9e93",
+      "oracle": "cast keccak (alloy)",
+      "canonical_json": "{\"criteria\":\"Tests must pass.\",\"currency\":\"USDG\",\"deadline\":\"2026-10-14T23:59:59Z\",\"description\":\"Write a parser with tests.\",\"meta\":{\"a\":\"ascii\",\"～x\":\"bmp-fullwidth\",\"😀z\":\"astral\"},\"repo_url\":\"https://github.com/ulsreall/imdworks-bounties\",\"reward\":\"1\",\"title\":\"Implement a canonical decimal parser\"}",
+      "canonical_bytes_hex": "7b226372697465726961223a225465737473206d75737420706173732e222c2263757272656e6379223a2255534447222c22646561646c696e65223a22323032362d31302d31345432333a35393a35395a222c226465736372697074696f6e223a22577269746520612070617273657220776974682074657374732e222c226d657461223a7b2261223a226173636969222c22efbd9e78223a22626d702d66756c6c7769647468222c22f09f98807a223a2261737472616c227d2c227265706f5f75726c223a2268747470733a2f2f6769746875622e636f6d2f756c737265616c6c2f696d64776f726b732d626f756e74696573222c22726577617264223a2231222c227469746c65223a22496d706c656d656e7420612063616e6f6e6963616c20646563696d616c20706172736572227d"
+    },
+    {
+      "name": "meta-key-uppercase-lowercase",
+      "category": "meta-key-order",
+      "brief": {
+        "title": "Implement a canonical decimal parser",
+        "description": "Write a parser with tests.",
+        "criteria": "Tests must pass.",
+        "reward": "1",
+        "currency": "USDG",
+        "deadline": "2026-10-14T23:59:59Z",
+        "repo_url": "https://github.com/ulsreall/imdworks-bounties",
+        "meta": {
+          "Zed": "1",
+          "alpha": "2",
+          "Beta": "3"
+        }
+      },
+      "valid": true,
+      "note": "",
+      "expected_hash": "0x97e1fbdf4828ae944e2cce2b0394a6c14a05e7a3ee910288199201b76b0ff75c",
+      "oracle": "cast keccak (alloy)",
+      "canonical_json": "{\"criteria\":\"Tests must pass.\",\"currency\":\"USDG\",\"deadline\":\"2026-10-14T23:59:59Z\",\"description\":\"Write a parser with tests.\",\"meta\":{\"Beta\":\"3\",\"Zed\":\"1\",\"alpha\":\"2\"},\"repo_url\":\"https://github.com/ulsreall/imdworks-bounties\",\"reward\":\"1\",\"title\":\"Implement a canonical decimal parser\"}",
+      "canonical_bytes_hex": "7b226372697465726961223a225465737473206d75737420706173732e222c2263757272656e6379223a2255534447222c22646561646c696e65223a22323032362d31302d31345432333a35393a35395a222c226465736372697074696f6e223a22577269746520612070617273657220776974682074657374732e222c226d657461223a7b2242657461223a2233222c225a6564223a2231222c22616c706861223a2232227d2c227265706f5f75726c223a2268747470733a2f2f6769746875622e636f6d2f756c737265616c6c2f696d64776f726b732d626f756e74696573222c22726577617264223a2231222c227469746c65223a22496d706c656d656e7420612063616e6f6e6963616c20646563696d616c20706172736572227d"
+    },
+    {
+      "name": "meta-key-accents",
+      "category": "meta-key-order",
+      "brief": {
+        "title": "Implement a canonical decimal parser",
+        "description": "Write a parser with tests.",
+        "criteria": "Tests must pass.",
+        "reward": "1",
+        "currency": "USDG",
+        "deadline": "2026-10-14T23:59:59Z",
+        "repo_url": "https://github.com/ulsreall/imdworks-bounties",
+        "meta": {
+          "é": "1",
+          "e": "2",
+          "z": "3"
+        }
+      },
+      "valid": true,
+      "note": "",
+      "expected_hash": "0xd27f8eb0f3e6e107b2ae3bb307a0ce6ee5c69a18c76d41aed0b57c1df78af0a2",
+      "oracle": "cast keccak (alloy)",
+      "canonical_json": "{\"criteria\":\"Tests must pass.\",\"currency\":\"USDG\",\"deadline\":\"2026-10-14T23:59:59Z\",\"description\":\"Write a parser with tests.\",\"meta\":{\"e\":\"2\",\"z\":\"3\",\"é\":\"1\"},\"repo_url\":\"https://github.com/ulsreall/imdworks-bounties\",\"reward\":\"1\",\"title\":\"Implement a canonical decimal parser\"}",
+      "canonical_bytes_hex": "7b226372697465726961223a225465737473206d75737420706173732e222c2263757272656e6379223a2255534447222c22646561646c696e65223a22323032362d31302d31345432333a35393a35395a222c226465736372697074696f6e223a22577269746520612070617273657220776974682074657374732e222c226d657461223a7b2265223a2232222c227a223a2233222c22c3a9223a2231227d2c227265706f5f75726c223a2268747470733a2f2f6769746875622e636f6d2f756c737265616c6c2f696d64776f726b732d626f756e74696573222c22726577617264223a2231222c227469746c65223a22496d706c656d656e7420612063616e6f6e6963616c20646563696d616c20706172736572227d"
+    },
+    {
+      "name": "meta-unicode-values",
+      "category": "meta",
+      "brief": {
+        "title": "Implement a canonical decimal parser",
+        "description": "Write a parser with tests.",
+        "criteria": "Tests must pass.",
+        "reward": "1",
+        "currency": "USDG",
+        "deadline": "2026-10-14T23:59:59Z",
+        "repo_url": "https://github.com/ulsreall/imdworks-bounties",
+        "meta": {
+          "note": "日本語テキスト"
+        }
+      },
+      "valid": true,
+      "note": "",
+      "expected_hash": "0x2d31baa92db68a9d0cca35f4bc47972bf69e41bffe8e2bcdbcf4aad328b911e3",
+      "oracle": "cast keccak (alloy)",
+      "canonical_json": "{\"criteria\":\"Tests must pass.\",\"currency\":\"USDG\",\"deadline\":\"2026-10-14T23:59:59Z\",\"description\":\"Write a parser with tests.\",\"meta\":{\"note\":\"日本語テキスト\"},\"repo_url\":\"https://github.com/ulsreall/imdworks-bounties\",\"reward\":\"1\",\"title\":\"Implement a canonical decimal parser\"}",
+      "canonical_bytes_hex": "7b226372697465726961223a225465737473206d75737420706173732e222c2263757272656e6379223a2255534447222c22646561646c696e65223a22323032362d31302d31345432333a35393a35395a222c226465736372697074696f6e223a22577269746520612070617273657220776974682074657374732e222c226d657461223a7b226e6f7465223a22e697a5e69cace8aa9ee38386e382ade382b9e38388227d2c227265706f5f75726c223a2268747470733a2f2f6769746875622e636f6d2f756c737265616c6c2f696d64776f726b732d626f756e74696573222c22726577617264223a2231222c227469746c65223a22496d706c656d656e7420612063616e6f6e6963616c20646563696d616c20706172736572227d"
+    },
+    {
+      "name": "meta-many-keys",
+      "category": "meta",
+      "brief": {
+        "title": "Implement a canonical decimal parser",
+        "description": "Write a parser with tests.",
+        "criteria": "Tests must pass.",
+        "reward": "1",
+        "currency": "USDG",
+        "deadline": "2026-10-14T23:59:59Z",
+        "repo_url": "https://github.com/ulsreall/imdworks-bounties",
+        "meta": {
+          "k00": "v0",
+          "k01": "v1",
+          "k02": "v2",
+          "k03": "v3",
+          "k04": "v4",
+          "k05": "v5",
+          "k06": "v6",
+          "k07": "v7",
+          "k08": "v8",
+          "k09": "v9",
+          "k10": "v10",
+          "k11": "v11",
+          "k12": "v12",
+          "k13": "v13",
+          "k14": "v14",
+          "k15": "v15",
+          "k16": "v16",
+          "k17": "v17",
+          "k18": "v18",
+          "k19": "v19",
+          "k20": "v20",
+          "k21": "v21",
+          "k22": "v22",
+          "k23": "v23",
+          "k24": "v24",
+          "k25": "v25",
+          "k26": "v26",
+          "k27": "v27",
+          "k28": "v28",
+          "k29": "v29"
+        }
+      },
+      "valid": true,
+      "note": "",
+      "expected_hash": "0x781382f02e46f017bd9c0d3f8e971e79e612ead6e5aac3d108e5ad69ba09e66a",
+      "oracle": "cast keccak (alloy)",
+      "canonical_json": "{\"criteria\":\"Tests must pass.\",\"currency\":\"USDG\",\"deadline\":\"2026-10-14T23:59:59Z\",\"description\":\"Write a parser with tests.\",\"meta\":{\"k00\":\"v0\",\"k01\":\"v1\",\"k02\":\"v2\",\"k03\":\"v3\",\"k04\":\"v4\",\"k05\":\"v5\",\"k06\":\"v6\",\"k07\":\"v7\",\"k08\":\"v8\",\"k09\":\"v9\",\"k10\":\"v10\",\"k11\":\"v11\",\"k12\":\"v12\",\"k13\":\"v13\",\"k14\":\"v14\",\"k15\":\"v15\",\"k16\":\"v16\",\"k17\":\"v17\",\"k18\":\"v18\",\"k19\":\"v19\",\"k20\":\"v20\",\"k21\":\"v21\",\"k22\":\"v22\",\"k23\":\"v23\",\"k24\":\"v24\",\"k25\":\"v25\",\"k26\":\"v26\",\"k27\":\"v27\",\"k28\":\"v28\",\"k29\":\"v29\"},\"repo_url\":\"https://github.com/ulsreall/imdworks-bounties\",\"reward\":\"1\",\"title\":\"Implement a canonical decimal parser\"}",
+      "canonical_bytes_hex": "7b226372697465726961223a225465737473206d75737420706173732e222c2263757272656e6379223a2255534447222c22646561646c696e65223a22323032362d31302d31345432333a35393a35395a222c226465736372697074696f6e223a22577269746520612070617273657220776974682074657374732e222c226d657461223a7b226b3030223a227630222c226b3031223a227631222c226b3032223a227632222c226b3033223a227633222c226b3034223a227634222c226b3035223a227635222c226b3036223a227636222c226b3037223a227637222c226b3038223a227638222c226b3039223a227639222c226b3130223a22763130222c226b3131223a22763131222c226b3132223a22763132222c226b3133223a22763133222c226b3134223a22763134222c226b3135223a22763135222c226b3136223a22763136222c226b3137223a22763137222c226b3138223a22763138222c226b3139223a22763139222c226b3230223a22763230222c226b3231223a22763231222c226b3232223a22763232222c226b3233223a22763233222c226b3234223a22763234222c226b3235223a22763235222c226b3236223a22763236222c226b3237223a22763237222c226b3238223a22763238222c226b3239223a22763239227d2c227265706f5f75726c223a2268747470733a2f2f6769746875622e636f6d2f756c737265616c6c2f696d64776f726b732d626f756e74696573222c22726577617264223a2231222c227469746c65223a22496d706c656d656e7420612063616e6f6e6963616c20646563696d616c20706172736572227d"
+    },
+    {
+      "name": "reward-grammar-reject-exponent",
+      "category": "spec-invalid",
+      "brief": {
+        "title": "Implement a canonical decimal parser",
+        "description": "Write a parser with tests.",
+        "criteria": "Tests must pass.",
+        "reward": "1e6",
+        "currency": "USDG",
+        "deadline": "2026-10-14T23:59:59Z",
+        "repo_url": "https://github.com/ulsreall/imdworks-bounties"
+      },
+      "valid": false,
+      "note": "",
+      "expected_error": "reward must be a canonical decimal string",
+      "expected_hash": null
+    },
+    {
+      "name": "reward-grammar-reject-leading-zero",
+      "category": "spec-invalid",
+      "brief": {
+        "title": "Implement a canonical decimal parser",
+        "description": "Write a parser with tests.",
+        "criteria": "Tests must pass.",
+        "reward": "01",
+        "currency": "USDG",
+        "deadline": "2026-10-14T23:59:59Z",
+        "repo_url": "https://github.com/ulsreall/imdworks-bounties"
+      },
+      "valid": false,
+      "note": "",
+      "expected_error": "reward must be a canonical decimal string",
+      "expected_hash": null
+    },
+    {
+      "name": "reward-grammar-reject-sign",
+      "category": "spec-invalid",
+      "brief": {
+        "title": "Implement a canonical decimal parser",
+        "description": "Write a parser with tests.",
+        "criteria": "Tests must pass.",
+        "reward": "+1",
+        "currency": "USDG",
+        "deadline": "2026-10-14T23:59:59Z",
+        "repo_url": "https://github.com/ulsreall/imdworks-bounties"
+      },
+      "valid": false,
+      "note": "",
+      "expected_error": "reward must be a canonical decimal string",
+      "expected_hash": null
+    },
+    {
+      "name": "reward-grammar-reject-seven-decimals",
+      "category": "spec-invalid",
+      "brief": {
+        "title": "Implement a canonical decimal parser",
+        "description": "Write a parser with tests.",
+        "criteria": "Tests must pass.",
+        "reward": "1.0000001",
+        "currency": "USDG",
+        "deadline": "2026-10-14T23:59:59Z",
+        "repo_url": "https://github.com/ulsreall/imdworks-bounties"
+      },
+      "valid": false,
+      "note": "",
+      "expected_error": "reward must be a canonical decimal string",
+      "expected_hash": null
+    },
+    {
+      "name": "reward-overflow-uint256",
+      "category": "spec-invalid",
+      "brief": {
+        "title": "Implement a canonical decimal parser",
+        "description": "Write a parser with tests.",
+        "criteria": "Tests must pass.",
+        "reward": "115792089237316195423570985008687907853269984665640564039457584007913129.639936",
+        "currency": "USDG",
+        "deadline": "2026-10-14T23:59:59Z",
+        "repo_url": "https://github.com/ulsreall/imdworks-bounties"
+      },
+      "valid": false,
+      "note": "one micro over uint256",
+      "expected_error": "reward exceeds uint256 micro-units",
+      "expected_hash": null
+    },
+    {
+      "name": "currency-unknown",
+      "category": "spec-invalid",
+      "brief": {
+        "title": "Implement a canonical decimal parser",
+        "description": "Write a parser with tests.",
+        "criteria": "Tests must pass.",
+        "reward": "1",
+        "currency": "USDT",
+        "deadline": "2026-10-14T23:59:59Z",
+        "repo_url": "https://github.com/ulsreall/imdworks-bounties"
+      },
+      "valid": false,
+      "note": "",
+      "expected_error": "unsupported currency",
+      "expected_hash": null
+    },
+    {
+      "name": "unknown-field",
+      "category": "spec-invalid",
+      "brief": {
+        "title": "x",
+        "description": "",
+        "criteria": "c",
+        "reward": "1",
+        "currency": "USDG",
+        "deadline": "2026-10-14T23:59:59Z",
+        "repo_url": null,
+        "extra": "not allowed"
+      },
+      "valid": false,
+      "note": "",
+      "expected_error": "unknown fields are not canonical: ['extra']",
+      "expected_hash": null
+    },
+    {
+      "name": "missing-field",
+      "category": "spec-invalid",
+      "brief": {
+        "title": "x",
+        "description": "",
+        "criteria": "c",
+        "reward": "1",
+        "currency": "USDG",
+        "deadline": "2026-10-14T23:59:59Z"
+      },
+      "valid": false,
+      "note": "",
+      "expected_error": "missing required fields: ['repo_url']",
+      "expected_hash": null
+    },
+    {
+      "name": "title-empty",
+      "category": "spec-invalid",
+      "brief": {
+        "title": "",
+        "description": "Write a parser with tests.",
+        "criteria": "Tests must pass.",
+        "reward": "1",
+        "currency": "USDG",
+        "deadline": "2026-10-14T23:59:59Z",
+        "repo_url": "https://github.com/ulsreall/imdworks-bounties"
+      },
+      "valid": false,
+      "note": "",
+      "expected_error": "title length out of range",
+      "expected_hash": null
+    },
+    {
+      "name": "title-too-long",
+      "category": "spec-invalid",
+      "brief": {
+        "title": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "description": "Write a parser with tests.",
+        "criteria": "Tests must pass.",
+        "reward": "1",
+        "currency": "USDG",
+        "deadline": "2026-10-14T23:59:59Z",
+        "repo_url": "https://github.com/ulsreall/imdworks-bounties"
+      },
+      "valid": false,
+      "note": "",
+      "expected_error": "title length out of range",
+      "expected_hash": null
+    },
+    {
+      "name": "deadline-no-z",
+      "category": "spec-invalid",
+      "brief": {
+        "title": "Implement a canonical decimal parser",
+        "description": "Write a parser with tests.",
+        "criteria": "Tests must pass.",
+        "reward": "1",
+        "currency": "USDG",
+        "deadline": "2026-10-14T23:59:59+00:00",
+        "repo_url": "https://github.com/ulsreall/imdworks-bounties"
+      },
+      "valid": false,
+      "note": "",
+      "expected_error": "deadline must be an RFC3339 UTC timestamp ending in Z",
+      "expected_hash": null
+    },
+    {
+      "name": "deadline-date-only",
+      "category": "spec-invalid",
+      "brief": {
+        "title": "Implement a canonical decimal parser",
+        "description": "Write a parser with tests.",
+        "criteria": "Tests must pass.",
+        "reward": "1",
+        "currency": "USDG",
+        "deadline": "2026-10-14",
+        "repo_url": "https://github.com/ulsreall/imdworks-bounties"
+      },
+      "valid": false,
+      "note": "",
+      "expected_error": "deadline must be an RFC3339 UTC timestamp ending in Z",
+      "expected_hash": null
+    },
+    {
+      "name": "repo-not-a-url",
+      "category": "spec-invalid",
+      "brief": {
+        "title": "Implement a canonical decimal parser",
+        "description": "Write a parser with tests.",
+        "criteria": "Tests must pass.",
+        "reward": "1",
+        "currency": "USDG",
+        "deadline": "2026-10-14T23:59:59Z",
+        "repo_url": "github.com/x/y"
+      },
+      "valid": false,
+      "note": "",
+      "expected_error": "repo_url must be http(s) or null",
+      "expected_hash": null
+    },
+    {
+      "name": "meta-non-string-value",
+      "category": "spec-invalid",
+      "brief": {
+        "title": "Implement a canonical decimal parser",
+        "description": "Write a parser with tests.",
+        "criteria": "Tests must pass.",
+        "reward": "1",
+        "currency": "USDG",
+        "deadline": "2026-10-14T23:59:59Z",
+        "repo_url": "https://github.com/ulsreall/imdworks-bounties",
+        "meta": {
+          "n": 5
+        }
+      },
+      "valid": false,
+      "note": "",
+      "expected_error": "meta keys and values must be strings",
+      "expected_hash": null
+    },
+    {
+      "name": "brief-not-object",
+      "category": "spec-invalid",
+      "brief": [
+        "not",
+        "an",
+        "object"
+      ],
+      "valid": false,
+      "note": "",
+      "expected_error": "brief must be an object",
+      "expected_hash": null
+    },
+    {
+      "name": "reward-numeric-json-type",
+      "category": "spec-invalid",
+      "brief": {
+        "title": "Implement a canonical decimal parser",
+        "description": "Write a parser with tests.",
+        "criteria": "Tests must pass.",
+        "reward": 1,
+        "currency": "USDG",
+        "deadline": "2026-10-14T23:59:59Z",
+        "repo_url": "https://github.com/ulsreall/imdworks-bounties"
+      },
+      "valid": false,
+      "note": "numbers are strings only",
+      "expected_error": "reward must be a canonical decimal string",
+      "expected_hash": null
+    },
+    {
+      "name": "realistic-checker",
+      "category": "realistic",
+      "brief": {
+        "title": "Build an on-chain settlement checker for the escrow",
+        "description": "Read the escrow contract and produce a reconciliation report.\nUse the events emitted by the contract; do not trust the API.",
+        "criteria": "1) reconstruct locked rewards 2) reconstruct credits 3) compare with contract state at a fixed block",
+        "reward": "1.25",
+        "currency": "USDG",
+        "deadline": "2026-10-14T23:59:59Z",
+        "repo_url": "https://github.com/imdworks/bounties",
+        "meta": {
+          "category": "on-chain",
+          "difficulty": "medium"
+        }
+      },
+      "valid": true,
+      "note": "",
+      "expected_hash": "0xf489cb119fa956d77dc24f2ec6e7d9efa8bee4ccf786f109c53a55e49f7d9fd2",
+      "oracle": "cast keccak (alloy)",
+      "canonical_json": "{\"criteria\":\"1) reconstruct locked rewards 2) reconstruct credits 3) compare with contract state at a fixed block\",\"currency\":\"USDG\",\"deadline\":\"2026-10-14T23:59:59Z\",\"description\":\"Read the escrow contract and produce a reconciliation report.\\nUse the events emitted by the contract; do not trust the API.\",\"meta\":{\"category\":\"on-chain\",\"difficulty\":\"medium\"},\"repo_url\":\"https://github.com/imdworks/bounties\",\"reward\":\"1.25\",\"title\":\"Build an on-chain settlement checker for the escrow\"}",
+      "canonical_bytes_hex": "7b226372697465726961223a223129207265636f6e737472756374206c6f636b65642072657761726473203229207265636f6e737472756374206372656469747320332920636f6d70617265207769746820636f6e7472616374207374617465206174206120666978656420626c6f636b222c2263757272656e6379223a2255534447222c22646561646c696e65223a22323032362d31302d31345432333a35393a35395a222c226465736372697074696f6e223a22526561642074686520657363726f7720636f6e747261637420616e642070726f647563652061207265636f6e63696c696174696f6e207265706f72742e5c6e55736520746865206576656e747320656d69747465642062792074686520636f6e74726163743b20646f206e6f7420747275737420746865204150492e222c226d657461223a7b2263617465676f7279223a226f6e2d636861696e222c22646966666963756c7479223a226d656469756d227d2c227265706f5f75726c223a2268747470733a2f2f6769746875622e636f6d2f696d64776f726b732f626f756e74696573222c22726577617264223a22312e3235222c227469746c65223a224275696c6420616e206f6e2d636861696e20736574746c656d656e7420636865636b657220666f722074686520657363726f77227d"
+    },
+    {
+      "name": "realistic-decimal-grammar",
+      "category": "realistic",
+      "brief": {
+        "title": "Define a lossless canonical decimal grammar for USDG amounts",
+        "description": "Publish the grammar, a reference implementation and at least 100,000 cases.",
+        "criteria": "reject ambiguous or lossy inputs rather than truncating them",
+        "reward": "1",
+        "currency": "USDG",
+        "deadline": "2026-10-14T23:59:59Z",
+        "repo_url": "https://github.com/ulsreall/imdworks-bounties",
+        "meta": {
+          "category": "correctness",
+          "tags": "decimal,grammar,usdg"
+        }
+      },
+      "valid": true,
+      "note": "",
+      "expected_hash": "0xdbb0db07de9f773dd8b1de3261171c17c1ad05dca9751c74b40ed9585034b166",
+      "oracle": "cast keccak (alloy)",
+      "canonical_json": "{\"criteria\":\"reject ambiguous or lossy inputs rather than truncating them\",\"currency\":\"USDG\",\"deadline\":\"2026-10-14T23:59:59Z\",\"description\":\"Publish the grammar, a reference implementation and at least 100,000 cases.\",\"meta\":{\"category\":\"correctness\",\"tags\":\"decimal,grammar,usdg\"},\"repo_url\":\"https://github.com/ulsreall/imdworks-bounties\",\"reward\":\"1\",\"title\":\"Define a lossless canonical decimal grammar for USDG amounts\"}",
+      "canonical_bytes_hex": "7b226372697465726961223a2272656a65637420616d626967756f7573206f72206c6f73737920696e7075747320726174686572207468616e207472756e636174696e67207468656d222c2263757272656e6379223a2255534447222c22646561646c696e65223a22323032362d31302d31345432333a35393a35395a222c226465736372697074696f6e223a225075626c69736820746865206772616d6d61722c2061207265666572656e636520696d706c656d656e746174696f6e20616e64206174206c65617374203130302c3030302063617365732e222c226d657461223a7b2263617465676f7279223a22636f72726563746e657373222c2274616773223a22646563696d616c2c6772616d6d61722c75736467227d2c227265706f5f75726c223a2268747470733a2f2f6769746875622e636f6d2f756c737265616c6c2f696d64776f726b732d626f756e74696573222c22726577617264223a2231222c227469746c65223a22446566696e652061206c6f73736c6573732063616e6f6e6963616c20646563696d616c206772616d6d617220666f72205553444720616d6f756e7473227d"
+    },
+    {
+      "name": "realistic-invariant-harness",
+      "category": "realistic",
+      "brief": {
+        "title": "Build a stateful escrow accounting invariant harness",
+        "description": "Independently compute outstanding liabilities from model state.",
+        "criteria": "no terminal bounty can pay twice",
+        "reward": "1",
+        "currency": "USDG",
+        "deadline": "2026-10-14T23:59:59Z",
+        "repo_url": "https://github.com/ulsreall/imdworks-bounties"
+      },
+      "valid": true,
+      "note": "",
+      "expected_hash": "0x3a35a397dff4759d59a963dc257373f5d5e568c505dfd04f95e9206066fc24a2",
+      "oracle": "cast keccak (alloy)",
+      "canonical_json": "{\"criteria\":\"no terminal bounty can pay twice\",\"currency\":\"USDG\",\"deadline\":\"2026-10-14T23:59:59Z\",\"description\":\"Independently compute outstanding liabilities from model state.\",\"repo_url\":\"https://github.com/ulsreall/imdworks-bounties\",\"reward\":\"1\",\"title\":\"Build a stateful escrow accounting invariant harness\"}",
+      "canonical_bytes_hex": "7b226372697465726961223a226e6f207465726d696e616c20626f756e74792063616e20706179207477696365222c2263757272656e6379223a2255534447222c22646561646c696e65223a22323032362d31302d31345432333a35393a35395a222c226465736372697074696f6e223a22496e646570656e64656e746c7920636f6d70757465206f75747374616e64696e67206c696162696c69746965732066726f6d206d6f64656c2073746174652e222c227265706f5f75726c223a2268747470733a2f2f6769746875622e636f6d2f756c737265616c6c2f696d64776f726b732d626f756e74696573222c22726577617264223a2231222c227469746c65223a224275696c64206120737461746566756c20657363726f77206163636f756e74696e6720696e76617269616e74206861726e657373227d"
+    },
+    {
+      "name": "unicode-greek-α",
+      "category": "unicode",
+      "brief": {
+        "title": "τίτλος α 0",
+        "description": "Write a parser with tests.",
+        "criteria": "Tests must pass.",
+        "reward": "1",
+        "currency": "USDG",
+        "deadline": "2026-10-14T23:59:59Z",
+        "repo_url": "https://github.com/ulsreall/imdworks-bounties"
+      },
+      "valid": true,
+      "note": "",
+      "expected_hash": "0xcb7e1c977163adf92890a5e673b1b70d3bbaaff1eeed46c24d1f32c0ef8c9e2d",
+      "oracle": "cast keccak (alloy)",
+      "canonical_json": "{\"criteria\":\"Tests must pass.\",\"currency\":\"USDG\",\"deadline\":\"2026-10-14T23:59:59Z\",\"description\":\"Write a parser with tests.\",\"repo_url\":\"https://github.com/ulsreall/imdworks-bounties\",\"reward\":\"1\",\"title\":\"τίτλος α 0\"}",
+      "canonical_bytes_hex": "7b226372697465726961223a225465737473206d75737420706173732e222c2263757272656e6379223a2255534447222c22646561646c696e65223a22323032362d31302d31345432333a35393a35395a222c226465736372697074696f6e223a22577269746520612070617273657220776974682074657374732e222c227265706f5f75726c223a2268747470733a2f2f6769746875622e636f6d2f756c737265616c6c2f696d64776f726b732d626f756e74696573222c22726577617264223a2231222c227469746c65223a22cf84ceafcf84cebbcebfcf8220ceb12030227d"
+    },
+    {
+      "name": "unicode-greek-β",
+      "category": "unicode",
+      "brief": {
+        "title": "τίτλος β 1",
+        "description": "Write a parser with tests.",
+        "criteria": "Tests must pass.",
+        "reward": "1",
+        "currency": "USDG",
+        "deadline": "2026-10-14T23:59:59Z",
+        "repo_url": "https://github.com/ulsreall/imdworks-bounties"
+      },
+      "valid": true,
+      "note": "",
+      "expected_hash": "0x13e9410a30fa55b4b3030402c9d7aafbc3a8d23ddf2dc019dd152be1e2d6c454",
+      "oracle": "cast keccak (alloy)",
+      "canonical_json": "{\"criteria\":\"Tests must pass.\",\"currency\":\"USDG\",\"deadline\":\"2026-10-14T23:59:59Z\",\"description\":\"Write a parser with tests.\",\"repo_url\":\"https://github.com/ulsreall/imdworks-bounties\",\"reward\":\"1\",\"title\":\"τίτλος β 1\"}",
+      "canonical_bytes_hex": "7b226372697465726961223a225465737473206d75737420706173732e222c2263757272656e6379223a2255534447222c22646561646c696e65223a22323032362d31302d31345432333a35393a35395a222c226465736372697074696f6e223a22577269746520612070617273657220776974682074657374732e222c227265706f5f75726c223a2268747470733a2f2f6769746875622e636f6d2f756c737265616c6c2f696d64776f726b732d626f756e74696573222c22726577617264223a2231222c227469746c65223a22cf84ceafcf84cebbcebfcf8220ceb22031227d"
+    },
+    {
+      "name": "unicode-greek-γ",
+      "category": "unicode",
+      "brief": {
+        "title": "τίτλος γ 2",
+        "description": "Write a parser with tests.",
+        "criteria": "Tests must pass.",
+        "reward": "1",
+        "currency": "USDG",
+        "deadline": "2026-10-14T23:59:59Z",
+        "repo_url": "https://github.com/ulsreall/imdworks-bounties"
+      },
+      "valid": true,
+      "note": "",
+      "expected_hash": "0x69276f017fe3b613b2283fec82487c9a2f217a241234e9f31666d3635d4e1049",
+      "oracle": "cast keccak (alloy)",
+      "canonical_json": "{\"criteria\":\"Tests must pass.\",\"currency\":\"USDG\",\"deadline\":\"2026-10-14T23:59:59Z\",\"description\":\"Write a parser with tests.\",\"repo_url\":\"https://github.com/ulsreall/imdworks-bounties\",\"reward\":\"1\",\"title\":\"τίτλος γ 2\"}",
+      "canonical_bytes_hex": "7b226372697465726961223a225465737473206d75737420706173732e222c2263757272656e6379223a2255534447222c22646561646c696e65223a22323032362d31302d31345432333a35393a35395a222c226465736372697074696f6e223a22577269746520612070617273657220776974682074657374732e222c227265706f5f75726c223a2268747470733a2f2f6769746875622e636f6d2f756c737265616c6c2f696d64776f726b732d626f756e74696573222c22726577617264223a2231222c227469746c65223a22cf84ceafcf84cebbcebfcf8220ceb32032227d"
+    },
+    {
+      "name": "unicode-greek-δ",
+      "category": "unicode",
+      "brief": {
+        "title": "τίτλος δ 3",
+        "description": "Write a parser with tests.",
+        "criteria": "Tests must pass.",
+        "reward": "1",
+        "currency": "USDG",
+        "deadline": "2026-10-14T23:59:59Z",
+        "repo_url": "https://github.com/ulsreall/imdworks-bounties"
+      },
+      "valid": true,
+      "note": "",
+      "expected_hash": "0x5448bbce7cd52c3f20274abb85282e8ca0cae4277d4e25ad0c2b125582f1da97",
+      "oracle": "cast keccak (alloy)",
+      "canonical_json": "{\"criteria\":\"Tests must pass.\",\"currency\":\"USDG\",\"deadline\":\"2026-10-14T23:59:59Z\",\"description\":\"Write a parser with tests.\",\"repo_url\":\"https://github.com/ulsreall/imdworks-bounties\",\"reward\":\"1\",\"title\":\"τίτλος δ 3\"}",
+      "canonical_bytes_hex": "7b226372697465726961223a225465737473206d75737420706173732e222c2263757272656e6379223a2255534447222c22646561646c696e65223a22323032362d31302d31345432333a35393a35395a222c226465736372697074696f6e223a22577269746520612070617273657220776974682074657374732e222c227265706f5f75726c223a2268747470733a2f2f6769746875622e636f6d2f756c737265616c6c2f696d64776f726b732d626f756e74696573222c22726577617264223a2231222c227469746c65223a22cf84ceafcf84cebbcebfcf8220ceb42033227d"
+    },
+    {
+      "name": "unicode-greek-ε",
+      "category": "unicode",
+      "brief": {
+        "title": "τίτλος ε 4",
+        "description": "Write a parser with tests.",
+        "criteria": "Tests must pass.",
+        "reward": "1",
+        "currency": "USDG",
+        "deadline": "2026-10-14T23:59:59Z",
+        "repo_url": "https://github.com/ulsreall/imdworks-bounties"
+      },
+      "valid": true,
+      "note": "",
+      "expected_hash": "0xe03550925ddc601d1928d53fe37f85d0a7697efc54432b842dcdc36377870d38",
+      "oracle": "cast keccak (alloy)",
+      "canonical_json": "{\"criteria\":\"Tests must pass.\",\"currency\":\"USDG\",\"deadline\":\"2026-10-14T23:59:59Z\",\"description\":\"Write a parser with tests.\",\"repo_url\":\"https://github.com/ulsreall/imdworks-bounties\",\"reward\":\"1\",\"title\":\"τίτλος ε 4\"}",
+      "canonical_bytes_hex": "7b226372697465726961223a225465737473206d75737420706173732e222c2263757272656e6379223a2255534447222c22646561646c696e65223a22323032362d31302d31345432333a35393a35395a222c226465736372697074696f6e223a22577269746520612070617273657220776974682074657374732e222c227265706f5f75726c223a2268747470733a2f2f6769746875622e636f6d2f756c737265616c6c2f696d64776f726b732d626f756e74696573222c22726577617264223a2231222c227469746c65223a22cf84ceafcf84cebbcebfcf8220ceb52034227d"
+    },
+    {
+      "name": "unicode-greek-ζ",
+      "category": "unicode",
+      "brief": {
+        "title": "τίτλος ζ 5",
+        "description": "Write a parser with tests.",
+        "criteria": "Tests must pass.",
+        "reward": "1",
+        "currency": "USDG",
+        "deadline": "2026-10-14T23:59:59Z",
+        "repo_url": "https://github.com/ulsreall/imdworks-bounties"
+      },
+      "valid": true,
+      "note": "",
+      "expected_hash": "0x7b33977eba4442b6050cae863da807152aa95500676a8dc77fecad93fb140a07",
+      "oracle": "cast keccak (alloy)",
+      "canonical_json": "{\"criteria\":\"Tests must pass.\",\"currency\":\"USDG\",\"deadline\":\"2026-10-14T23:59:59Z\",\"description\":\"Write a parser with tests.\",\"repo_url\":\"https://github.com/ulsreall/imdworks-bounties\",\"reward\":\"1\",\"title\":\"τίτλος ζ 5\"}",
+      "canonical_bytes_hex": "7b226372697465726961223a225465737473206d75737420706173732e222c2263757272656e6379223a2255534447222c22646561646c696e65223a22323032362d31302d31345432333a35393a35395a222c226465736372697074696f6e223a22577269746520612070617273657220776974682074657374732e222c227265706f5f75726c223a2268747470733a2f2f6769746875622e636f6d2f756c737265616c6c2f696d64776f726b732d626f756e74696573222c22726577617264223a2231222c227469746c65223a22cf84ceafcf84cebbcebfcf8220ceb62035227d"
+    },
+    {
+      "name": "unicode-greek-η",
+      "category": "unicode",
+      "brief": {
+        "title": "τίτλος η 6",
+        "description": "Write a parser with tests.",
+        "criteria": "Tests must pass.",
+        "reward": "1",
+        "currency": "USDG",
+        "deadline": "2026-10-14T23:59:59Z",
+        "repo_url": "https://github.com/ulsreall/imdworks-bounties"
+      },
+      "valid": true,
+      "note": "",
+      "expected_hash": "0x7b218b8480b86e316334270c3bc4fdb3960e0e3938494f7f0f22605d0eb31e90",
+      "oracle": "cast keccak (alloy)",
+      "canonical_json": "{\"criteria\":\"Tests must pass.\",\"currency\":\"USDG\",\"deadline\":\"2026-10-14T23:59:59Z\",\"description\":\"Write a parser with tests.\",\"repo_url\":\"https://github.com/ulsreall/imdworks-bounties\",\"reward\":\"1\",\"title\":\"τίτλος η 6\"}",
+      "canonical_bytes_hex": "7b226372697465726961223a225465737473206d75737420706173732e222c2263757272656e6379223a2255534447222c22646561646c696e65223a22323032362d31302d31345432333a35393a35395a222c226465736372697074696f6e223a22577269746520612070617273657220776974682074657374732e222c227265706f5f75726c223a2268747470733a2f2f6769746875622e636f6d2f756c737265616c6c2f696d64776f726b732d626f756e74696573222c22726577617264223a2231222c227469746c65223a22cf84ceafcf84cebbcebfcf8220ceb72036227d"
+    },
+    {
+      "name": "unicode-greek-θ",
+      "category": "unicode",
+      "brief": {
+        "title": "τίτλος θ 7",
+        "description": "Write a parser with tests.",
+        "criteria": "Tests must pass.",
+        "reward": "1",
+        "currency": "USDG",
+        "deadline": "2026-10-14T23:59:59Z",
+        "repo_url": "https://github.com/ulsreall/imdworks-bounties"
+      },
+      "valid": true,
+      "note": "",
+      "expected_hash": "0x09897610a7d53325bbdd25c9819e72dea6d475ac772a80b1319dbddbae1b8474",
+      "oracle": "cast keccak (alloy)",
+      "canonical_json": "{\"criteria\":\"Tests must pass.\",\"currency\":\"USDG\",\"deadline\":\"2026-10-14T23:59:59Z\",\"description\":\"Write a parser with tests.\",\"repo_url\":\"https://github.com/ulsreall/imdworks-bounties\",\"reward\":\"1\",\"title\":\"τίτλος θ 7\"}",
+      "canonical_bytes_hex": "7b226372697465726961223a225465737473206d75737420706173732e222c2263757272656e6379223a2255534447222c22646561646c696e65223a22323032362d31302d31345432333a35393a35395a222c226465736372697074696f6e223a22577269746520612070617273657220776974682074657374732e222c227265706f5f75726c223a2268747470733a2f2f6769746875622e636f6d2f756c737265616c6c2f696d64776f726b732d626f756e74696573222c22726577617264223a2231222c227469746c65223a22cf84ceafcf84cebbcebfcf8220ceb82037227d"
+    },
+    {
+      "name": "unicode-greek-ι",
+      "category": "unicode",
+      "brief": {
+        "title": "τίτλος ι 8",
+        "description": "Write a parser with tests.",
+        "criteria": "Tests must pass.",
+        "reward": "1",
+        "currency": "USDG",
+        "deadline": "2026-10-14T23:59:59Z",
+        "repo_url": "https://github.com/ulsreall/imdworks-bounties"
+      },
+      "valid": true,
+      "note": "",
+      "expected_hash": "0xe13851180f593a9c66ed30a332ddf76a85c96f717b310c56488b7e69e588b96c",
+      "oracle": "cast keccak (alloy)",
+      "canonical_json": "{\"criteria\":\"Tests must pass.\",\"currency\":\"USDG\",\"deadline\":\"2026-10-14T23:59:59Z\",\"description\":\"Write a parser with tests.\",\"repo_url\":\"https://github.com/ulsreall/imdworks-bounties\",\"reward\":\"1\",\"title\":\"τίτλος ι 8\"}",
+      "canonical_bytes_hex": "7b226372697465726961223a225465737473206d75737420706173732e222c2263757272656e6379223a2255534447222c22646561646c696e65223a22323032362d31302d31345432333a35393a35395a222c226465736372697074696f6e223a22577269746520612070617273657220776974682074657374732e222c227265706f5f75726c223a2268747470733a2f2f6769746875622e636f6d2f756c737265616c6c2f696d64776f726b732d626f756e74696573222c22726577617264223a2231222c227469746c65223a22cf84ceafcf84cebbcebfcf8220ceb92038227d"
+    },
+    {
+      "name": "unicode-greek-κ",
+      "category": "unicode",
+      "brief": {
+        "title": "τίτλος κ 9",
+        "description": "Write a parser with tests.",
+        "criteria": "Tests must pass.",
+        "reward": "1",
+        "currency": "USDG",
+        "deadline": "2026-10-14T23:59:59Z",
+        "repo_url": "https://github.com/ulsreall/imdworks-bounties"
+      },
+      "valid": true,
+      "note": "",
+      "expected_hash": "0xbcd58dadce9c2ddc286e928f5aab7415eca3a17e9a10b90fea1626d5718a128b",
+      "oracle": "cast keccak (alloy)",
+      "canonical_json": "{\"criteria\":\"Tests must pass.\",\"currency\":\"USDG\",\"deadline\":\"2026-10-14T23:59:59Z\",\"description\":\"Write a parser with tests.\",\"repo_url\":\"https://github.com/ulsreall/imdworks-bounties\",\"reward\":\"1\",\"title\":\"τίτλος κ 9\"}",
+      "canonical_bytes_hex": "7b226372697465726961223a225465737473206d75737420706173732e222c2263757272656e6379223a2255534447222c22646561646c696e65223a22323032362d31302d31345432333a35393a35395a222c226465736372697074696f6e223a22577269746520612070617273657220776974682074657374732e222c227265706f5f75726c223a2268747470733a2f2f6769746875622e636f6d2f756c737265616c6c2f696d64776f726b732d626f756e74696573222c22726577617264223a2231222c227469746c65223a22cf84ceafcf84cebbcebfcf8220ceba2039227d"
+    },
+    {
+      "name": "unicode-greek-λ",
+      "category": "unicode",
+      "brief": {
+        "title": "τίτλος λ 10",
+        "description": "Write a parser with tests.",
+        "criteria": "Tests must pass.",
+        "reward": "1",
+        "currency": "USDG",
+        "deadline": "2026-10-14T23:59:59Z",
+        "repo_url": "https://github.com/ulsreall/imdworks-bounties"
+      },
+      "valid": true,
+      "note": "",
+      "expected_hash": "0xeb63f9086f070113979ff1284e50e8443f8c4942f00b7813a98dc4e34d18f459",
+      "oracle": "cast keccak (alloy)",
+      "canonical_json": "{\"criteria\":\"Tests must pass.\",\"currency\":\"USDG\",\"deadline\":\"2026-10-14T23:59:59Z\",\"description\":\"Write a parser with tests.\",\"repo_url\":\"https://github.com/ulsreall/imdworks-bounties\",\"reward\":\"1\",\"title\":\"τίτλος λ 10\"}",
+      "canonical_bytes_hex": "7b226372697465726961223a225465737473206d75737420706173732e222c2263757272656e6379223a2255534447222c22646561646c696e65223a22323032362d31302d31345432333a35393a35395a222c226465736372697074696f6e223a22577269746520612070617273657220776974682074657374732e222c227265706f5f75726c223a2268747470733a2f2f6769746875622e636f6d2f756c737265616c6c2f696d64776f726b732d626f756e74696573222c22726577617264223a2231222c227469746c65223a22cf84ceafcf84cebbcebfcf8220cebb203130227d"
+    },
+    {
+      "name": "unicode-greek-μ",
+      "category": "unicode",
+      "brief": {
+        "title": "τίτλος μ 11",
+        "description": "Write a parser with tests.",
+        "criteria": "Tests must pass.",
+        "reward": "1",
+        "currency": "USDG",
+        "deadline": "2026-10-14T23:59:59Z",
+        "repo_url": "https://github.com/ulsreall/imdworks-bounties"
+      },
+      "valid": true,
+      "note": "",
+      "expected_hash": "0xa3a7430295ce2ef9274da8e7b2d3384bcedd87086734b065f856bb92ee589fff",
+      "oracle": "cast keccak (alloy)",
+      "canonical_json": "{\"criteria\":\"Tests must pass.\",\"currency\":\"USDG\",\"deadline\":\"2026-10-14T23:59:59Z\",\"description\":\"Write a parser with tests.\",\"repo_url\":\"https://github.com/ulsreall/imdworks-bounties\",\"reward\":\"1\",\"title\":\"τίτλος μ 11\"}",
+      "canonical_bytes_hex": "7b226372697465726961223a225465737473206d75737420706173732e222c2263757272656e6379223a2255534447222c22646561646c696e65223a22323032362d31302d31345432333a35393a35395a222c226465736372697074696f6e223a22577269746520612070617273657220776974682074657374732e222c227265706f5f75726c223a2268747470733a2f2f6769746875622e636f6d2f756c737265616c6c2f696d64776f726b732d626f756e74696573222c22726577617264223a2231222c227469746c65223a22cf84ceafcf84cebbcebfcf8220cebc203131227d"
+    },
+    {
+      "name": "unicode-greek-ν",
+      "category": "unicode",
+      "brief": {
+        "title": "τίτλος ν 12",
+        "description": "Write a parser with tests.",
+        "criteria": "Tests must pass.",
+        "reward": "1",
+        "currency": "USDG",
+        "deadline": "2026-10-14T23:59:59Z",
+        "repo_url": "https://github.com/ulsreall/imdworks-bounties"
+      },
+      "valid": true,
+      "note": "",
+      "expected_hash": "0x13757ada4ced67d8ad27bcff93e90fe647653a5961e8582005643d33f1abcac6",
+      "oracle": "cast keccak (alloy)",
+      "canonical_json": "{\"criteria\":\"Tests must pass.\",\"currency\":\"USDG\",\"deadline\":\"2026-10-14T23:59:59Z\",\"description\":\"Write a parser with tests.\",\"repo_url\":\"https://github.com/ulsreall/imdworks-bounties\",\"reward\":\"1\",\"title\":\"τίτλος ν 12\"}",
+      "canonical_bytes_hex": "7b226372697465726961223a225465737473206d75737420706173732e222c2263757272656e6379223a2255534447222c22646561646c696e65223a22323032362d31302d31345432333a35393a35395a222c226465736372697074696f6e223a22577269746520612070617273657220776974682074657374732e222c227265706f5f75726c223a2268747470733a2f2f6769746875622e636f6d2f756c737265616c6c2f696d64776f726b732d626f756e74696573222c22726577617264223a2231222c227469746c65223a22cf84ceafcf84cebbcebfcf8220cebd203132227d"
+    },
+    {
+      "name": "unicode-greek-ξ",
+      "category": "unicode",
+      "brief": {
+        "title": "τίτλος ξ 13",
+        "description": "Write a parser with tests.",
+        "criteria": "Tests must pass.",
+        "reward": "1",
+        "currency": "USDG",
+        "deadline": "2026-10-14T23:59:59Z",
+        "repo_url": "https://github.com/ulsreall/imdworks-bounties"
+      },
+      "valid": true,
+      "note": "",
+      "expected_hash": "0xd96f3da75948885c7b657453fd7939a66e4d81d997556d9fada6c7de98d75699",
+      "oracle": "cast keccak (alloy)",
+      "canonical_json": "{\"criteria\":\"Tests must pass.\",\"currency\":\"USDG\",\"deadline\":\"2026-10-14T23:59:59Z\",\"description\":\"Write a parser with tests.\",\"repo_url\":\"https://github.com/ulsreall/imdworks-bounties\",\"reward\":\"1\",\"title\":\"τίτλος ξ 13\"}",
+      "canonical_bytes_hex": "7b226372697465726961223a225465737473206d75737420706173732e222c2263757272656e6379223a2255534447222c22646561646c696e65223a22323032362d31302d31345432333a35393a35395a222c226465736372697074696f6e223a22577269746520612070617273657220776974682074657374732e222c227265706f5f75726c223a2268747470733a2f2f6769746875622e636f6d2f756c737265616c6c2f696d64776f726b732d626f756e74696573222c22726577617264223a2231222c227469746c65223a22cf84ceafcf84cebbcebfcf8220cebe203133227d"
+    },
+    {
+      "name": "unicode-greek-ο",
+      "category": "unicode",
+      "brief": {
+        "title": "τίτλος ο 14",
+        "description": "Write a parser with tests.",
+        "criteria": "Tests must pass.",
+        "reward": "1",
+        "currency": "USDG",
+        "deadline": "2026-10-14T23:59:59Z",
+        "repo_url": "https://github.com/ulsreall/imdworks-bounties"
+      },
+      "valid": true,
+      "note": "",
+      "expected_hash": "0xd7d5598f1ff12b72782618b16be61e86463118484ab7df93be1d0ed7e46c1651",
+      "oracle": "cast keccak (alloy)",
+      "canonical_json": "{\"criteria\":\"Tests must pass.\",\"currency\":\"USDG\",\"deadline\":\"2026-10-14T23:59:59Z\",\"description\":\"Write a parser with tests.\",\"repo_url\":\"https://github.com/ulsreall/imdworks-bounties\",\"reward\":\"1\",\"title\":\"τίτλος ο 14\"}",
+      "canonical_bytes_hex": "7b226372697465726961223a225465737473206d75737420706173732e222c2263757272656e6379223a2255534447222c22646561646c696e65223a22323032362d31302d31345432333a35393a35395a222c226465736372697074696f6e223a22577269746520612070617273657220776974682074657374732e222c227265706f5f75726c223a2268747470733a2f2f6769746875622e636f6d2f756c737265616c6c2f696d64776f726b732d626f756e74696573222c22726577617264223a2231222c227469746c65223a22cf84ceafcf84cebbcebfcf8220cebf203134227d"
+    },
+    {
+      "name": "unicode-greek-π",
+      "category": "unicode",
+      "brief": {
+        "title": "τίτλος π 15",
+        "description": "Write a parser with tests.",
+        "criteria": "Tests must pass.",
+        "reward": "1",
+        "currency": "USDG",
+        "deadline": "2026-10-14T23:59:59Z",
+        "repo_url": "https://github.com/ulsreall/imdworks-bounties"
+      },
+      "valid": true,
+      "note": "",
+      "expected_hash": "0x2e1b342620198232e34100df98054d9f5e12e6353fceb585168f11cb3be7c92c",
+      "oracle": "cast keccak (alloy)",
+      "canonical_json": "{\"criteria\":\"Tests must pass.\",\"currency\":\"USDG\",\"deadline\":\"2026-10-14T23:59:59Z\",\"description\":\"Write a parser with tests.\",\"repo_url\":\"https://github.com/ulsreall/imdworks-bounties\",\"reward\":\"1\",\"title\":\"τίτλος π 15\"}",
+      "canonical_bytes_hex": "7b226372697465726961223a225465737473206d75737420706173732e222c2263757272656e6379223a2255534447222c22646561646c696e65223a22323032362d31302d31345432333a35393a35395a222c226465736372697074696f6e223a22577269746520612070617273657220776974682074657374732e222c227265706f5f75726c223a2268747470733a2f2f6769746875622e636f6d2f756c737265616c6c2f696d64776f726b732d626f756e74696573222c22726577617264223a2231222c227469746c65223a22cf84ceafcf84cebbcebfcf8220cf80203135227d"
+    },
+    {
+      "name": "unicode-greek-ρ",
+      "category": "unicode",
+      "brief": {
+        "title": "τίτλος ρ 16",
+        "description": "Write a parser with tests.",
+        "criteria": "Tests must pass.",
+        "reward": "1",
+        "currency": "USDG",
+        "deadline": "2026-10-14T23:59:59Z",
+        "repo_url": "https://github.com/ulsreall/imdworks-bounties"
+      },
+      "valid": true,
+      "note": "",
+      "expected_hash": "0x8488271e9c0449783701255bee16eb0c40d365dd80df78faf757173deb5d7569",
+      "oracle": "cast keccak (alloy)",
+      "canonical_json": "{\"criteria\":\"Tests must pass.\",\"currency\":\"USDG\",\"deadline\":\"2026-10-14T23:59:59Z\",\"description\":\"Write a parser with tests.\",\"repo_url\":\"https://github.com/ulsreall/imdworks-bounties\",\"reward\":\"1\",\"title\":\"τίτλος ρ 16\"}",
+      "canonical_bytes_hex": "7b226372697465726961223a225465737473206d75737420706173732e222c2263757272656e6379223a2255534447222c22646561646c696e65223a22323032362d31302d31345432333a35393a35395a222c226465736372697074696f6e223a22577269746520612070617273657220776974682074657374732e222c227265706f5f75726c223a2268747470733a2f2f6769746875622e636f6d2f756c737265616c6c2f696d64776f726b732d626f756e74696573222c22726577617264223a2231222c227469746c65223a22cf84ceafcf84cebbcebfcf8220cf81203136227d"
+    },
+    {
+      "name": "unicode-greek-σ",
+      "category": "unicode",
+      "brief": {
+        "title": "τίτλος σ 17",
+        "description": "Write a parser with tests.",
+        "criteria": "Tests must pass.",
+        "reward": "1",
+        "currency": "USDG",
+        "deadline": "2026-10-14T23:59:59Z",
+        "repo_url": "https://github.com/ulsreall/imdworks-bounties"
+      },
+      "valid": true,
+      "note": "",
+      "expected_hash": "0x920c9ac2db9c8a07895b2c55b21b957445d0c3375247992f907c2fd22e3c7991",
+      "oracle": "cast keccak (alloy)",
+      "canonical_json": "{\"criteria\":\"Tests must pass.\",\"currency\":\"USDG\",\"deadline\":\"2026-10-14T23:59:59Z\",\"description\":\"Write a parser with tests.\",\"repo_url\":\"https://github.com/ulsreall/imdworks-bounties\",\"reward\":\"1\",\"title\":\"τίτλος σ 17\"}",
+      "canonical_bytes_hex": "7b226372697465726961223a225465737473206d75737420706173732e222c2263757272656e6379223a2255534447222c22646561646c696e65223a22323032362d31302d31345432333a35393a35395a222c226465736372697074696f6e223a22577269746520612070617273657220776974682074657374732e222c227265706f5f75726c223a2268747470733a2f2f6769746875622e636f6d2f756c737265616c6c2f696d64776f726b732d626f756e74696573222c22726577617264223a2231222c227469746c65223a22cf84ceafcf84cebbcebfcf8220cf83203137227d"
+    },
+    {
+      "name": "unicode-greek-τ",
+      "category": "unicode",
+      "brief": {
+        "title": "τίτλος τ 18",
+        "description": "Write a parser with tests.",
+        "criteria": "Tests must pass.",
+        "reward": "1",
+        "currency": "USDG",
+        "deadline": "2026-10-14T23:59:59Z",
+        "repo_url": "https://github.com/ulsreall/imdworks-bounties"
+      },
+      "valid": true,
+      "note": "",
+      "expected_hash": "0xfac7f7e20a9c8f89c4882d63e2828609240ce84286816a1b381f2addd762161a",
+      "oracle": "cast keccak (alloy)",
+      "canonical_json": "{\"criteria\":\"Tests must pass.\",\"currency\":\"USDG\",\"deadline\":\"2026-10-14T23:59:59Z\",\"description\":\"Write a parser with tests.\",\"repo_url\":\"https://github.com/ulsreall/imdworks-bounties\",\"reward\":\"1\",\"title\":\"τίτλος τ 18\"}",
+      "canonical_bytes_hex": "7b226372697465726961223a225465737473206d75737420706173732e222c2263757272656e6379223a2255534447222c22646561646c696e65223a22323032362d31302d31345432333a35393a35395a222c226465736372697074696f6e223a22577269746520612070617273657220776974682074657374732e222c227265706f5f75726c223a2268747470733a2f2f6769746875622e636f6d2f756c737265616c6c2f696d64776f726b732d626f756e74696573222c22726577617264223a2231222c227469746c65223a22cf84ceafcf84cebbcebfcf8220cf84203138227d"
+    },
+    {
+      "name": "unicode-greek-υ",
+      "category": "unicode",
+      "brief": {
+        "title": "τίτλος υ 19",
+        "description": "Write a parser with tests.",
+        "criteria": "Tests must pass.",
+        "reward": "1",
+        "currency": "USDG",
+        "deadline": "2026-10-14T23:59:59Z",
+        "repo_url": "https://github.com/ulsreall/imdworks-bounties"
+      },
+      "valid": true,
+      "note": "",
+      "expected_hash": "0x60d58a39c8034de228b036a2f7ce67c69142fe937e74f7026e62d40385a0f667",
+      "oracle": "cast keccak (alloy)",
+      "canonical_json": "{\"criteria\":\"Tests must pass.\",\"currency\":\"USDG\",\"deadline\":\"2026-10-14T23:59:59Z\",\"description\":\"Write a parser with tests.\",\"repo_url\":\"https://github.com/ulsreall/imdworks-bounties\",\"reward\":\"1\",\"title\":\"τίτλος υ 19\"}",
+      "canonical_bytes_hex": "7b226372697465726961223a225465737473206d75737420706173732e222c2263757272656e6379223a2255534447222c22646561646c696e65223a22323032362d31302d31345432333a35393a35395a222c226465736372697074696f6e223a22577269746520612070617273657220776974682074657374732e222c227265706f5f75726c223a2268747470733a2f2f6769746875622e636f6d2f756c737265616c6c2f696d64776f726b732d626f756e74696573222c22726577617264223a2231222c227469746c65223a22cf84ceafcf84cebbcebfcf8220cf85203139227d"
+    },
+    {
+      "name": "unicode-greek-φ",
+      "category": "unicode",
+      "brief": {
+        "title": "τίτλος φ 20",
+        "description": "Write a parser with tests.",
+        "criteria": "Tests must pass.",
+        "reward": "1",
+        "currency": "USDG",
+        "deadline": "2026-10-14T23:59:59Z",
+        "repo_url": "https://github.com/ulsreall/imdworks-bounties"
+      },
+      "valid": true,
+      "note": "",
+      "expected_hash": "0xcb8afe728e4f411a7a5b9deca1cf3b3087051fca10b060a2be6d0a5344d56426",
+      "oracle": "cast keccak (alloy)",
+      "canonical_json": "{\"criteria\":\"Tests must pass.\",\"currency\":\"USDG\",\"deadline\":\"2026-10-14T23:59:59Z\",\"description\":\"Write a parser with tests.\",\"repo_url\":\"https://github.com/ulsreall/imdworks-bounties\",\"reward\":\"1\",\"title\":\"τίτλος φ 20\"}",
+      "canonical_bytes_hex": "7b226372697465726961223a225465737473206d75737420706173732e222c2263757272656e6379223a2255534447222c22646561646c696e65223a22323032362d31302d31345432333a35393a35395a222c226465736372697074696f6e223a22577269746520612070617273657220776974682074657374732e222c227265706f5f75726c223a2268747470733a2f2f6769746875622e636f6d2f756c737265616c6c2f696d64776f726b732d626f756e74696573222c22726577617264223a2231222c227469746c65223a22cf84ceafcf84cebbcebfcf8220cf86203230227d"
+    },
+    {
+      "name": "unicode-greek-χ",
+      "category": "unicode",
+      "brief": {
+        "title": "τίτλος χ 21",
+        "description": "Write a parser with tests.",
+        "criteria": "Tests must pass.",
+        "reward": "1",
+        "currency": "USDG",
+        "deadline": "2026-10-14T23:59:59Z",
+        "repo_url": "https://github.com/ulsreall/imdworks-bounties"
+      },
+      "valid": true,
+      "note": "",
+      "expected_hash": "0x244e669a35cdfb0f10c02de319a45e66021761dd07661c6f6d3e645618c8d7de",
+      "oracle": "cast keccak (alloy)",
+      "canonical_json": "{\"criteria\":\"Tests must pass.\",\"currency\":\"USDG\",\"deadline\":\"2026-10-14T23:59:59Z\",\"description\":\"Write a parser with tests.\",\"repo_url\":\"https://github.com/ulsreall/imdworks-bounties\",\"reward\":\"1\",\"title\":\"τίτλος χ 21\"}",
+      "canonical_bytes_hex": "7b226372697465726961223a225465737473206d75737420706173732e222c2263757272656e6379223a2255534447222c22646561646c696e65223a22323032362d31302d31345432333a35393a35395a222c226465736372697074696f6e223a22577269746520612070617273657220776974682074657374732e222c227265706f5f75726c223a2268747470733a2f2f6769746875622e636f6d2f756c737265616c6c2f696d64776f726b732d626f756e74696573222c22726577617264223a2231222c227469746c65223a22cf84ceafcf84cebbcebfcf8220cf87203231227d"
+    },
+    {
+      "name": "unicode-greek-ψ",
+      "category": "unicode",
+      "brief": {
+        "title": "τίτλος ψ 22",
+        "description": "Write a parser with tests.",
+        "criteria": "Tests must pass.",
+        "reward": "1",
+        "currency": "USDG",
+        "deadline": "2026-10-14T23:59:59Z",
+        "repo_url": "https://github.com/ulsreall/imdworks-bounties"
+      },
+      "valid": true,
+      "note": "",
+      "expected_hash": "0x9a16186ed06ca65221c2e6053ee6182366c0fbc1aad781c32b674ebf0cf98182",
+      "oracle": "cast keccak (alloy)",
+      "canonical_json": "{\"criteria\":\"Tests must pass.\",\"currency\":\"USDG\",\"deadline\":\"2026-10-14T23:59:59Z\",\"description\":\"Write a parser with tests.\",\"repo_url\":\"https://github.com/ulsreall/imdworks-bounties\",\"reward\":\"1\",\"title\":\"τίτλος ψ 22\"}",
+      "canonical_bytes_hex": "7b226372697465726961223a225465737473206d75737420706173732e222c2263757272656e6379223a2255534447222c22646561646c696e65223a22323032362d31302d31345432333a35393a35395a222c226465736372697074696f6e223a22577269746520612070617273657220776974682074657374732e222c227265706f5f75726c223a2268747470733a2f2f6769746875622e636f6d2f756c737265616c6c2f696d64776f726b732d626f756e74696573222c22726577617264223a2231222c227469746c65223a22cf84ceafcf84cebbcebfcf8220cf88203232227d"
+    },
+    {
+      "name": "unicode-greek-ω",
+      "category": "unicode",
+      "brief": {
+        "title": "τίτλος ω 23",
+        "description": "Write a parser with tests.",
+        "criteria": "Tests must pass.",
+        "reward": "1",
+        "currency": "USDG",
+        "deadline": "2026-10-14T23:59:59Z",
+        "repo_url": "https://github.com/ulsreall/imdworks-bounties"
+      },
+      "valid": true,
+      "note": "",
+      "expected_hash": "0x77df04319020cd7259369e4591fcd94a14ad910fcb94627bf765ae6e2fd64328",
+      "oracle": "cast keccak (alloy)",
+      "canonical_json": "{\"criteria\":\"Tests must pass.\",\"currency\":\"USDG\",\"deadline\":\"2026-10-14T23:59:59Z\",\"description\":\"Write a parser with tests.\",\"repo_url\":\"https://github.com/ulsreall/imdworks-bounties\",\"reward\":\"1\",\"title\":\"τίτλος ω 23\"}",
+      "canonical_bytes_hex": "7b226372697465726961223a225465737473206d75737420706173732e222c2263757272656e6379223a2255534447222c22646561646c696e65223a22323032362d31302d31345432333a35393a35395a222c226465736372697074696f6e223a22577269746520612070617273657220776974682074657374732e222c227265706f5f75726c223a2268747470733a2f2f6769746875622e636f6d2f756c737265616c6c2f696d64776f726b732d626f756e74696573222c22726577617264223a2231222c227469746c65223a22cf84ceafcf84cebbcebfcf8220cf89203233227d"
+    },
+    {
+      "name": "mixed-0",
+      "category": "mixed",
+      "brief": {
+        "title": "Mixed #0 — café 😀 日本",
+        "description": "line1\r\nline2\nline3\u0001",
+        "criteria": "Tests must pass.",
+        "reward": "1.000000",
+        "currency": "USDG",
+        "deadline": "2026-10-14T23:59:59Z",
+        "repo_url": "https://github.com/ulsreall/imdworks-bounties",
+        "meta": {
+          "z": "1",
+          "a": "2",
+          "🚀k": "3"
+        }
+      },
+      "valid": true,
+      "note": "",
+      "expected_hash": "0x4a2fe2fd30c4e00d61677382f1416fc7fd3bf6104fb2317801282adf3b65b989",
+      "oracle": "cast keccak (alloy)",
+      "canonical_json": "{\"criteria\":\"Tests must pass.\",\"currency\":\"USDG\",\"deadline\":\"2026-10-14T23:59:59Z\",\"description\":\"line1\\nline2\\nline3\",\"meta\":{\"a\":\"2\",\"z\":\"1\",\"🚀k\":\"3\"},\"repo_url\":\"https://github.com/ulsreall/imdworks-bounties\",\"reward\":\"1.000000\",\"title\":\"Mixed #0 — café 😀 日本\"}",
+      "canonical_bytes_hex": "7b226372697465726961223a225465737473206d75737420706173732e222c2263757272656e6379223a2255534447222c22646561646c696e65223a22323032362d31302d31345432333a35393a35395a222c226465736372697074696f6e223a226c696e65315c6e6c696e65325c6e6c696e6533222c226d657461223a7b2261223a2232222c227a223a2231222c22f09f9a806b223a2233227d2c227265706f5f75726c223a2268747470733a2f2f6769746875622e636f6d2f756c737265616c6c2f696d64776f726b732d626f756e74696573222c22726577617264223a22312e303030303030222c227469746c65223a224d6978656420233020e2809420636166c3a920f09f988020e697a5e69cac227d"
+    },
+    {
+      "name": "mixed-1",
+      "category": "mixed",
+      "brief": {
+        "title": "Mixed #1 — café 😀 日本",
+        "description": "line1\r\nline2\nline3\u0001line1\r\nline2\nline3\u0001",
+        "criteria": "Tests must pass.",
+        "reward": "2.000001",
+        "currency": "USDG",
+        "deadline": "2026-10-14T23:59:59Z",
+        "repo_url": "https://github.com/ulsreall/imdworks-bounties",
+        "meta": {
+          "z": "1",
+          "a": "2",
+          "🚀k": "3"
+        }
+      },
+      "valid": true,
+      "note": "",
+      "expected_hash": "0xff02fb8888a253ca1eb2bd0733494a38b1e91342a41525c314c3ee77a948c8d3",
+      "oracle": "cast keccak (alloy)",
+      "canonical_json": "{\"criteria\":\"Tests must pass.\",\"currency\":\"USDG\",\"deadline\":\"2026-10-14T23:59:59Z\",\"description\":\"line1\\nline2\\nline3line1\\nline2\\nline3\",\"meta\":{\"a\":\"2\",\"z\":\"1\",\"🚀k\":\"3\"},\"repo_url\":\"https://github.com/ulsreall/imdworks-bounties\",\"reward\":\"2.000001\",\"title\":\"Mixed #1 — café 😀 日本\"}",
+      "canonical_bytes_hex": "7b226372697465726961223a225465737473206d75737420706173732e222c2263757272656e6379223a2255534447222c22646561646c696e65223a22323032362d31302d31345432333a35393a35395a222c226465736372697074696f6e223a226c696e65315c6e6c696e65325c6e6c696e65336c696e65315c6e6c696e65325c6e6c696e6533222c226d657461223a7b2261223a2232222c227a223a2231222c22f09f9a806b223a2233227d2c227265706f5f75726c223a2268747470733a2f2f6769746875622e636f6d2f756c737265616c6c2f696d64776f726b732d626f756e74696573222c22726577617264223a22322e303030303031222c227469746c65223a224d6978656420233120e2809420636166c3a920f09f988020e697a5e69cac227d"
+    },
+    {
+      "name": "mixed-2",
+      "category": "mixed",
+      "brief": {
+        "title": "Mixed #2 — café 😀 日本",
+        "description": "line1\r\nline2\nline3\u0001line1\r\nline2\nline3\u0001line1\r\nline2\nline3\u0001",
+        "criteria": "Tests must pass.",
+        "reward": "3.000002",
+        "currency": "USDG",
+        "deadline": "2026-10-14T23:59:59Z",
+        "repo_url": "https://github.com/ulsreall/imdworks-bounties",
+        "meta": {
+          "z": "1",
+          "a": "2",
+          "🚀k": "3"
+        }
+      },
+      "valid": true,
+      "note": "",
+      "expected_hash": "0xfca17eaad875b49abcc4892003313ce805474bd9ca398393c34514dfbf310dd0",
+      "oracle": "cast keccak (alloy)",
+      "canonical_json": "{\"criteria\":\"Tests must pass.\",\"currency\":\"USDG\",\"deadline\":\"2026-10-14T23:59:59Z\",\"description\":\"line1\\nline2\\nline3line1\\nline2\\nline3line1\\nline2\\nline3\",\"meta\":{\"a\":\"2\",\"z\":\"1\",\"🚀k\":\"3\"},\"repo_url\":\"https://github.com/ulsreall/imdworks-bounties\",\"reward\":\"3.000002\",\"title\":\"Mixed #2 — café 😀 日本\"}",
+      "canonical_bytes_hex": "7b226372697465726961223a225465737473206d75737420706173732e222c2263757272656e6379223a2255534447222c22646561646c696e65223a22323032362d31302d31345432333a35393a35395a222c226465736372697074696f6e223a226c696e65315c6e6c696e65325c6e6c696e65336c696e65315c6e6c696e65325c6e6c696e65336c696e65315c6e6c696e65325c6e6c696e6533222c226d657461223a7b2261223a2232222c227a223a2231222c22f09f9a806b223a2233227d2c227265706f5f75726c223a2268747470733a2f2f6769746875622e636f6d2f756c737265616c6c2f696d64776f726b732d626f756e74696573222c22726577617264223a22332e303030303032222c227469746c65223a224d6978656420233220e2809420636166c3a920f09f988020e697a5e69cac227d"
+    },
+    {
+      "name": "mixed-3",
+      "category": "mixed",
+      "brief": {
+        "title": "Mixed #3 — café 😀 日本",
+        "description": "line1\r\nline2\nline3\u0001line1\r\nline2\nline3\u0001line1\r\nline2\nline3\u0001line1\r\nline2\nline3\u0001",
+        "criteria": "Tests must pass.",
+        "reward": "4.000003",
+        "currency": "USDG",
+        "deadline": "2026-10-14T23:59:59Z",
+        "repo_url": "https://github.com/ulsreall/imdworks-bounties",
+        "meta": {
+          "z": "1",
+          "a": "2",
+          "🚀k": "3"
+        }
+      },
+      "valid": true,
+      "note": "",
+      "expected_hash": "0x5b55752c44c89856ab6c2425f7a41dbc7d24b10a878080676d722e33514e19ed",
+      "oracle": "cast keccak (alloy)",
+      "canonical_json": "{\"criteria\":\"Tests must pass.\",\"currency\":\"USDG\",\"deadline\":\"2026-10-14T23:59:59Z\",\"description\":\"line1\\nline2\\nline3line1\\nline2\\nline3line1\\nline2\\nline3line1\\nline2\\nline3\",\"meta\":{\"a\":\"2\",\"z\":\"1\",\"🚀k\":\"3\"},\"repo_url\":\"https://github.com/ulsreall/imdworks-bounties\",\"reward\":\"4.000003\",\"title\":\"Mixed #3 — café 😀 日本\"}",
+      "canonical_bytes_hex": "7b226372697465726961223a225465737473206d75737420706173732e222c2263757272656e6379223a2255534447222c22646561646c696e65223a22323032362d31302d31345432333a35393a35395a222c226465736372697074696f6e223a226c696e65315c6e6c696e65325c6e6c696e65336c696e65315c6e6c696e65325c6e6c696e65336c696e65315c6e6c696e65325c6e6c696e65336c696e65315c6e6c696e65325c6e6c696e6533222c226d657461223a7b2261223a2232222c227a223a2231222c22f09f9a806b223a2233227d2c227265706f5f75726c223a2268747470733a2f2f6769746875622e636f6d2f756c737265616c6c2f696d64776f726b732d626f756e74696573222c22726577617264223a22342e303030303033222c227469746c65223a224d6978656420233320e2809420636166c3a920f09f988020e697a5e69cac227d"
+    },
+    {
+      "name": "mixed-4",
+      "category": "mixed",
+      "brief": {
+        "title": "Mixed #4 — café 😀 日本",
+        "description": "line1\r\nline2\nline3\u0001line1\r\nline2\nline3\u0001line1\r\nline2\nline3\u0001line1\r\nline2\nline3\u0001line1\r\nline2\nline3\u0001",
+        "criteria": "Tests must pass.",
+        "reward": "5.000004",
+        "currency": "USDG",
+        "deadline": "2026-10-14T23:59:59Z",
+        "repo_url": "https://github.com/ulsreall/imdworks-bounties",
+        "meta": {
+          "z": "1",
+          "a": "2",
+          "🚀k": "3"
+        }
+      },
+      "valid": true,
+      "note": "",
+      "expected_hash": "0x35f8bd76e8b05ae2efe912027e76473af05dfeaeeedbe82f61e9d27ccf4cd7c3",
+      "oracle": "cast keccak (alloy)",
+      "canonical_json": "{\"criteria\":\"Tests must pass.\",\"currency\":\"USDG\",\"deadline\":\"2026-10-14T23:59:59Z\",\"description\":\"line1\\nline2\\nline3line1\\nline2\\nline3line1\\nline2\\nline3line1\\nline2\\nline3line1\\nline2\\nline3\",\"meta\":{\"a\":\"2\",\"z\":\"1\",\"🚀k\":\"3\"},\"repo_url\":\"https://github.com/ulsreall/imdworks-bounties\",\"reward\":\"5.000004\",\"title\":\"Mixed #4 — café 😀 日本\"}",
+      "canonical_bytes_hex": "7b226372697465726961223a225465737473206d75737420706173732e222c2263757272656e6379223a2255534447222c22646561646c696e65223a22323032362d31302d31345432333a35393a35395a222c226465736372697074696f6e223a226c696e65315c6e6c696e65325c6e6c696e65336c696e65315c6e6c696e65325c6e6c696e65336c696e65315c6e6c696e65325c6e6c696e65336c696e65315c6e6c696e65325c6e6c696e65336c696e65315c6e6c696e65325c6e6c696e6533222c226d657461223a7b2261223a2232222c227a223a2231222c22f09f9a806b223a2233227d2c227265706f5f75726c223a2268747470733a2f2f6769746875622e636f6d2f756c737265616c6c2f696d64776f726b732d626f756e74696573222c22726577617264223a22352e303030303034222c227469746c65223a224d6978656420233420e2809420636166c3a920f09f988020e697a5e69cac227d"
+    },
+    {
+      "name": "mixed-5",
+      "category": "mixed",
+      "brief": {
+        "title": "Mixed #5 — café 😀 日本",
+        "description": "line1\r\nline2\nline3\u0001line1\r\nline2\nline3\u0001line1\r\nline2\nline3\u0001line1\r\nline2\nline3\u0001line1\r\nline2\nline3\u0001line1\r\nline2\nline3\u0001",
+        "criteria": "Tests must pass.",
+        "reward": "6.000005",
+        "currency": "USDG",
+        "deadline": "2026-10-14T23:59:59Z",
+        "repo_url": "https://github.com/ulsreall/imdworks-bounties",
+        "meta": {
+          "z": "1",
+          "a": "2",
+          "🚀k": "3"
+        }
+      },
+      "valid": true,
+      "note": "",
+      "expected_hash": "0x3d705a60d1a1a2333c2264190227110f22cd011da675203749258b71296fbf2f",
+      "oracle": "cast keccak (alloy)",
+      "canonical_json": "{\"criteria\":\"Tests must pass.\",\"currency\":\"USDG\",\"deadline\":\"2026-10-14T23:59:59Z\",\"description\":\"line1\\nline2\\nline3line1\\nline2\\nline3line1\\nline2\\nline3line1\\nline2\\nline3line1\\nline2\\nline3line1\\nline2\\nline3\",\"meta\":{\"a\":\"2\",\"z\":\"1\",\"🚀k\":\"3\"},\"repo_url\":\"https://github.com/ulsreall/imdworks-bounties\",\"reward\":\"6.000005\",\"title\":\"Mixed #5 — café 😀 日本\"}",
+      "canonical_bytes_hex": "7b226372697465726961223a225465737473206d75737420706173732e222c2263757272656e6379223a2255534447222c22646561646c696e65223a22323032362d31302d31345432333a35393a35395a222c226465736372697074696f6e223a226c696e65315c6e6c696e65325c6e6c696e65336c696e65315c6e6c696e65325c6e6c696e65336c696e65315c6e6c696e65325c6e6c696e65336c696e65315c6e6c696e65325c6e6c696e65336c696e65315c6e6c696e65325c6e6c696e65336c696e65315c6e6c696e65325c6e6c696e6533222c226d657461223a7b2261223a2232222c227a223a2231222c22f09f9a806b223a2233227d2c227265706f5f75726c223a2268747470733a2f2f6769746875622e636f6d2f756c737265616c6c2f696d64776f726b732d626f756e74696573222c22726577617264223a22362e303030303035222c227469746c65223a224d6978656420233520e2809420636166c3a920f09f988020e697a5e69cac227d"
+    }
+  ]
+}

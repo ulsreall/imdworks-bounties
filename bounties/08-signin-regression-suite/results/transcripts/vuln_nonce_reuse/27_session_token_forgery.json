@@ -1,0 +1,19 @@
+{
+  "case_id": "27_session_token_forgery",
+  "variant": "vuln_nonce_reuse",
+  "exchanges": [
+    {
+      "ts": 1791451891.1164453,
+      "method": "POST",
+      "path": "/session",
+      "request_body": {
+        "session": "0xabababababababababababababababababababababababababababababababab"
+      },
+      "status": 400,
+      "response_body": {
+        "error": "unknown_or_forged_session"
+      },
+      "thread": null
+    }
+  ]
+}

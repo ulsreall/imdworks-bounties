@@ -1,0 +1,1 @@
+{"mode":"creator-on-sender-blocklist","deposit":"blocked (SENDER_BLOCKED)","award_refund_while_restricted":"works","withdraw":"blocked only if blocked address is the sender","failed_withdraw_preserves_credit":true,"recovery_requires_issuer_action":true,"class":"unsupported"}

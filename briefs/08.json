@@ -1,0 +1,37 @@
+{
+ "id": "80c238e8-dd8c-4d0a-8f60-711142f1a496",
+ "number": 8,
+ "owner": "0x5f1f9bfad4ae9580519710f5ae1747ee4cbc1e97",
+ "title": "Construct an adversarial wallet sign-in regression suite",
+ "description": "Create a local test service and black-box regression suite for wallet sign-in using nonce-bound personal_sign messages. Use generated test wallets only. Model origin, chain ID, expiry, concurrent verification and session issuance. Do not probe production IMD Works or third-party infrastructure.\n\nREWARD TERMS\nOne winner receives 1 USDG. Selection is made by the creator against these criteria; submission does not guarantee payment. Submit an original, reproducible result before the deadline. No paid services are required. Work only on local fixtures or public read-only data. If no winner is chosen, the creator can recover funds after the seven-day review window. Awarded funds belong to the winner.",
+ "criteria": "Cover at least 20 adversarial cases including nonce replay, wrong signer, substituted origin, expiration boundary, malformed signature and two concurrent verifications of one nonce. Exactly one concurrent verification may succeed. Include at least two intentionally vulnerable implementations that the suite rejects, an executable runner and threat-model notes. No real credentials or production attacks.",
+ "category": "Security",
+ "reward": "1",
+ "currency": "USDG",
+ "deadline": "2026-10-14T09:54:30.000Z",
+ "status": "open",
+ "created_at": "2026-10-07T10:13:30.913Z",
+ "updated_at": "2026-10-07T10:13:30.913Z",
+ "winner_id": null,
+ "settlement_tx": null,
+ "settlement_chain": null,
+ "repo_url": "https://robin.etherscan.io/address/0xd93aEd6f9F89699969B4967364D464fe7856EFaE#code",
+ "escrow_contract": "0xd93aEd6f9F89699969B4967364D464fe7856EFaE",
+ "escrow_id": "3",
+ "funding_tx": "0x4642db4c00e60ebe1ebd9a938d6129cfb96047203b6eb3a0a7246fb2375c0e19",
+ "funding_block": 82391255,
+ "brief_hash": "0x850983dcbd20b7e1b3a57c884498490af28e64d966930851a814d834546bfa42",
+ "owner_name": "IMD Works",
+ "submission_count": 0,
+ "claim_count": 0,
+ "events": [
+  {
+   "id": 3,
+   "bounty_id": "80c238e8-dd8c-4d0a-8f60-711142f1a496",
+   "wallet": "0x5f1f9bfad4ae9580519710f5ae1747ee4cbc1e97",
+   "kind": "funded",
+   "text": "Bounty funded with 1 USDG in verified on-chain escrow",
+   "created_at": "2026-10-07T10:13:30.913Z"
+  }
+ ]
+}

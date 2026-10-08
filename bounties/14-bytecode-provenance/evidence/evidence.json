@@ -1,0 +1,161 @@
+{
+  "bounty": {
+    "id": 14,
+    "title": "Produce a reproducible escrow bytecode provenance report"
+  },
+  "generated_by": "bounties/14-bytecode-provenance/scripts/verify.py",
+  "config": {
+    "chain_id": 4663,
+    "rpc": "https://rpc.mainnet.chain.robinhood.com",
+    "contract": "0xd93aEd6f9F89699969B4967364D464fe7856EFaE",
+    "payment_token": "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+    "compiler": "0.8.29",
+    "optimizer_runs": 200,
+    "evm_version": "paris",
+    "openzeppelin": "5.4.0"
+  },
+  "toolchain": {
+    "forge": "forge Version: 1.8.3",
+    "anvil": "anvil Version: 1.8.3",
+    "cast": "cast Version: 1.8.3"
+  },
+  "checks": {
+    "published_source_sha256_matches_local": true,
+    "local_immutable_token": "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+    "runtime_comparison": {
+      "deployed_runtime_bytes": 6258,
+      "local_runtime_bytes": 6299,
+      "deployed_metadata_len": 12,
+      "local_metadata_len": 53,
+      "deployed_metadata_kind": "short (metadata hash stripped)",
+      "local_metadata_kind": "full-ipfs",
+      "deployed_metadata": "0xa164736f6c634300081d000a",
+      "local_metadata": "0xa2646970667358221220ba53690c30142702e7093bd896646ef5a0913904426dfc9d7050f7ba0a651b9164736f6c634300081d0033",
+      "deployed_code_sha256": "02e004caf7c7f599a72b2915cc81ad1fabc67fe01474ddc790dc752a69e0eeb9",
+      "local_code_sha256": "02e004caf7c7f599a72b2915cc81ad1fabc67fe01474ddc790dc752a69e0eeb9",
+      "code_len_equal": true,
+      "code_match": true,
+      "runtime_match_including_metadata": false
+    }
+  },
+  "negative_tests": {
+    "changed_source_statement": {
+      "verdict": "REJECTED (as required)",
+      "mutation": "changed_source_statement",
+      "deployed_runtime_bytes": 6258,
+      "local_runtime_bytes": 6299,
+      "deployed_metadata_len": 12,
+      "local_metadata_len": 53,
+      "deployed_metadata_kind": "short (metadata hash stripped)",
+      "local_metadata_kind": "full-ipfs",
+      "deployed_metadata": "0xa164736f6c634300081d000a",
+      "local_metadata": "0xa2646970667358221220c4b183e77d40ca5a454e943ac754c5a257fa680f89c04e6873cf2c2b8943fb2664736f6c634300081d0033",
+      "deployed_code_sha256": "02e004caf7c7f599a72b2915cc81ad1fabc67fe01474ddc790dc752a69e0eeb9",
+      "local_code_sha256": "4d42cfdfa3fdbf6c2c8f84e6159c01b7fd84ccc6f3facdc03d163de9f3c58347",
+      "code_len_equal": true,
+      "code_match": false,
+      "runtime_match_including_metadata": false,
+      "first_diff_hex_char": 6025,
+      "first_diff_byte": 3012,
+      "deployed_at_diff": "d565b905090565b6000610bc0610e7d565b85600003610be15760405163162908e360e11b8152600",
+      "local_at_diff": "d565b905090565b6000610bc0610e7d565b85600103610be15760405163162908e360e11b8152600"
+    },
+    "wrong_token_address": {
+      "verdict": "REJECTED (as required)",
+      "mutation": "wrong_token_address",
+      "deployed_runtime_bytes": 6258,
+      "local_runtime_bytes": 6299,
+      "deployed_metadata_len": 12,
+      "local_metadata_len": 53,
+      "deployed_metadata_kind": "short (metadata hash stripped)",
+      "local_metadata_kind": "full-ipfs",
+      "deployed_metadata": "0xa164736f6c634300081d000a",
+      "local_metadata": "0xa2646970667358221220ba53690c30142702e7093bd896646ef5a0913904426dfc9d7050f7ba0a651b9164736f6c634300081d0033",
+      "deployed_code_sha256": "02e004caf7c7f599a72b2915cc81ad1fabc67fe01474ddc790dc752a69e0eeb9",
+      "local_code_sha256": "28dd138720a1b999cad853bf105cd5e00bfc561b7e97d9848e74d436c3bbe325",
+      "code_len_equal": true,
+      "code_match": false,
+      "runtime_match_including_metadata": false,
+      "first_diff_hex_char": 1000,
+      "first_diff_byte": 500,
+      "deployed_at_diff": "019b565b6102097f0000000000000000000000005fc5360d0400a0fd4f2af552add042d716f1d168",
+      "local_at_diff": "019b565b6102097f0000000000000000000000001111111111111111111111111111111111111111"
+    }
+  },
+  "verdict": {
+    "runtime_code_matches_published_source": true,
+    "metadata_differs_only": true,
+    "negative_tests_rejected": true,
+    "overall": "PASS"
+  },
+  "source": {
+    "path": "src/IMDWorksEscrow.sol",
+    "sha256": "ad2c2fdde591c5004ff823a9e03ef2e6f1e4f781f3dd9cd67b9d2126d263e054",
+    "keccak256": "0x17b86e63284c80e9bd7ac420e44f143029d16e581afcc4911f61162701c471a8",
+    "bytes": 9320,
+    "lines": 207
+  },
+  "dependencies": {
+    "root": "deps/node_modules",
+    "openzeppelin_version": "5.4.0",
+    "files": {
+      "@openzeppelin/contracts/interfaces/IERC1363.sol": "9c3a75a925a6dac9e88b03cddc58d42fe3131b0aaaad84408521f3f7af2f991b",
+      "@openzeppelin/contracts/interfaces/IERC165.sol": "dfb3f56fa928a7c6cae41a7ce2c86b9210fa18d33fa26389099d66a0fa790368",
+      "@openzeppelin/contracts/interfaces/IERC20.sol": "0158e2d3e0e28bedd99eec13dcf1a8aa3a70a5b7e4bb2ad709609c95fcc740d1",
+      "@openzeppelin/contracts/token/ERC20/IERC20.sol": "01b6f5c4fa45fd38822b286ecef6daf983d27306dd6362496fa71b3e4600b72c",
+      "@openzeppelin/contracts/token/ERC20/SafeERC20.sol": "ac1fd9fa99b194a8db8dfa9ae8e3ff44feaa8f16668241fd2b66ae8b47d7c082",
+      "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol": "ac1fd9fa99b194a8db8dfa9ae8e3ff44feaa8f16668241fd2b66ae8b47d7c082",
+      "@openzeppelin/contracts/utils/ReentrancyGuard.sol": "32fbb1c908ec1b4de85cc1bb10091aebd5816ffe80dfdd5ca5e084fbea67a462",
+      "@openzeppelin/contracts/utils/introspection/IERC165.sol": "9055c2994b37dea1a41b7b7926dcb510f05dbe2540b0aafc5fbee9558fffd0ca"
+    },
+    "count": 8
+  },
+  "published_deployment_record": {
+    "status": "deployed",
+    "chainId": 4663,
+    "deployer": "0x5f1F9bfad4ae9580519710F5ae1747eE4Cbc1e97",
+    "nonce": 1,
+    "contractAddress": "0xd93aEd6f9F89699969B4967364D464fe7856EFaE",
+    "paymentToken": "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+    "tokenSymbol": "USDG",
+    "tokenDecimals": 6,
+    "compiler": "0.8.29+commit.ab55807c",
+    "optimizerRuns": 200,
+    "evmVersion": "paris",
+    "sourceSha256": "ad2c2fdde591c5004ff823a9e03ef2e6f1e4f781f3dd9cd67b9d2126d263e054",
+    "initCodeHash": "0x2d35e6cd2c7a64790ce706fc1a812a56e4416192564bd6ff9b676bee7ea253cc",
+    "estimatedGas": "1475470",
+    "gasLimit": "1770564",
+    "maxFeePerGas": "40076000",
+    "maximumFeeETH": "0.000070957122864",
+    "balanceETH": "0.005960985072506805",
+    "preparedAt": "2026-10-07T09:50:49.228Z",
+    "transactionHash": "0xbd8cfb1561486a00cca3dff42368875f28a13d2b50057cbce1da149de3d8a4df",
+    "blockNumber": 82380106,
+    "gasUsed": "1462694",
+    "actualFeeETH": "0.000029362119356",
+    "deployedAt": "2026-10-07T09:50:53.439Z",
+    "explorer": "https://robin.etherscan.io/address/0xd93aEd6f9F89699969B4967364D464fe7856EFaE#code",
+    "verification": {
+      "status": "verified",
+      "explorer": "https://robin.etherscan.io/address/0xd93aEd6f9F89699969B4967364D464fe7856EFaE#code",
+      "checkedAt": "2026-10-07T09:54:44.204Z"
+    }
+  },
+  "deployed_runtime": {
+    "address": "0xd93aEd6f9F89699969B4967364D464fe7856EFaE",
+    "bytes": 6258,
+    "sha256": "19ddd1d060882d416a2530e163f51ad769f91878159530bbfe792ec53f6a8c16",
+    "keccak256": "0x33a2d2c3cdd27cfeb6a1886042f6f14906678d9ef039dae34836aad91ef79d45"
+  },
+  "build": {
+    "artifact": "out/IMDWorksEscrow.sol/IMDWorksEscrow.json",
+    "creation_len": 13342,
+    "runtime_len": 12600,
+    "build_output_tail": "{\"$message_type\":\"diagnostic\",\"message\":\"\",\"code\":{\"code\":\"unsafe-typecast\",\"explanation\":null},\"level\":\"warning\",\"spans\":[{\"file_name\":\"src/IMDWorksEscrow.sol\",\"byte_start\":8455,\"byte_end\":8478,\"line_start\":184,\"line_end\":184,\"column_start\":52,\"column_end\":75,\"is_primary\":true,\"text\":[{\"text\":\"        submissions[id][author] = Submission(hash, uint64(block.timestamp));\",\"highlight_start\":52,\"highlight_end\":75}],\"label\":null,\"suggested_replacement\":null,\"suggestion_applicability\":null,\"expansion\":null}],\"children\":[{\"message\":\"consider disabling this lint if you're certain the cast is safe\\n\\n// casting to 'uint64' is safe because [explain why]\\n// forge-lint: disable-next-line(unsafe-typecast)\\n\\n\",\"code\":null,\"level\":\"note\",\"spans\":[],\"children\":[],\"rendered\":null},{\"message\":\"https://getfoundry.sh/forge/linting/unsafe-typecast\",\"code\":null,\"level\":\"help\",\"spans\":[],\"children\":[],\"rendered\":null}],\"rendered\":\"warning[unsafe-typecast]: \\n    \u256d\u25b8 src/IMDWorksEscrow.sol:184:52\\n    \u2502\\n184 \u2502         submissions[id][author] = Submission(hash, uint64(block.timestamp));\\n    \u2502                                                    \u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\\n    \u2502\\n    \u251c note: consider disabling this lint if you're certain the cast is safe\\n    \u2502       \\n    \u2502       // casting to 'uint64' is safe because [explain why]\\n    \u2502       // forge-lint: disable-next-line(unsafe-typecast)\\n    \u2502       \\n    \u2502       \\n    \u2570 help: https://getfoundry.sh/forge/linting/unsafe-typecast\\n\\n\"}",
+    "solc": "forge Version: 1.8.3",
+    "optimizer_runs": 200,
+    "evm_version": "paris",
+    "libs": "deps/node_modules"
+  }
+}

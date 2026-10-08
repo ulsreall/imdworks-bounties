@@ -1,0 +1,64 @@
+{
+  "case_id": "28_concurrent_double_verify",
+  "variant": "hardened",
+  "exchanges": [
+    {
+      "ts": 1791451884.740709,
+      "method": "POST",
+      "path": "/nonce",
+      "request_body": {
+        "address": "0x62BD10C2fA700B336980e228091A74f47B3C6269",
+        "origin": "https://app.imdworks.fun",
+        "chain_id": "31337"
+      },
+      "status": 200,
+      "response_body": {
+        "nonce": "0x4565b69daf6a8ad867f5137074d437f9",
+        "address": "0x62bd10c2fa700b336980e228091a74f47b3c6269",
+        "origin": "https://app.imdworks.fun",
+        "chain_id": "31337",
+        "issued_at": 1791451884.7403147,
+        "expires_at": 1791452004.7403147,
+        "ttl": 120.0,
+        "message_template": "IMD Works sign-in\nnonce: 0x4565b69daf6a8ad867f5137074d437f9\norigin: https://app.imdworks.fun\nchain_id: 31337"
+      },
+      "thread": null
+    },
+    {
+      "ts": 1791451884.7734737,
+      "method": "POST",
+      "path": "/verify",
+      "request_body": {
+        "address": "0x62BD10C2fA700B336980e228091A74f47B3C6269",
+        "message": "IMD Works sign-in\nnonce: 0x4565b69daf6a8ad867f5137074d437f9\norigin: https://app.imdworks.fun\nchain_id: 31337",
+        "signature": "0xed3f649ed199d830f7059b769f2a4898cd4f8efc4a8fe39edb3725c5ffd6adad2fb66ae56b60e787f7212a1aaceae6f31a4c4bc43f51de4a2675d224a57497d61c",
+        "origin": "https://app.imdworks.fun",
+        "chain_id": "31337"
+      },
+      "status": 200,
+      "response_body": {
+        "session": "0xa2b9492a824ddc21dbe4fb8a31d4cfc30f0097faf794f91dbf2496a37cd0f642",
+        "address": "0x62bd10c2fa700b336980e228091a74f47b3c6269",
+        "issued_at": 1791451884.772789
+      },
+      "thread": "t1"
+    },
+    {
+      "ts": 1791451884.7752252,
+      "method": "POST",
+      "path": "/verify",
+      "request_body": {
+        "address": "0x62BD10C2fA700B336980e228091A74f47B3C6269",
+        "message": "IMD Works sign-in\nnonce: 0x4565b69daf6a8ad867f5137074d437f9\norigin: https://app.imdworks.fun\nchain_id: 31337",
+        "signature": "0xed3f649ed199d830f7059b769f2a4898cd4f8efc4a8fe39edb3725c5ffd6adad2fb66ae56b60e787f7212a1aaceae6f31a4c4bc43f51de4a2675d224a57497d61c",
+        "origin": "https://app.imdworks.fun",
+        "chain_id": "31337"
+      },
+      "status": 400,
+      "response_body": {
+        "error": "nonce_already_used"
+      },
+      "thread": "t2"
+    }
+  ]
+}

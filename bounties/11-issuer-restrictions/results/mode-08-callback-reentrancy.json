@@ -1,0 +1,1 @@
+{"mode":"erc777-style-callback","deposit":"accepted, hook re-entry blocked","award_refund_while_restricted":"works","withdraw":"accepted, re-entry blocked","failed_withdraw_preserves_credit":true,"recovery_requires_issuer_action":false,"class":"supported"}

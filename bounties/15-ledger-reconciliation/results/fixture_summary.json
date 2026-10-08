@@ -1,0 +1,27 @@
+{
+  "bounties": 120,
+  "event_counts": {
+    "Transfer": 226,
+    "Approval": 7,
+    "BountyCreated": 120,
+    "WorkSubmitted": 94,
+    "BountyAwarded": 69,
+    "Withdrawn": 58,
+    "BountyRefunded": 34,
+    "RewardAdded": 34,
+    "PausedSet": 34
+  },
+  "snapshot_block": 535,
+  "token_balance": 21538270,
+  "liabilities": 20500000,
+  "surplus_from_donations": 1038270,
+  "donations": [
+    777777,
+    259259,
+    1234
+  ],
+  "contracts": {
+    "escrow": "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
+    "token": "0x5FbDB2315678afecb367f032d93F642f64180aa3"
+  }
+}

@@ -1,0 +1,4 @@
+forge:   forge Version: 1.8.3
+anvil:   anvil Version: 1.8.3
+solc:    0.8.29 (pinned in foundry.toml, used for build + tests)
+host:    Linux 7.0.0-30-generic x86_64

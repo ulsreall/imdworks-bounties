@@ -1,0 +1,222 @@
+{
+  "bounty": 15,
+  "title": "Implement an auditable bounty ledger reconciliation tool",
+  "fixture": {
+    "contracts": {
+      "escrow": "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
+      "token": "0x5FbDB2315678afecb367f032d93F642f64180aa3"
+    },
+    "bounties": 120,
+    "logs": 676,
+    "event_counts": {
+      "Transfer": 226,
+      "Approval": 7,
+      "BountyCreated": 120,
+      "WorkSubmitted": 94,
+      "BountyAwarded": 69,
+      "Withdrawn": 58,
+      "BountyRefunded": 34,
+      "RewardAdded": 34,
+      "PausedSet": 34
+    },
+    "snapshot_block": 535,
+    "snapshot_block_hash": "0xbc607583e3ee15b83df6488cc17b7d15c88c4151cf49b5f07d0d98b61ae7ea52",
+    "withdraw_stats": {
+      "ok": 58,
+      "failed": 0
+    }
+  },
+  "reconstructed": {
+    "locked": 17000000,
+    "claimable": 3500000,
+    "liabilities": 20500000,
+    "wallets_with_credit": 2,
+    "top_credits": [
+      [
+        "0xa0ee7a142d267c1f36714e4a8f75612f20a79720",
+        2500000
+      ],
+      [
+        "0xbcd4042de499d14e55001ccbb24a551f3b954096",
+        1000000
+      ]
+    ]
+  },
+  "contract_state": {
+    "total_locked": 17000000,
+    "total_claimable": 3500000,
+    "liabilities": 20500000,
+    "token_balance": 21538270
+  },
+  "donations": {
+    "transfers": [
+      777777,
+      259259,
+      1234
+    ],
+    "surplus": 1038270,
+    "explanation": "unsolicited transfers raise the escrow's token balance without emitting BountyCreated/RewardAdded, so they are excluded from both locked rewards and per-wallet credit: the accounting identity is balance = locked + claimable + surplus, and surplus is not claimable by anyone. Payments are still exact-transfer checked, so a donation cannot change what a wallet can withdraw."
+  },
+  "assertions": [
+    {
+      "id": "L1-no-duplicate-events",
+      "ok": true,
+      "detail": "no duplicate deliveries across 676 events"
+    },
+    {
+      "id": "L2-log-block-hashes",
+      "ok": true,
+      "detail": "every log matches the recorded canonical block hash"
+    },
+    {
+      "id": "L3-logs-within-snapshot",
+      "ok": true,
+      "detail": "all 676 logs are at or before the snapshot block 535"
+    },
+    {
+      "id": "S1-snapshot-block-hash",
+      "ok": true,
+      "detail": "snapshot block 535 hash confirmed against the recorded chain"
+    },
+    {
+      "id": "R1-total-locked",
+      "ok": true,
+      "detail": "locked reward matches the contract exactly: 17000000"
+    },
+    {
+      "id": "R2-total-claimable",
+      "ok": true,
+      "detail": "claimable matches the contract exactly: 3500000"
+    },
+    {
+      "id": "R3-liabilities",
+      "ok": true,
+      "detail": "liabilities (locked + claimable) match: 20500000"
+    },
+    {
+      "id": "R4-credits-per-wallet",
+      "ok": true,
+      "detail": "all 12 wallets reconcile exactly"
+    },
+    {
+      "id": "R5-per-bounty-reward-and-status",
+      "ok": true,
+      "detail": "all 120 bounties reconcile (reward and terminal status)"
+    },
+    {
+      "id": "T1-token-balance-from-transfers",
+      "ok": true,
+      "detail": "token balance rebuilt from Transfer logs matches: 21538270"
+    },
+    {
+      "id": "S2-donations-are-surplus",
+      "ok": true,
+      "detail": "surplus 1038270 is exactly the 3 unsolicited transfers; no wallet was credited"
+    },
+    {
+      "id": "S3-balance-covers-liabilities",
+      "ok": true,
+      "detail": "escrow holds 21538270 against 20500000 of liabilities"
+    }
+  ],
+  "tamper_detection": [
+    {
+      "scenario": "removed BountyAwarded event",
+      "detected": true,
+      "detected_by": [
+        "R1-total-locked",
+        "R2-total-claimable",
+        "R4-credits-per-wallet",
+        "R5-per-bounty-reward-and-status"
+      ],
+      "message": "locked reward mismatch: reconstructed 18000000 vs contract 17000000 (delta 1000000)",
+      "expected_checks": [
+        "R1-total-locked",
+        "R2-total-claimable",
+        "R3-liabilities",
+        "R4-credits-per-wallet",
+        "R5-per-bounty-reward-and-status"
+      ],
+      "matched_expected": true
+    },
+    {
+      "scenario": "duplicated Withdrawn event",
+      "detected": true,
+      "detected_by": [
+        "L1-no-duplicate-events",
+        "R2-total-claimable",
+        "R3-liabilities",
+        "R4-credits-per-wallet"
+      ],
+      "message": "duplicate (tx, log_index) deliveries: [('0x3282bbdc5911d7d9851c891432b6044c40f5a53c1f58b4a1c06a548ed130eef8', 1)]",
+      "expected_checks": [
+        "L1-no-duplicate-events"
+      ],
+      "matched_expected": true
+    },
+    {
+      "scenario": "state snapshot behind the log stream",
+      "detected": true,
+      "detected_by": [
+        "L3-logs-within-snapshot",
+        "R1-total-locked",
+        "R2-total-claimable",
+        "R3-liabilities",
+        "R4-credits-per-wallet",
+        "R5-per-bounty-reward-and-status",
+        "T1-token-balance-from-transfers"
+      ],
+      "message": "log stream continues past the state snapshot: first at block 502 > snapshot 500",
+      "expected_checks": [
+        "L3-logs-within-snapshot",
+        "R1-total-locked",
+        "R2-total-claimable",
+        "R3-liabilities",
+        "R4-credits-per-wallet"
+      ],
+      "matched_expected": true
+    },
+    {
+      "scenario": "snapshot block hash swapped",
+      "detected": true,
+      "detected_by": [
+        "S1-snapshot-block-hash"
+      ],
+      "message": "snapshot block 535 hash mismatch: recorded 0xabababababababababababababababababababababababababababababababab vs canonical 0xbc607583e3ee15b83df6488cc17b7d15c88c4151cf49b5f07d0d98b61ae7ea52",
+      "expected_checks": [
+        "S1-snapshot-block-hash"
+      ],
+      "matched_expected": true
+    },
+    {
+      "scenario": "log from a different branch",
+      "detected": true,
+      "detected_by": [
+        "L2-log-block-hashes"
+      ],
+      "message": "logs from a foreign branch: [(535, '0xcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcd')]",
+      "expected_checks": [
+        "L2-log-block-hashes"
+      ],
+      "matched_expected": true
+    },
+    {
+      "scenario": "snapshot ahead of the log cutoff",
+      "detected": true,
+      "detected_by": [
+        "R2-total-claimable",
+        "R3-liabilities",
+        "R4-credits-per-wallet",
+        "T1-token-balance-from-transfers"
+      ],
+      "message": "claimable mismatch: reconstructed 4500000 vs contract 3500000 (delta 1000000)",
+      "expected_checks": [
+        "L3-logs-within-snapshot",
+        "R1-total-locked",
+        "R2-total-claimable"
+      ],
+      "matched_expected": true
+    }
+  ],
+  "verdict": "PASS"
+}

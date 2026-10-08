@@ -1,0 +1,69 @@
+{
+ "id": "ffd0cae1-21e9-4378-bc3d-8c814377be97",
+ "number": 9,
+ "owner": "0x5f1f9bfad4ae9580519710f5ae1747ee4cbc1e97",
+ "title": "Prove exact USDG decimal parsing with generated cases",
+ "description": "Write a small six-decimal token amount parser and formatter using integer arithmetic. Define an explicit grammar for user input and a separate canonical display representation. Evaluate boundary cases involving leading zeros, huge amounts, Unicode lookalikes, exponents, signs, whitespace and excess precision.\n\nREWARD TERMS\nOne winner receives 1 USDG. Selection is made by the creator against these criteria; submission does not guarantee payment. Submit an original, reproducible result before the deadline. No paid services are required. Work only on local fixtures or public read-only data. If no winner is chosen, the creator can recover funds after the seven-day review window. Awarded funds belong to the winner.",
+ "criteria": "Publish at least 100,000 seeded generated cases plus a table of 30 hand-selected edge cases. Prove round-trip correctness for accepted values and reject ambiguous or lossy inputs. Cross-check against an independently implemented reference parser. Demonstrate at least three floating-point counterexamples. Include code, reproducible seed and machine-readable results; do not silently round inputs.",
+ "category": "Data",
+ "reward": "1",
+ "currency": "USDG",
+ "deadline": "2026-10-14T09:54:30.000Z",
+ "status": "open",
+ "created_at": "2026-10-07T10:13:30.913Z",
+ "updated_at": "2026-10-07T10:13:30.913Z",
+ "winner_id": null,
+ "settlement_tx": null,
+ "settlement_chain": null,
+ "repo_url": "https://robin.etherscan.io/address/0xd93aEd6f9F89699969B4967364D464fe7856EFaE#code",
+ "escrow_contract": "0xd93aEd6f9F89699969B4967364D464fe7856EFaE",
+ "escrow_id": "4",
+ "funding_tx": "0x741c654070df866061bbdbe5d0dfc5d127bfc15d18bb029674b1790f1191e3e2",
+ "funding_block": 82391348,
+ "brief_hash": "0x2a016263e0b09aac49881f49d225c321623285ddf65bea3f0fe67caf6a6c1844",
+ "owner_name": "IMD Works",
+ "submission_count": 0,
+ "claim_count": 4,
+ "events": [
+  {
+   "id": 33,
+   "bounty_id": "ffd0cae1-21e9-4378-bc3d-8c814377be97",
+   "wallet": "0x3ef568bf1f887bae9885409b22ce9ebfe36cd346",
+   "kind": "claimed",
+   "text": "A contributor started working",
+   "created_at": "2026-10-08T08:11:38.978Z"
+  },
+  {
+   "id": 30,
+   "bounty_id": "ffd0cae1-21e9-4378-bc3d-8c814377be97",
+   "wallet": "0x1ddbf147149edf16ec46a1a9e211bfa505567811",
+   "kind": "claimed",
+   "text": "A contributor started working",
+   "created_at": "2026-10-08T08:04:28.276Z"
+  },
+  {
+   "id": 18,
+   "bounty_id": "ffd0cae1-21e9-4378-bc3d-8c814377be97",
+   "wallet": "0x93510d3355fcaf9b6d3b83e8a682506322edaf8d",
+   "kind": "claimed",
+   "text": "A contributor started working",
+   "created_at": "2026-10-08T07:56:25.097Z"
+  },
+  {
+   "id": 13,
+   "bounty_id": "ffd0cae1-21e9-4378-bc3d-8c814377be97",
+   "wallet": "0xf0953d6dec295e30a269b245b7e2ad5222490e15",
+   "kind": "claimed",
+   "text": "A contributor started working",
+   "created_at": "2026-10-08T07:48:49.322Z"
+  },
+  {
+   "id": 4,
+   "bounty_id": "ffd0cae1-21e9-4378-bc3d-8c814377be97",
+   "wallet": "0x5f1f9bfad4ae9580519710f5ae1747ee4cbc1e97",
+   "kind": "funded",
+   "text": "Bounty funded with 1 USDG in verified on-chain escrow",
+   "created_at": "2026-10-07T10:13:30.913Z"
+  }
+ ]
+}

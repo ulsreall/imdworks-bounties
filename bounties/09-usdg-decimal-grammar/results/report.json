@@ -1,0 +1,248 @@
+{
+  "bounty": 9,
+  "title": "Define and enforce a lossless canonical decimal grammar for USDG amounts",
+  "seed": 20091002026,
+  "generated_cases": 100000,
+  "accepted": 57015,
+  "rejected": 42985,
+  "cross_impls_agreed": true,
+  "roundtrip_ok": true,
+  "cases_sha256": "893b293e3e7878c5a694cce7c820cae31c5daf3c10dca928232aa31eca2b90a1",
+  "cases_file": "results/cases.jsonl.gz",
+  "edge_cases": [
+    {
+      "input": "0",
+      "verdict": "accept",
+      "detail": "0 micros -> 0"
+    },
+    {
+      "input": "0.0",
+      "verdict": "accept",
+      "detail": "0 micros -> 0"
+    },
+    {
+      "input": "1",
+      "verdict": "accept",
+      "detail": "1000000 micros -> 1"
+    },
+    {
+      "input": "1.000000",
+      "verdict": "accept",
+      "detail": "1000000 micros -> 1"
+    },
+    {
+      "input": "0.000001",
+      "verdict": "accept",
+      "detail": "1 micros -> 0.000001"
+    },
+    {
+      "input": "999999999999999999999999999999",
+      "verdict": "accept",
+      "detail": "999999999999999999999999999999000000 micros -> 999999999999999999999999999999"
+    },
+    {
+      "input": "115792089237316195423570985008687907853269984665640564039457584007913129.639935",
+      "verdict": "accept",
+      "detail": "115792089237316195423570985008687907853269984665640564039457584007913129639935 micros -> 115792089237316195423570985008687907853269984665640564039457584007913129.639935"
+    },
+    {
+      "input": "0.0000001",
+      "verdict": "reject",
+      "detail": "7 decimal places (lossy)"
+    },
+    {
+      "input": "1.1234567",
+      "verdict": "reject",
+      "detail": "more than 6 decimals (lossy)"
+    },
+    {
+      "input": "01",
+      "verdict": "reject",
+      "detail": "leading zero"
+    },
+    {
+      "input": "00.5",
+      "verdict": "reject",
+      "detail": "leading zeros"
+    },
+    {
+      "input": "1.",
+      "verdict": "reject",
+      "detail": "trailing separator, no fraction"
+    },
+    {
+      "input": ".5",
+      "verdict": "reject",
+      "detail": "no integer part"
+    },
+    {
+      "input": "+1",
+      "verdict": "reject",
+      "detail": "sign"
+    },
+    {
+      "input": "-1",
+      "verdict": "reject",
+      "detail": "sign"
+    },
+    {
+      "input": "1e6",
+      "verdict": "reject",
+      "detail": "exponent"
+    },
+    {
+      "input": "1E6",
+      "verdict": "reject",
+      "detail": "exponent"
+    },
+    {
+      "input": " 1",
+      "verdict": "reject",
+      "detail": "leading whitespace"
+    },
+    {
+      "input": "1 ",
+      "verdict": "reject",
+      "detail": "trailing whitespace"
+    },
+    {
+      "input": "1.2 ",
+      "verdict": "reject",
+      "detail": "trailing whitespace"
+    },
+    {
+      "input": "1\n",
+      "verdict": "reject",
+      "detail": "newline"
+    },
+    {
+      "input": "1,5",
+      "verdict": "reject",
+      "detail": "locale decimal separator"
+    },
+    {
+      "input": "1_000",
+      "verdict": "reject",
+      "detail": "thousands separator"
+    },
+    {
+      "input": "\uff11",
+      "verdict": "reject",
+      "detail": "fullwidth digit (no Unicode normalisation)"
+    },
+    {
+      "input": "\u0661\u0662\u0663",
+      "verdict": "reject",
+      "detail": "Arabic-Indic digits"
+    },
+    {
+      "input": "0\u0338",
+      "verdict": "reject",
+      "detail": "digit with combining slash"
+    },
+    {
+      "input": "1\u200b",
+      "verdict": "reject",
+      "detail": "zero-width space"
+    },
+    {
+      "input": "1\u200e",
+      "verdict": "reject",
+      "detail": "left-to-right mark"
+    },
+    {
+      "input": "",
+      "verdict": "reject",
+      "detail": "empty"
+    },
+    {
+      "input": ".",
+      "verdict": "reject",
+      "detail": "no digits"
+    },
+    {
+      "input": "1..2",
+      "verdict": "reject",
+      "detail": "double separator"
+    },
+    {
+      "input": "1.2.3",
+      "verdict": "reject",
+      "detail": "double separator"
+    },
+    {
+      "input": "0x10",
+      "verdict": "reject",
+      "detail": "hex"
+    },
+    {
+      "input": "NaN",
+      "verdict": "reject",
+      "detail": "not a number"
+    },
+    {
+      "input": "Infinity",
+      "verdict": "reject",
+      "detail": "not a number"
+    },
+    {
+      "input": "115792089237316195423570985008687907853269984665640564039457584007913129.639936",
+      "verdict": "reject",
+      "detail": "exceeds uint256 by 1 micro"
+    },
+    {
+      "input": "\u0000",
+      "verdict": "reject",
+      "detail": "NUL byte"
+    }
+  ],
+  "lossy_inputs": [
+    {
+      "input": "1.0000001",
+      "grammar": "rejected",
+      "naive_float_micros": 1000000
+    },
+    {
+      "input": "0.0000005",
+      "grammar": "rejected",
+      "naive_float_micros": 0
+    },
+    {
+      "input": "2.9999999",
+      "grammar": "rejected",
+      "naive_float_micros": 2999999
+    },
+    {
+      "input": "0.0000009",
+      "grammar": "rejected",
+      "naive_float_micros": 0
+    }
+  ],
+  "float_counterexamples": [
+    {
+      "input": "8.2",
+      "correct_micros": "8200000",
+      "float_truncate_micros": "8199999",
+      "float_round_micros": "8200000",
+      "delta_truncate": 1,
+      "delta_round": 0
+    },
+    {
+      "input": "1.005",
+      "correct_micros": "1005000",
+      "float_truncate_micros": "1004999",
+      "float_round_micros": "1005000",
+      "delta_truncate": 1,
+      "delta_round": 0
+    },
+    {
+      "input": "9007199254.740993",
+      "correct_micros": "9007199254740993",
+      "float_truncate_micros": "9007199254740994",
+      "float_round_micros": "9007199254740994",
+      "delta_truncate": -1,
+      "delta_round": -1
+    }
+  ],
+  "verdict": "PASS"
+}

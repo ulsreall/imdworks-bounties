@@ -1,0 +1,77 @@
+{
+  "rows": [
+    {
+      "mode": "erc777-style-callback",
+      "deposit": "accepted, hook re-entry blocked",
+      "award_refund_while_restricted": "works",
+      "withdraw": "accepted, re-entry blocked",
+      "failed_withdraw_preserves_credit": true,
+      "recovery_requires_issuer_action": false,
+      "class": "supported"
+    },
+    {
+      "mode": "no-return-values",
+      "deposit": "accepted",
+      "award_refund_while_restricted": "works",
+      "withdraw": "succeeds",
+      "failed_withdraw_preserves_credit": true,
+      "recovery_requires_issuer_action": false,
+      "class": "supported"
+    },
+    {
+      "mode": "standard-exact-6dp",
+      "deposit": "accepted",
+      "award_refund_while_restricted": "n/a",
+      "withdraw": "succeeds",
+      "failed_withdraw_preserves_credit": true,
+      "recovery_requires_issuer_action": false,
+      "class": "supported"
+    },
+    {
+      "mode": "winner-on-recipient-blocklist",
+      "deposit": "accepted",
+      "award_refund_while_restricted": "works",
+      "withdraw": "blocked to blocked recipient, redirect allowed",
+      "failed_withdraw_preserves_credit": true,
+      "recovery_requires_issuer_action": false,
+      "class": "supported"
+    },
+    {
+      "mode": "creator-on-sender-blocklist",
+      "deposit": "blocked (SENDER_BLOCKED)",
+      "award_refund_while_restricted": "works",
+      "withdraw": "blocked only if blocked address is the sender",
+      "failed_withdraw_preserves_credit": true,
+      "recovery_requires_issuer_action": true,
+      "class": "unsupported"
+    },
+    {
+      "mode": "fee-on-transfer",
+      "deposit": "rejected (UnsupportedTransfer)",
+      "award_refund_while_restricted": "works",
+      "withdraw": "rejected (UnsupportedTransfer), credit preserved",
+      "failed_withdraw_preserves_credit": true,
+      "recovery_requires_issuer_action": true,
+      "class": "unsupported"
+    },
+    {
+      "mode": "paused-transfers",
+      "deposit": "blocked (TOKEN_PAUSED)",
+      "award_refund_while_restricted": "works while paused",
+      "withdraw": "blocked, credit preserved",
+      "failed_withdraw_preserves_credit": true,
+      "recovery_requires_issuer_action": true,
+      "class": "unsupported"
+    },
+    {
+      "mode": "returns-false",
+      "deposit": "blocked",
+      "award_refund_while_restricted": "works",
+      "withdraw": "blocked, credit preserved",
+      "failed_withdraw_preserves_credit": true,
+      "recovery_requires_issuer_action": true,
+      "class": "unsupported"
+    }
+  ],
+  "count": 8
+}

@@ -1,0 +1,1 @@
+{"mode":"no-return-values","deposit":"accepted","award_refund_while_restricted":"works","withdraw":"succeeds","failed_withdraw_preserves_credit":true,"recovery_requires_issuer_action":false,"class":"supported"}

@@ -1,0 +1,19 @@
+{
+  "case_id": "27_session_token_forgery",
+  "variant": "vuln_origin_unbound",
+  "exchanges": [
+    {
+      "ts": 1791451897.5684772,
+      "method": "POST",
+      "path": "/session",
+      "request_body": {
+        "session": "0xabababababababababababababababababababababababababababababababab"
+      },
+      "status": 400,
+      "response_body": {
+        "error": "unknown_or_forged_session"
+      },
+      "thread": null
+    }
+  ]
+}

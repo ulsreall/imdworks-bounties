@@ -1,0 +1,45 @@
+{
+ "id": "bc53559e-b4cc-4288-b9fe-dac309053a98",
+ "number": 10,
+ "owner": "0x5f1f9bfad4ae9580519710f5ae1747ee4cbc1e97",
+ "title": "Design canonical brief hashing across two languages",
+ "description": "Specify and implement deterministic serialization for a bounty brief containing title, description, criteria, reward, token and deadline. Implement independently in JavaScript and Python. Analyze line endings, Unicode normalization, key order, missing fields and numeric representation without changing already committed content.\n\nREWARD TERMS\nOne winner receives 1 USDG. Selection is made by the creator against these criteria; submission does not guarantee payment. Submit an original, reproducible result before the deadline. No paid services are required. Work only on local fixtures or public read-only data. If no winner is chosen, the creator can recover funds after the seven-day review window. Awarded funds belong to the winner.",
+ "criteria": "Provide at least 50 cross-language vectors, explicit rejection rules and matching keccak256 hashes for all accepted vectors. Include composed/decomposed Unicode, CRLF/LF, empty values and hostile nested input. A one-command test must reproduce the vectors. Explain how a client distinguishes byte equality from semantic similarity and how immutable historical briefs remain verifiable.",
+ "category": "Development",
+ "reward": "1",
+ "currency": "USDG",
+ "deadline": "2026-10-14T09:54:30.000Z",
+ "status": "open",
+ "created_at": "2026-10-07T10:13:30.913Z",
+ "updated_at": "2026-10-07T10:13:30.913Z",
+ "winner_id": null,
+ "settlement_tx": null,
+ "settlement_chain": null,
+ "repo_url": "https://robin.etherscan.io/address/0xd93aEd6f9F89699969B4967364D464fe7856EFaE#code",
+ "escrow_contract": "0xd93aEd6f9F89699969B4967364D464fe7856EFaE",
+ "escrow_id": "5",
+ "funding_tx": "0xaf30b3a9c57c053cc6ff6a0c080fa53b020655cef43959a41cf430e0cae4f907",
+ "funding_block": 82391443,
+ "brief_hash": "0x6e530ae15503bcff159620606119ea3ee36392023761ac5f246a3dde57e0d62d",
+ "owner_name": "IMD Works",
+ "submission_count": 0,
+ "claim_count": 1,
+ "events": [
+  {
+   "id": 14,
+   "bounty_id": "bc53559e-b4cc-4288-b9fe-dac309053a98",
+   "wallet": "0xf0953d6dec295e30a269b245b7e2ad5222490e15",
+   "kind": "claimed",
+   "text": "A contributor started working",
+   "created_at": "2026-10-08T07:48:49.812Z"
+  },
+  {
+   "id": 5,
+   "bounty_id": "bc53559e-b4cc-4288-b9fe-dac309053a98",
+   "wallet": "0x5f1f9bfad4ae9580519710f5ae1747ee4cbc1e97",
+   "kind": "funded",
+   "text": "Bounty funded with 1 USDG in verified on-chain escrow",
+   "created_at": "2026-10-07T10:13:30.913Z"
+  }
+ ]
+}

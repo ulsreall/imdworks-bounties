@@ -1,0 +1,45 @@
+{
+ "id": "863d4bb0-630a-42b3-9ce3-fdf329ddc339",
+ "number": 14,
+ "owner": "0x5f1f9bfad4ae9580519710f5ae1747ee4cbc1e97",
+ "title": "Produce a reproducible escrow bytecode provenance report",
+ "description": "Rebuild the published IMDWorksEscrow source using Solidity 0.8.29, OpenZeppelin 5.4.0, optimizer 200 runs and Paris EVM. Compare compiler artifacts with the deployed runtime while accounting explicitly for immutable token-address references and metadata. Use only public chain data and published source.\n\nREWARD TERMS\nOne winner receives 1 USDG. Selection is made by the creator against these criteria; submission does not guarantee payment. Submit an original, reproducible result before the deadline. No paid services are required. Work only on local fixtures or public read-only data. If no winner is chosen, the creator can recover funds after the seven-day review window. Awarded funds belong to the winner.",
+ "criteria": "Provide a script that fetches runtime bytecode, rebuilds the contract and produces a byte-level comparison report. Explain every immutable substitution and compiler setting. Include dependency integrity hashes and demonstrate that changing a source statement or token address causes the verifier to fail. Deliver a pinned repository and machine-readable evidence; a screenshot of an explorer badge is insufficient.",
+ "category": "Research",
+ "reward": "1",
+ "currency": "USDG",
+ "deadline": "2026-10-14T09:54:30.000Z",
+ "status": "open",
+ "created_at": "2026-10-07T10:13:30.913Z",
+ "updated_at": "2026-10-07T10:13:30.913Z",
+ "winner_id": null,
+ "settlement_tx": null,
+ "settlement_chain": null,
+ "repo_url": "https://robin.etherscan.io/address/0xd93aEd6f9F89699969B4967364D464fe7856EFaE#code",
+ "escrow_contract": "0xd93aEd6f9F89699969B4967364D464fe7856EFaE",
+ "escrow_id": "9",
+ "funding_tx": "0x1a035092714964dd998cc42ec1862302938cfe263ef00eeff378505213045476",
+ "funding_block": 82391805,
+ "brief_hash": "0x657542c9ee3ddfa824842fc24b1da7e4c8fbfe1fe31b559df91fbb92360ca68e",
+ "owner_name": "IMD Works",
+ "submission_count": 0,
+ "claim_count": 1,
+ "events": [
+  {
+   "id": 15,
+   "bounty_id": "863d4bb0-630a-42b3-9ce3-fdf329ddc339",
+   "wallet": "0xf0953d6dec295e30a269b245b7e2ad5222490e15",
+   "kind": "claimed",
+   "text": "A contributor started working",
+   "created_at": "2026-10-08T07:48:50.300Z"
+  },
+  {
+   "id": 9,
+   "bounty_id": "863d4bb0-630a-42b3-9ce3-fdf329ddc339",
+   "wallet": "0x5f1f9bfad4ae9580519710f5ae1747ee4cbc1e97",
+   "kind": "funded",
+   "text": "Bounty funded with 1 USDG in verified on-chain escrow",
+   "created_at": "2026-10-07T10:13:30.913Z"
+  }
+ ]
+}

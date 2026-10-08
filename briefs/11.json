@@ -1,0 +1,37 @@
+{
+ "id": "aebb7dd8-20a6-48bc-a813-524eac05cc49",
+ "number": 11,
+ "owner": "0x5f1f9bfad4ae9580519710f5ae1747ee4cbc1e97",
+ "title": "Model issuer restrictions without losing escrow credits",
+ "description": "Build local ERC-20 mocks representing token pause, sender/recipient restrictions, false return values, no return values and transfer taxes. Exercise deposit, award, refund and withdrawal against the unmodified IMDWorksEscrow. Do not impersonate or interact with any live token administrator.\n\nREWARD TERMS\nOne winner receives 1 USDG. Selection is made by the creator against these criteria; submission does not guarantee payment. Submit an original, reproducible result before the deadline. No paid services are required. Work only on local fixtures or public read-only data. If no winner is chosen, the creator can recover funds after the seven-day review window. Awarded funds belong to the winner.",
+ "criteria": "Deliver a behavior matrix backed by executable tests for each token mode. Show that failed withdrawals preserve claimable balances and that paused transfers do not prevent award/refund bookkeeping. Demonstrate which recovery paths require issuer action. Include one token callback reentrancy attempt and a balance-conservation assertion. Clearly separate supported token behavior from unsupported behavior.",
+ "category": "Smart contracts",
+ "reward": "1",
+ "currency": "USDG",
+ "deadline": "2026-10-14T09:54:30.000Z",
+ "status": "open",
+ "created_at": "2026-10-07T10:13:30.913Z",
+ "updated_at": "2026-10-07T10:13:30.913Z",
+ "winner_id": null,
+ "settlement_tx": null,
+ "settlement_chain": null,
+ "repo_url": "https://robin.etherscan.io/address/0xd93aEd6f9F89699969B4967364D464fe7856EFaE#code",
+ "escrow_contract": "0xd93aEd6f9F89699969B4967364D464fe7856EFaE",
+ "escrow_id": "6",
+ "funding_tx": "0xb8ce43553f1b087f37cb57310ac8c72e0bd46f1c706831c86e7f825d0ccedf05",
+ "funding_block": 82391532,
+ "brief_hash": "0xf5c8f6a24b9bec8049614b33dd5f72faf40d363acd8cdda432db4ac7ad15556a",
+ "owner_name": "IMD Works",
+ "submission_count": 0,
+ "claim_count": 0,
+ "events": [
+  {
+   "id": 6,
+   "bounty_id": "aebb7dd8-20a6-48bc-a813-524eac05cc49",
+   "wallet": "0x5f1f9bfad4ae9580519710f5ae1747ee4cbc1e97",
+   "kind": "funded",
+   "text": "Bounty funded with 1 USDG in verified on-chain escrow",
+   "created_at": "2026-10-07T10:13:30.913Z"
+  }
+ ]
+}

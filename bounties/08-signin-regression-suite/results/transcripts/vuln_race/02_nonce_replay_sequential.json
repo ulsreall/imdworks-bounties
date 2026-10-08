@@ -1,0 +1,64 @@
+{
+  "case_id": "02_nonce_replay_sequential",
+  "variant": "vuln_race",
+  "exchanges": [
+    {
+      "ts": 1791451898.787719,
+      "method": "POST",
+      "path": "/nonce",
+      "request_body": {
+        "address": "0x62BD10C2fA700B336980e228091A74f47B3C6269",
+        "origin": "https://app.imdworks.fun",
+        "chain_id": "31337"
+      },
+      "status": 200,
+      "response_body": {
+        "nonce": "0x972dcfa8a01141d60bbbbf3af8e99a42",
+        "address": "0x62bd10c2fa700b336980e228091a74f47b3c6269",
+        "origin": "https://app.imdworks.fun",
+        "chain_id": "31337",
+        "issued_at": 1791451898.7874458,
+        "expires_at": 1791452018.7874458,
+        "ttl": 120.0,
+        "message_template": "IMD Works sign-in\nnonce: 0x972dcfa8a01141d60bbbbf3af8e99a42\norigin: https://app.imdworks.fun\nchain_id: 31337"
+      },
+      "thread": null
+    },
+    {
+      "ts": 1791451899.8229222,
+      "method": "POST",
+      "path": "/verify",
+      "request_body": {
+        "address": "0x62BD10C2fA700B336980e228091A74f47B3C6269",
+        "message": "IMD Works sign-in\nnonce: 0x972dcfa8a01141d60bbbbf3af8e99a42\norigin: https://app.imdworks.fun\nchain_id: 31337",
+        "signature": "0x1b346d0787da3972e04f4c1ca826e56f4ba3361192e00d574be86793544f9dd15c98f1a23a29bcf93a1138529a9febdbbd8eda2cfd9ee009647e82f058e5a47a1b",
+        "origin": "https://app.imdworks.fun",
+        "chain_id": "31337"
+      },
+      "status": 200,
+      "response_body": {
+        "session": "0x58ebcdd6066c19a796e8c2f9badc4295edf332436dfae28223427d67d2c536b7",
+        "address": "0x62bd10c2fa700b336980e228091a74f47b3c6269",
+        "issued_at": 1791451899.8220463
+      },
+      "thread": null
+    },
+    {
+      "ts": 1791451899.8412097,
+      "method": "POST",
+      "path": "/verify",
+      "request_body": {
+        "address": "0x62BD10C2fA700B336980e228091A74f47B3C6269",
+        "message": "IMD Works sign-in\nnonce: 0x972dcfa8a01141d60bbbbf3af8e99a42\norigin: https://app.imdworks.fun\nchain_id: 31337",
+        "signature": "0x1b346d0787da3972e04f4c1ca826e56f4ba3361192e00d574be86793544f9dd15c98f1a23a29bcf93a1138529a9febdbbd8eda2cfd9ee009647e82f058e5a47a1b",
+        "origin": "https://app.imdworks.fun",
+        "chain_id": "31337"
+      },
+      "status": 400,
+      "response_body": {
+        "error": "nonce_already_used"
+      },
+      "thread": null
+    }
+  ]
+}

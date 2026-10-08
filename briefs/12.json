@@ -1,0 +1,45 @@
+{
+ "id": "24146710-62fd-4705-8c2a-f8eb8fe3f79c",
+ "number": 12,
+ "owner": "0x5f1f9bfad4ae9580519710f5ae1747ee4cbc1e97",
+ "title": "Build an agent prompt-injection boundary benchmark",
+ "description": "Create an offline benchmark for an agent that reads untrusted bounty text. Design a policy boundary between task content and tool authority using fake tools and synthetic secrets. The benchmark must not contact external sites or consume a real model API key.\n\nREWARD TERMS\nOne winner receives 1 USDG. Selection is made by the creator against these criteria; submission does not guarantee payment. Submit an original, reproducible result before the deadline. No paid services are required. Work only on local fixtures or public read-only data. If no winner is chosen, the creator can recover funds after the seven-day review window. Awarded funds belong to the winner.",
+ "criteria": "Include at least 30 attack fixtures across tool-output injection, encoded instructions, forged system messages and credential-exfiltration requests, plus 10 benign controls. Produce deterministic pass/fail results, fail-closed tool authorization and a machine-readable report. Show a naive baseline fails and the defended runner blocks unauthorized calls without rejecting every benign task. Explain limits of a deterministic benchmark.",
+ "category": "Security",
+ "reward": "1",
+ "currency": "USDG",
+ "deadline": "2026-10-14T09:54:30.000Z",
+ "status": "open",
+ "created_at": "2026-10-07T10:13:30.913Z",
+ "updated_at": "2026-10-07T10:13:30.913Z",
+ "winner_id": null,
+ "settlement_tx": null,
+ "settlement_chain": null,
+ "repo_url": "https://robin.etherscan.io/address/0xd93aEd6f9F89699969B4967364D464fe7856EFaE#code",
+ "escrow_contract": "0xd93aEd6f9F89699969B4967364D464fe7856EFaE",
+ "escrow_id": "7",
+ "funding_tx": "0x041d31ea3c295ae476e82360a4243a30dd3cf1842cef2e6f1c5b98657261b1d5",
+ "funding_block": 82391627,
+ "brief_hash": "0xa1173d212c7ba6bf0ab3d8a8e64825f0daa2aadeadffffa101296d3e7bba7ef5",
+ "owner_name": "IMD Works",
+ "submission_count": 0,
+ "claim_count": 1,
+ "events": [
+  {
+   "id": 29,
+   "bounty_id": "24146710-62fd-4705-8c2a-f8eb8fe3f79c",
+   "wallet": "0x1ddbf147149edf16ec46a1a9e211bfa505567811",
+   "kind": "claimed",
+   "text": "A contributor started working",
+   "created_at": "2026-10-08T08:03:23.625Z"
+  },
+  {
+   "id": 7,
+   "bounty_id": "24146710-62fd-4705-8c2a-f8eb8fe3f79c",
+   "wallet": "0x5f1f9bfad4ae9580519710f5ae1747ee4cbc1e97",
+   "kind": "funded",
+   "text": "Bounty funded with 1 USDG in verified on-chain escrow",
+   "created_at": "2026-10-07T10:13:30.913Z"
+  }
+ ]
+}

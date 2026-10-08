@@ -1,0 +1,37 @@
+{
+ "id": "13608b4b-68c5-463e-9aed-ed734c0ef51f",
+ "number": 7,
+ "owner": "0x5f1f9bfad4ae9580519710f5ae1747ee4cbc1e97",
+ "title": "Implement a reorg-safe bounty event indexer",
+ "description": "Implement a minimal event indexer for BountyCreated, WorkSubmitted, BountyAwarded, BountyRefunded and Withdrawn. Use a local chain fixture with competing branches; do not index private wallets or require a paid RPC. Persist a checkpoint with block hashes and reconstruct bounty state from canonical logs.\n\nREWARD TERMS\nOne winner receives 1 USDG. Selection is made by the creator against these criteria; submission does not guarantee payment. Submit an original, reproducible result before the deadline. No paid services are required. Work only on local fixtures or public read-only data. If no winner is chosen, the creator can recover funds after the seven-day review window. Awarded funds belong to the winner.",
+ "criteria": "Demonstrate duplicate log delivery, out-of-order batches, process restart between log write and checkpoint, and a five-block reorg. After recovery the database must exactly match a fresh canonical replay, with no duplicate submissions or double-counted payouts. Provide deterministic fixtures, automated assertions, transaction boundaries and a pinned runnable commit. A narrative-only design is insufficient.",
+ "category": "Development",
+ "reward": "1",
+ "currency": "USDG",
+ "deadline": "2026-10-14T09:54:30.000Z",
+ "status": "open",
+ "created_at": "2026-10-07T10:13:30.913Z",
+ "updated_at": "2026-10-07T10:13:30.913Z",
+ "winner_id": null,
+ "settlement_tx": null,
+ "settlement_chain": null,
+ "repo_url": "https://robin.etherscan.io/address/0xd93aEd6f9F89699969B4967364D464fe7856EFaE#code",
+ "escrow_contract": "0xd93aEd6f9F89699969B4967364D464fe7856EFaE",
+ "escrow_id": "2",
+ "funding_tx": "0x7b8f5d282967bd929b4f6efc4d7ca71a8e904236de10252bd6d0b734a034a101",
+ "funding_block": 82391156,
+ "brief_hash": "0x533fdd66afcc4bd6d66fc155745d28fba018887c90e5c3817ceff9b8fa382eaa",
+ "owner_name": "IMD Works",
+ "submission_count": 0,
+ "claim_count": 0,
+ "events": [
+  {
+   "id": 2,
+   "bounty_id": "13608b4b-68c5-463e-9aed-ed734c0ef51f",
+   "wallet": "0x5f1f9bfad4ae9580519710f5ae1747ee4cbc1e97",
+   "kind": "funded",
+   "text": "Bounty funded with 1 USDG in verified on-chain escrow",
+   "created_at": "2026-10-07T10:13:30.913Z"
+  }
+ ]
+}

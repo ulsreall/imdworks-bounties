@@ -1,0 +1,47 @@
+{
+  "case_id": "04_origin_substituted_consistent",
+  "variant": "vuln_race",
+  "exchanges": [
+    {
+      "ts": 1791451899.8794982,
+      "method": "POST",
+      "path": "/nonce",
+      "request_body": {
+        "address": "0x62BD10C2fA700B336980e228091A74f47B3C6269",
+        "origin": "https://app.imdworks.fun",
+        "chain_id": "31337"
+      },
+      "status": 200,
+      "response_body": {
+        "nonce": "0x70ad8e7ec5d74bf37936d5266e208bf1",
+        "address": "0x62bd10c2fa700b336980e228091a74f47b3c6269",
+        "origin": "https://app.imdworks.fun",
+        "chain_id": "31337",
+        "issued_at": 1791451899.8789947,
+        "expires_at": 1791452019.8789947,
+        "ttl": 120.0,
+        "message_template": "IMD Works sign-in\nnonce: 0x70ad8e7ec5d74bf37936d5266e208bf1\norigin: https://app.imdworks.fun\nchain_id: 31337"
+      },
+      "thread": null
+    },
+    {
+      "ts": 1791451899.8978302,
+      "method": "POST",
+      "path": "/verify",
+      "request_body": {
+        "address": "0x62BD10C2fA700B336980e228091A74f47B3C6269",
+        "message": "IMD Works sign-in\nnonce: 0x70ad8e7ec5d74bf37936d5266e208bf1\norigin: https://evil.example.net\nchain_id: 31337",
+        "signature": "0xf58b15baf96a0cd29b19591ced722cb545620d7f81b28741223068795dd5979a49b893e62284d1527b5d5d3d683d96989ed91f51a138a0605b17f05d60b7435a1b",
+        "origin": "https://evil.example.net",
+        "chain_id": "31337"
+      },
+      "status": 400,
+      "response_body": {
+        "error": "origin_mismatch",
+        "issued_origin": "https://app.imdworks.fun",
+        "claimed_origin": "https://evil.example.net"
+      },
+      "thread": null
+    }
+  ]
+}

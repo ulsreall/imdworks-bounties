@@ -7,7 +7,7 @@
     "reward": "1 USDG",
     "title": "Implement a reorg-safe bounty event indexer"
   },
-  "commit": "773da262b7b80286b1bf5b690cfefe5a699618e6",
+  "commit": "6b143bce77de51aa9fab34a32eb22c4e3816f0c1",
   "fixture": {
     "branch_A_hashes": {
       "10": "0xb72df40066223b08692a6ac99595a391484ed2cb8c41ce313b13447064e53f73",

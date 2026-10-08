@@ -1,0 +1,215 @@
+{
+  "artifacts": {
+    "evidence": "results/evidence.json",
+    "report": "results/report.json",
+    "traces": "results/traces.jsonl"
+  },
+  "assertions": [
+    {
+      "actual": "200 requests across 10 wallets",
+      "description": "Concurrency volume",
+      "expected": ">=100 concurrent mock requests across >=10 wallets",
+      "id": "A1",
+      "pass": true
+    },
+    {
+      "actual": "0 duplicate pair(s); b-conc active rows = 10",
+      "description": "No duplicate logical submissions",
+      "expected": "0 (bounty,wallet) pairs with >1 active row; b-conc has exactly 10 active rows",
+      "id": "A2",
+      "pass": true
+    },
+    {
+      "actual": "{\"loss_detected\": true, \"committed_after_loss\": 1, \"retry_status\": 200, \"final_rows\": 1, \"same_id\": true}",
+      "description": "Create after response loss is idempotent",
+      "expected": "loss observed, commit visible, retry returns SAME submission, exactly 1 row",
+      "id": "A3",
+      "pass": true
+    },
+    {
+      "actual": "{\"starts\": 2, \"rows_before\": 5, \"rows_after\": 5, \"persisted\": true, \"replay_status\": 200, \"replay_same_id\": true}",
+      "description": "Process restart mid-run recovers cleanly",
+      "expected": "service restarted (>=2 starts), rows persisted, replay returns same id",
+      "id": "A4",
+      "pass": true
+    },
+    {
+      "actual": "{\"old_version_status\": 409, \"old_version_reason\": \"stale_version\", \"gap_status\": 409, \"final_version\": 2, \"row_unchanged_by_stale\": true}",
+      "description": "Stale versions rejected deterministically",
+      "expected": "old version -> 409 stale_version; version gap -> 409; row unchanged",
+      "id": "A5",
+      "pass": true
+    },
+    {
+      "actual": "{\"review_status\": 200, \"update_status\": 409, \"update_reason\": \"immutable_reviewed\", \"rereview_status\": 409, \"unchanged\": true}",
+      "description": "Reviewed submissions are immutable",
+      "expected": "update after review -> 409 immutable_reviewed; row fingerprint unchanged",
+      "id": "A6",
+      "pass": true
+    },
+    {
+      "actual": "naive duplicate wallets = 10; reviewed overwritten = True",
+      "description": "Naive implementation demonstrably fails",
+      "expected": "duplicate active submissions OR overwritten reviewed submission",
+      "id": "A7",
+      "pass": true
+    },
+    {
+      "actual": "integrity_error=True (ux_one_active_submission (partial UNIQUE, WHERE state='active'))",
+      "description": "Schema constraint enforced by SQLite",
+      "expected": "raw duplicate active INSERT raises IntegrityError",
+      "id": "A8",
+      "pass": true
+    },
+    {
+      "actual": "first=200 second=409 reason=idempotency_key_reuse",
+      "description": "Idempotency-key reuse (different body) rejected",
+      "expected": "first create 200; same key/different body -> 409 idempotency_key_reuse",
+      "id": "A9",
+      "pass": true
+    },
+    {
+      "actual": "{\"loss_detected\": true, \"version_after_loss\": 2, \"retry_status\": 200, \"final_version\": 2, \"applied_once\": true}",
+      "description": "Update after response loss applied exactly once",
+      "expected": "loss observed, version advanced once, retry replays same result",
+      "id": "A10",
+      "pass": true
+    },
+    {
+      "actual": "wallets with divergent ids = 0 (unanswered/lost responses = 0)",
+      "description": "Retry storm: one logical submission per wallet",
+      "expected": "every wallet's 10 same-key retries resolve to one submission id",
+      "id": "A11",
+      "pass": true
+    }
+  ],
+  "bounty": "imdworks.fun bounty #13 -- idempotent submissions under concurrency",
+  "environment": {
+    "platform": "Linux-7.0.0-30-generic-x86_64-with-glibc2.43",
+    "python": "3.11.16",
+    "sqlite": "3.53.1"
+  },
+  "generated_at": "2026-10-08T09:37:07Z",
+  "metrics": {
+    "concurrent_requests": 200,
+    "concurrent_wallets": 10,
+    "mock_requests": 218,
+    "mock_service_starts": 2,
+    "total_traces": 321
+  },
+  "naive_evidence": {
+    "duplicate_wallets": 10,
+    "duplicates_per_wallet": {
+      "w00": 8,
+      "w01": 10,
+      "w02": 10,
+      "w03": 10,
+      "w04": 10,
+      "w05": 10,
+      "w06": 10,
+      "w07": 6,
+      "w08": 10,
+      "w09": 8
+    },
+    "reviewed_overwritten": true,
+    "reviewed_update_status": 200,
+    "violations_observed": [
+      "duplicate_active_submissions",
+      "overwritten_reviewed_submission"
+    ]
+  },
+  "ok": true,
+  "replay_command": "./run.sh",
+  "sample_traces": [
+    {
+      "idempotency_key": "b-conc:create:w01",
+      "latency_ms": 7.95,
+      "loss": false,
+      "op": "create",
+      "phase": "retry_storm",
+      "reason": "created",
+      "service": "mock",
+      "status": 200,
+      "submission_id": 3,
+      "ts": 1791452226.0081482,
+      "version": 1,
+      "wallet": "w01"
+    },
+    {
+      "idempotency_key": "b-conc:create:w02",
+      "latency_ms": 10.23,
+      "loss": false,
+      "op": "create",
+      "phase": "retry_storm",
+      "reason": "created",
+      "service": "mock",
+      "status": 200,
+      "submission_id": 2,
+      "ts": 1791452226.0085504,
+      "version": 1,
+      "wallet": "w02"
+    },
+    {
+      "idempotency_key": "b-conc:create:w00",
+      "latency_ms": 13.85,
+      "loss": false,
+      "op": "create",
+      "phase": "retry_storm",
+      "reason": "created",
+      "service": "mock",
+      "status": 200,
+      "submission_id": 1,
+      "ts": 1791452226.0092533,
+      "version": 1,
+      "wallet": "w00"
+    },
+    {
+      "idempotency_key": "b-conc:create:w03",
+      "latency_ms": 11.17,
+      "loss": false,
+      "op": "create",
+      "phase": "retry_storm",
+      "reason": "created",
+      "service": "mock",
+      "status": 200,
+      "submission_id": 4,
+      "ts": 1791452226.0121295,
+      "version": 1,
+      "wallet": "w03"
+    },
+    {
+      "idempotency_key": "b-conc:create:w00",
+      "latency_ms": 14.12,
+      "loss": false,
+      "op": "create",
+      "phase": "retry_storm",
+      "reason": "created",
+      "service": "mock",
+      "status": 200,
+      "submission_id": 1,
+      "ts": 1791452226.013313,
+      "version": 1,
+      "wallet": "w00"
+    },
+    {
+      "idempotency_key": "b-conc:create:w04",
+      "latency_ms": 11.29,
+      "loss": false,
+      "op": "create",
+      "phase": "retry_storm",
+      "reason": "created",
+      "service": "mock",
+      "status": 200,
+      "submission_id": 5,
+      "ts": 1791452226.0136786,
+      "version": 1,
+      "wallet": "w04"
+    }
+  ],
+  "summary": {
+    "failed": 0,
+    "ok": true,
+    "passed": 11,
+    "total": 11
+  }
+}

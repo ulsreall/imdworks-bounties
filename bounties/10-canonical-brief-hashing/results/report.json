@@ -1,0 +1,97 @@
+{
+  "bounty": 10,
+  "title": "Implement canonical brief hashing independently in JavaScript and Python",
+  "spec": "CANONICAL BRIEF FORM v1",
+  "vectors": {
+    "total": 86,
+    "valid": 70,
+    "invalid": 16
+  },
+  "problems": [],
+  "cross_language": {
+    "vectors_compared": 70,
+    "agreements": 70,
+    "both_reject_same_invalid_vectors": true,
+    "keccak_self_test_ok": true
+  },
+  "naive_traps": {
+    "python_naive_differs": {
+      "ensure_ascii_default": {
+        "differs": 45,
+        "same": 25
+      },
+      "nfd": {
+        "differs": 34,
+        "same": 36
+      },
+      "crlf": {
+        "differs": 10,
+        "same": 60
+      },
+      "trailing_newline": {
+        "differs": 70,
+        "same": 0
+      },
+      "float_reward": {
+        "differs": 70,
+        "same": 0
+      }
+    },
+    "js_naive_differs_count": {
+      "nfd": 34,
+      "crlf": 10,
+      "trailing_newline": 70,
+      "float_reward": 70,
+      "escape_non_ascii": 45
+    },
+    "utf16_vs_codepoint_key_order": {
+      "vector": "meta-astral-vs-bmp-keys",
+      "utf16_order": [
+        "a",
+        "criteria",
+        "currency",
+        "deadline",
+        "description",
+        "meta",
+        "repo_url",
+        "reward",
+        "title",
+        "😀z",
+        "～x"
+      ],
+      "codepoint_order": [
+        "a",
+        "criteria",
+        "currency",
+        "deadline",
+        "description",
+        "meta",
+        "repo_url",
+        "reward",
+        "title",
+        "～x",
+        "😀z"
+      ],
+      "differs": true
+    }
+  },
+  "on_chain_checks": {
+    "funding_tx": "0x16f2066f922563055fb0d9383d6dc2e45499d9a7accc6503f77f6713af97a79a",
+    "block": 82391068,
+    "bounty_created_topic0_on_chain": "0xf7003adc26f3112c9d44e465db879340ac47820a276ebe52f6f1de45c9a0a95d",
+    "bounty_created_topic0_ours": "0xf7003adc26f3112c9d44e465db879340ac47820a276ebe52f6f1de45c9a0a95d",
+    "bounty_created_topic_match": true,
+    "erc20_transfer_topic0_on_chain": "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+    "erc20_transfer_topic0_ours": "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+    "erc20_transfer_topic_match": true,
+    "escrow_stored_brief_hash": "0xd1ede8500a8b54d2ce3175bcf064a57e0a12574bfd69b2f6d7e57e017417be4a",
+    "api_reported_brief_hash": "0xd1ede8500a8b54d2ce3175bcf064a57e0a12574bfd69b2f6d7e57e017417be4a",
+    "api_matches_chain": true
+  },
+  "verification_gap": {
+    "finding": "the brief preimage is not published",
+    "detail": "the platform commits to keccak256 of a brief document on chain and only publishes the digest; no endpoint returns the hashed document, so a third party cannot recompute the commitment (checked: /api/bounties/{id}/brief, /brief/{n}.json, /briefs/{n}.json, /b/{n}.json, and 8 field-subset serialisations of the API payload against the on-chain digest - no match)",
+    "mitigation_from_this_deliverable": "publish the brief in CANONICAL BRIEF FORM v1 and let anyone re-derive the digest with py/canonical.py or js/canonical.mjs"
+  },
+  "verdict": "PASS"
+}

@@ -1,0 +1,75 @@
+{
+  "case_id": "26_session_token_reuse",
+  "variant": "hardened",
+  "exchanges": [
+    {
+      "ts": 1791451884.7059429,
+      "method": "POST",
+      "path": "/nonce",
+      "request_body": {
+        "address": "0x62BD10C2fA700B336980e228091A74f47B3C6269",
+        "origin": "https://app.imdworks.fun",
+        "chain_id": "31337"
+      },
+      "status": 200,
+      "response_body": {
+        "nonce": "0xfa3f2847dff670e4fad1b4af7a596357",
+        "address": "0x62bd10c2fa700b336980e228091a74f47b3c6269",
+        "origin": "https://app.imdworks.fun",
+        "chain_id": "31337",
+        "issued_at": 1791451884.7056468,
+        "expires_at": 1791452004.7056468,
+        "ttl": 120.0,
+        "message_template": "IMD Works sign-in\nnonce: 0xfa3f2847dff670e4fad1b4af7a596357\norigin: https://app.imdworks.fun\nchain_id: 31337"
+      },
+      "thread": null
+    },
+    {
+      "ts": 1791451884.7361968,
+      "method": "POST",
+      "path": "/verify",
+      "request_body": {
+        "address": "0x62BD10C2fA700B336980e228091A74f47B3C6269",
+        "message": "IMD Works sign-in\nnonce: 0xfa3f2847dff670e4fad1b4af7a596357\norigin: https://app.imdworks.fun\nchain_id: 31337",
+        "signature": "0x5765ef9917bfbf7d9cf242fcbfd00bf9bd4c7aedda0cd0fb45d3bb4cf85068b039ba9bbae08f285202d7cd059a4fb12754324d3bf7763614a862c5a6473f4ef51c",
+        "origin": "https://app.imdworks.fun",
+        "chain_id": "31337"
+      },
+      "status": 200,
+      "response_body": {
+        "session": "0x4c9d5d97772c59bf5e375a878685cfe56df33ea6f411f50cd28420856319b602",
+        "address": "0x62bd10c2fa700b336980e228091a74f47b3c6269",
+        "issued_at": 1791451884.7357194
+      },
+      "thread": null
+    },
+    {
+      "ts": 1791451884.7371533,
+      "method": "POST",
+      "path": "/session",
+      "request_body": {
+        "session": "0x4c9d5d97772c59bf5e375a878685cfe56df33ea6f411f50cd28420856319b602"
+      },
+      "status": 200,
+      "response_body": {
+        "valid": true,
+        "used_once": true,
+        "address": "0x62bd10c2fa700b336980e228091a74f47b3c6269"
+      },
+      "thread": null
+    },
+    {
+      "ts": 1791451884.7380257,
+      "method": "POST",
+      "path": "/session",
+      "request_body": {
+        "session": "0x4c9d5d97772c59bf5e375a878685cfe56df33ea6f411f50cd28420856319b602"
+      },
+      "status": 400,
+      "response_body": {
+        "error": "session_already_used"
+      },
+      "thread": null
+    }
+  ]
+}

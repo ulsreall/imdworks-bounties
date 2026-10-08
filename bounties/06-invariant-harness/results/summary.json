@@ -1,0 +1,85 @@
+{
+  "bounty": 6,
+  "title": "Build a stateful escrow accounting invariant harness",
+  "toolchain": {
+    "forge": [
+      "forge:   forge Version: 1.8.3",
+      "anvil:   anvil Version: 1.8.3",
+      "solc:    forge Version: 1.8.3"
+    ]
+  },
+  "config": {
+    "runs": 1000,
+    "depth": 100,
+    "fail_on_revert": false,
+    "sequences_total": 2000,
+    "calls_per_sequence": 100
+  },
+  "seeds": [
+    "0x0000000000000000000000000000000000000000000000000000000000000a01",
+    "0x0000000000000000000000000000000000000000000000000000000000000b02"
+  ],
+  "runs": [
+    {
+      "seed": "0x0000000000000000000000000000000000000000000000000000000000000a01",
+      "exit_code": 0,
+      "invariant_run": "invariants (runs: 1000, calls: 100000, reverts: 0)",
+      "passed": true,
+      "log": "results/real-0a01.log",
+      "failing": []
+    },
+    {
+      "seed": "0x0000000000000000000000000000000000000000000000000000000000000b02",
+      "exit_code": 0,
+      "invariant_run": "invariants (runs: 1000, calls: 100000, reverts: 0)",
+      "passed": true,
+      "log": "results/real-0b02.log",
+      "failing": []
+    }
+  ],
+  "mutation": {
+    "file": "broken/BrokenEscrow.sol",
+    "change": "award() no longer sets status = Awarded (bounty can be awarded and paid repeatedly)",
+    "exit_code": 1,
+    "detected": true,
+    "detected_by": [
+      [
+        "liabilities != model: 494000000 != 594000000",
+        "invariant_liabilitiesEqualModel"
+      ],
+      [
+        "award() succeeded on a settled bounty: 1 != 0",
+        "invariant_noUnexpectedSuccesses"
+      ],
+      [
+        "liabilities != model: 494000000 != 594000000",
+        "invariant_liabilitiesEqualModel"
+      ],
+      [
+        "award() succeeded on a settled bounty: 1 != 0",
+        "invariant_noUnexpectedSuccesses"
+      ],
+      [
+        "liabilities != model: 494000000 != 594000000",
+        "invariant_liabilitiesEqualModel"
+      ],
+      [
+        "award() succeeded on a settled bounty: 1 != 0",
+        "invariant_noUnexpectedSuccesses"
+      ],
+      [
+        "liabilities != model: 494000000 != 594000000",
+        "invariant_liabilitiesEqualModel"
+      ],
+      [
+        "award() succeeded on a settled bounty: 1 != 0",
+        "invariant_noUnexpectedSuccesses"
+      ]
+    ]
+  },
+  "verdict": {
+    "real_invariants_hold": true,
+    "mutation_detected": true,
+    "overall": "PASS"
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "case_id": "02_nonce_replay_sequential",
+  "variant": "hardened",
+  "exchanges": [
+    {
+      "ts": 1791451878.5924766,
+      "method": "POST",
+      "path": "/nonce",
+      "request_body": {
+        "address": "0x62BD10C2fA700B336980e228091A74f47B3C6269",
+        "origin": "https://app.imdworks.fun",
+        "chain_id": "31337"
+      },
+      "status": 200,
+      "response_body": {
+        "nonce": "0x9a7921ac9d9bca57e0238aef9f041af6",
+        "address": "0x62bd10c2fa700b336980e228091a74f47b3c6269",
+        "origin": "https://app.imdworks.fun",
+        "chain_id": "31337",
+        "issued_at": 1791451878.591978,
+        "expires_at": 1791451998.591978,
+        "ttl": 120.0,
+        "message_template": "IMD Works sign-in\nnonce: 0x9a7921ac9d9bca57e0238aef9f041af6\norigin: https://app.imdworks.fun\nchain_id: 31337"
+      },
+      "thread": null
+    },
+    {
+      "ts": 1791451878.6323469,
+      "method": "POST",
+      "path": "/verify",
+      "request_body": {
+        "address": "0x62BD10C2fA700B336980e228091A74f47B3C6269",
+        "message": "IMD Works sign-in\nnonce: 0x9a7921ac9d9bca57e0238aef9f041af6\norigin: https://app.imdworks.fun\nchain_id: 31337",
+        "signature": "0x4657ac5b85fccaf2a6da7e10255640026ed4f0c08b2017b056b52442b7d4eb2e25b7ea7a939114664a8cbf8a16873cafc0fd423ad24c67269de35b1d80a59d921c",
+        "origin": "https://app.imdworks.fun",
+        "chain_id": "31337"
+      },
+      "status": 200,
+      "response_body": {
+        "session": "0xdb81ed6c017a664013f9f14235c3900b8c890a561f5b767a24180e06c014ea97",
+        "address": "0x62bd10c2fa700b336980e228091a74f47b3c6269",
+        "issued_at": 1791451878.6315348
+      },
+      "thread": null
+    },
+    {
+      "ts": 1791451878.6506999,
+      "method": "POST",
+      "path": "/verify",
+      "request_body": {
+        "address": "0x62BD10C2fA700B336980e228091A74f47B3C6269",
+        "message": "IMD Works sign-in\nnonce: 0x9a7921ac9d9bca57e0238aef9f041af6\norigin: https://app.imdworks.fun\nchain_id: 31337",
+        "signature": "0x4657ac5b85fccaf2a6da7e10255640026ed4f0c08b2017b056b52442b7d4eb2e25b7ea7a939114664a8cbf8a16873cafc0fd423ad24c67269de35b1d80a59d921c",
+        "origin": "https://app.imdworks.fun",
+        "chain_id": "31337"
+      },
+      "status": 400,
+      "response_body": {
+        "error": "nonce_already_used"
+      },
+      "thread": null
+    }
+  ]
+}

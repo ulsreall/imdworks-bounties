@@ -1,0 +1,1 @@
+{"mode":"paused-transfers","deposit":"blocked (TOKEN_PAUSED)","award_refund_while_restricted":"works while paused","withdraw":"blocked, credit preserved","failed_withdraw_preserves_credit":true,"recovery_requires_issuer_action":true,"class":"unsupported"}

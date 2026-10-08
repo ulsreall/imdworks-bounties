@@ -1,0 +1,75 @@
+{
+  "case_id": "26_session_token_reuse",
+  "variant": "vuln_origin_unbound",
+  "exchanges": [
+    {
+      "ts": 1791451897.5340106,
+      "method": "POST",
+      "path": "/nonce",
+      "request_body": {
+        "address": "0x62BD10C2fA700B336980e228091A74f47B3C6269",
+        "origin": "https://app.imdworks.fun",
+        "chain_id": "31337"
+      },
+      "status": 200,
+      "response_body": {
+        "nonce": "0x76a3d9d1fd89b195e0b5ca50bda45413",
+        "address": "0x62bd10c2fa700b336980e228091a74f47b3c6269",
+        "origin": "https://app.imdworks.fun",
+        "chain_id": "31337",
+        "issued_at": 1791451897.5336685,
+        "expires_at": 1791452017.5336685,
+        "ttl": 120.0,
+        "message_template": "IMD Works sign-in\nnonce: 0x76a3d9d1fd89b195e0b5ca50bda45413\norigin: https://app.imdworks.fun\nchain_id: 31337"
+      },
+      "thread": null
+    },
+    {
+      "ts": 1791451897.565202,
+      "method": "POST",
+      "path": "/verify",
+      "request_body": {
+        "address": "0x62BD10C2fA700B336980e228091A74f47B3C6269",
+        "message": "IMD Works sign-in\nnonce: 0x76a3d9d1fd89b195e0b5ca50bda45413\norigin: https://app.imdworks.fun\nchain_id: 31337",
+        "signature": "0xe60ff5b34d67ee846ac2a20625c0edd547c9a29da20ed53676bffc62a7cd222c32ed2714e76fbd47045957fb5bf1e822e70aa5586f61398996e3b9e66a68a48b1c",
+        "origin": "https://app.imdworks.fun",
+        "chain_id": "31337"
+      },
+      "status": 200,
+      "response_body": {
+        "session": "0xaa8920a72ad99370a52dc7508715401cfb790e641f64874564a04224d6c0da0d",
+        "address": "0x62bd10c2fa700b336980e228091a74f47b3c6269",
+        "issued_at": 1791451897.5647094
+      },
+      "thread": null
+    },
+    {
+      "ts": 1791451897.5661917,
+      "method": "POST",
+      "path": "/session",
+      "request_body": {
+        "session": "0xaa8920a72ad99370a52dc7508715401cfb790e641f64874564a04224d6c0da0d"
+      },
+      "status": 200,
+      "response_body": {
+        "valid": true,
+        "used_once": true,
+        "address": "0x62bd10c2fa700b336980e228091a74f47b3c6269"
+      },
+      "thread": null
+    },
+    {
+      "ts": 1791451897.56716,
+      "method": "POST",
+      "path": "/session",
+      "request_body": {
+        "session": "0xaa8920a72ad99370a52dc7508715401cfb790e641f64874564a04224d6c0da0d"
+      },
+      "status": 400,
+      "response_body": {
+        "error": "session_already_used"
+      },
+      "thread": null
+    }
+  ]
+}

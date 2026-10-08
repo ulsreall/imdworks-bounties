@@ -1,0 +1,6 @@
+{
+  "signer_a": "0x62BD10C2fA700B336980e228091A74f47B3C6269",
+  "signer_b": "0xeBfE49e8D449dA91a6E86e0e628FB5b79535c01B",
+  "signer_c": "0x2495CD4E25F6d39211Bc1D7Dd51d35225e3C5060",
+  "note": "public addresses only; private keys never persisted"
+}

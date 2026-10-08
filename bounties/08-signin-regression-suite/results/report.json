@@ -1,0 +1,1348 @@
+{
+  "suite": "imdworks-bounty-08-signin-regression-suite",
+  "bounty": "#08 nonce-bound personal_sign wallet sign-in",
+  "run_timestamp": "2026-10-08T09:31:51.013823+00:00",
+  "cast_version": "cast Version: 1.8.3",
+  "python_version": "3.11.16",
+  "network": {
+    "bind": "127.0.0.1",
+    "ports": "ephemeral (OS-assigned)"
+  },
+  "ttl_seconds": {
+    "main": 120.0,
+    "expiry_cases": 2.0
+  },
+  "wallets_public": {
+    "signer_a": "0x62BD10C2fA700B336980e228091A74f47B3C6269",
+    "signer_b": "0xeBfE49e8D449dA91a6E86e0e628FB5b79535c01B",
+    "signer_c": "0x2495CD4E25F6d39211Bc1D7Dd51d35225e3C5060"
+  },
+  "variants": {
+    "hardened": {
+      "verdict": "PASS",
+      "caught": false,
+      "caught_by": null,
+      "cases_total": 28,
+      "cases_passed": 28,
+      "cases": {
+        "01_valid_signin": {
+          "category": "baseline",
+          "title": "valid sign-in issues session",
+          "expected": "200 + session",
+          "observed": "status=200 session=yes template_echo=True",
+          "passed": true,
+          "detail": {
+            "status": 200,
+            "has_session": true,
+            "template_echo_matches": true
+          },
+          "transcript": "results/transcripts/hardened/01_valid_signin.json"
+        },
+        "02_nonce_replay_sequential": {
+          "category": "replay",
+          "title": "used nonce replayed -> reject",
+          "expected": "200 then 4xx",
+          "observed": "first=200 second=400 (nonce_already_used)",
+          "passed": true,
+          "detail": {
+            "first": 200,
+            "second": 400
+          },
+          "transcript": "results/transcripts/hardened/02_nonce_replay_sequential.json"
+        },
+        "03_wrong_signer_diff_key": {
+          "category": "signer",
+          "title": "signature from a different key -> reject",
+          "expected": "4xx",
+          "observed": "status=400 (bad_signature)",
+          "passed": true,
+          "detail": {
+            "status": 400
+          },
+          "transcript": "results/transcripts/hardened/03_wrong_signer_diff_key.json"
+        },
+        "04_origin_substituted_consistent": {
+          "category": "origin",
+          "title": "message signed for another origin -> reject",
+          "expected": "4xx",
+          "observed": "status=400 (origin_mismatch)",
+          "passed": true,
+          "detail": {
+            "status": 400
+          },
+          "transcript": "results/transcripts/hardened/04_origin_substituted_consistent.json"
+        },
+        "05_origin_claim_mismatch_message": {
+          "category": "origin",
+          "title": "origin claim inconsistent with signed message",
+          "expected": "4xx",
+          "observed": "status=400 (origin_mismatch)",
+          "passed": true,
+          "detail": {
+            "status": 400
+          },
+          "transcript": "results/transcripts/hardened/05_origin_claim_mismatch_message.json"
+        },
+        "06_chain_id_substituted_consistent": {
+          "category": "chain",
+          "title": "message signed for another chain id -> reject",
+          "expected": "4xx",
+          "observed": "status=400 (chain_id_mismatch)",
+          "passed": true,
+          "detail": {
+            "status": 400
+          },
+          "transcript": "results/transcripts/hardened/06_chain_id_substituted_consistent.json"
+        },
+        "07_chain_id_claim_mismatch_message": {
+          "category": "chain",
+          "title": "chain id claim inconsistent with signed message",
+          "expected": "4xx",
+          "observed": "status=400 (chain_id_mismatch)",
+          "passed": true,
+          "detail": {
+            "status": 400
+          },
+          "transcript": "results/transcripts/hardened/07_chain_id_claim_mismatch_message.json"
+        },
+        "08_nonce_expired": {
+          "category": "expiry",
+          "title": "nonce past lifetime -> reject",
+          "expected": "4xx",
+          "observed": "fired 2.50s after issue -> status=400 (nonce_expired)",
+          "passed": true,
+          "detail": {
+            "status": 400,
+            "age_at_fire": 2.5
+          },
+          "transcript": "results/transcripts/hardened/08_nonce_expired.json"
+        },
+        "09_expiry_exact_boundary": {
+          "category": "expiry",
+          "title": "exactly at expiry -> reject",
+          "expected": "4xx",
+          "observed": "fired at expires_at+0.05 -> status=400 (nonce_expired)",
+          "passed": true,
+          "detail": {
+            "status": 400
+          },
+          "transcript": "results/transcripts/hardened/09_expiry_exact_boundary.json"
+        },
+        "10_expiry_one_second_before": {
+          "category": "expiry",
+          "title": "one second before expiry -> accept",
+          "expected": "200 + session",
+          "observed": "fired at expires_at-1.0 -> status=200 session=yes",
+          "passed": true,
+          "detail": {
+            "status": 200
+          },
+          "transcript": "results/transcripts/hardened/10_expiry_one_second_before.json"
+        },
+        "11_sig_truncated": {
+          "category": "signature",
+          "title": "truncated signature -> reject",
+          "expected": "4xx",
+          "observed": "status=400 sig_len=112 (bad_signature)",
+          "passed": true,
+          "detail": {
+            "status": 400,
+            "sig_len": 112
+          },
+          "transcript": "results/transcripts/hardened/11_sig_truncated.json"
+        },
+        "12_sig_wrong_length": {
+          "category": "signature",
+          "title": "signature with wrong length -> reject",
+          "expected": "4xx",
+          "observed": "status=400 sig_len=134 (bad_signature)",
+          "passed": true,
+          "detail": {
+            "status": 400,
+            "sig_len": 134
+          },
+          "transcript": "results/transcripts/hardened/12_sig_wrong_length.json"
+        },
+        "13_sig_non_hex": {
+          "category": "signature",
+          "title": "non-hex signature -> reject",
+          "expected": "4xx",
+          "observed": "status=400 (bad_signature)",
+          "passed": true,
+          "detail": {
+            "status": 400
+          },
+          "transcript": "results/transcripts/hardened/13_sig_non_hex.json"
+        },
+        "14_sig_all_zero": {
+          "category": "signature",
+          "title": "all-zero signature -> reject",
+          "expected": "4xx",
+          "observed": "status=400 (bad_signature)",
+          "passed": true,
+          "detail": {
+            "status": 400
+          },
+          "transcript": "results/transcripts/hardened/14_sig_all_zero.json"
+        },
+        "15_sig_from_different_message": {
+          "category": "signature",
+          "title": "valid sig over different message -> reject",
+          "expected": "4xx",
+          "observed": "status=400 (bad_signature)",
+          "passed": true,
+          "detail": {
+            "status": 400
+          },
+          "transcript": "results/transcripts/hardened/15_sig_from_different_message.json"
+        },
+        "16_nonce_never_issued": {
+          "category": "nonce",
+          "title": "unknown nonce -> reject",
+          "expected": "4xx",
+          "observed": "status=400 (unknown_nonce)",
+          "passed": true,
+          "detail": {
+            "status": 400
+          },
+          "transcript": "results/transcripts/hardened/16_nonce_never_issued.json"
+        },
+        "17_nonce_other_address": {
+          "category": "nonce",
+          "title": "nonce issued for another address -> reject",
+          "expected": "4xx",
+          "observed": "status=400 (nonce_address_mismatch)",
+          "passed": true,
+          "detail": {
+            "status": 400
+          },
+          "transcript": "results/transcripts/hardened/17_nonce_other_address.json"
+        },
+        "18_message_reordered": {
+          "category": "message",
+          "title": "same nonce, reordered fields -> reject",
+          "expected": "4xx",
+          "observed": "status=400 (bad_signature)",
+          "passed": true,
+          "detail": {
+            "status": 400
+          },
+          "transcript": "results/transcripts/hardened/18_message_reordered.json"
+        },
+        "19_message_spliced": {
+          "category": "message",
+          "title": "nonce spliced into another template -> reject",
+          "expected": "4xx",
+          "observed": "status=400 (bad_signature)",
+          "passed": true,
+          "detail": {
+            "status": 400
+          },
+          "transcript": "results/transcripts/hardened/19_message_spliced.json"
+        },
+        "20_message_extra_trailing": {
+          "category": "message",
+          "title": "template plus trailing newline -> reject",
+          "expected": "4xx",
+          "observed": "status=400 (bad_signature)",
+          "passed": true,
+          "detail": {
+            "status": 400
+          },
+          "transcript": "results/transcripts/hardened/20_message_extra_trailing.json"
+        },
+        "21_missing_signature_field": {
+          "category": "fields",
+          "title": "missing signature field -> reject",
+          "expected": "4xx",
+          "observed": "status=400 (missing_field)",
+          "passed": true,
+          "detail": {
+            "status": 400
+          },
+          "transcript": "results/transcripts/hardened/21_missing_signature_field.json"
+        },
+        "22_missing_message_field": {
+          "category": "fields",
+          "title": "missing message field -> reject",
+          "expected": "4xx",
+          "observed": "status=400 (missing_field)",
+          "passed": true,
+          "detail": {
+            "status": 400
+          },
+          "transcript": "results/transcripts/hardened/22_missing_message_field.json"
+        },
+        "23_extra_unknown_field_ignored": {
+          "category": "fields",
+          "title": "extra unknown fields ignored -> accept",
+          "expected": "200 + session",
+          "observed": "status=200 session=yes",
+          "passed": true,
+          "detail": {
+            "status": 200
+          },
+          "transcript": "results/transcripts/hardened/23_extra_unknown_field_ignored.json"
+        },
+        "24_address_case_insensitive": {
+          "category": "address",
+          "title": "same address, different case -> accept",
+          "expected": "200 + session",
+          "observed": "status=200 claimed=0x62bd10c2fa700b336980e228091a74f47b3c6269",
+          "passed": true,
+          "detail": {
+            "status": 200
+          },
+          "transcript": "results/transcripts/hardened/24_address_case_insensitive.json"
+        },
+        "25_unicode_message_rejected": {
+          "category": "unicode",
+          "title": "validly signed unicode non-template -> reject",
+          "expected": "4xx",
+          "observed": "status=400 (bad_signature)",
+          "passed": true,
+          "detail": {
+            "status": 400
+          },
+          "transcript": "results/transcripts/hardened/25_unicode_message_rejected.json"
+        },
+        "26_session_token_reuse": {
+          "category": "session",
+          "title": "session token used twice -> reject",
+          "expected": "200, 200, 4xx",
+          "observed": "verify=200 first_use=200 second_use=400 (session_already_used)",
+          "passed": true,
+          "detail": {
+            "verify": 200,
+            "first_use": 200,
+            "second_use": 400
+          },
+          "transcript": "results/transcripts/hardened/26_session_token_reuse.json"
+        },
+        "27_session_token_forgery": {
+          "category": "session",
+          "title": "forged session token -> reject",
+          "expected": "4xx",
+          "observed": "status=400 (unknown_or_forged_session)",
+          "passed": true,
+          "detail": {
+            "status": 400
+          },
+          "transcript": "results/transcripts/hardened/27_session_token_forgery.json"
+        },
+        "28_concurrent_double_verify": {
+          "category": "concurrency",
+          "title": "two concurrent verifies: exactly one session",
+          "expected": "exactly one 200",
+          "observed": "statuses=[200, 400] successes=1 (exactly one required)",
+          "passed": true,
+          "detail": {
+            "statuses": [
+              200,
+              400
+            ],
+            "successes": 1
+          },
+          "transcript": "results/transcripts/hardened/28_concurrent_double_verify.json"
+        }
+      }
+    },
+    "vuln_nonce_reuse": {
+      "verdict": "FAIL",
+      "caught": true,
+      "caught_by": "02_nonce_replay_sequential",
+      "cases_total": 28,
+      "cases_passed": 26,
+      "cases": {
+        "01_valid_signin": {
+          "category": "baseline",
+          "title": "valid sign-in issues session",
+          "expected": "200 + session",
+          "observed": "status=200 session=yes template_echo=True",
+          "passed": true,
+          "detail": {
+            "status": 200,
+            "has_session": true,
+            "template_echo_matches": true
+          },
+          "transcript": "results/transcripts/vuln_nonce_reuse/01_valid_signin.json"
+        },
+        "02_nonce_replay_sequential": {
+          "category": "replay",
+          "title": "used nonce replayed -> reject",
+          "expected": "200 then 4xx",
+          "observed": "first=200 second=200 (None)",
+          "passed": false,
+          "detail": {
+            "first": 200,
+            "second": 200
+          },
+          "transcript": "results/transcripts/vuln_nonce_reuse/02_nonce_replay_sequential.json"
+        },
+        "03_wrong_signer_diff_key": {
+          "category": "signer",
+          "title": "signature from a different key -> reject",
+          "expected": "4xx",
+          "observed": "status=400 (bad_signature)",
+          "passed": true,
+          "detail": {
+            "status": 400
+          },
+          "transcript": "results/transcripts/vuln_nonce_reuse/03_wrong_signer_diff_key.json"
+        },
+        "04_origin_substituted_consistent": {
+          "category": "origin",
+          "title": "message signed for another origin -> reject",
+          "expected": "4xx",
+          "observed": "status=400 (origin_mismatch)",
+          "passed": true,
+          "detail": {
+            "status": 400
+          },
+          "transcript": "results/transcripts/vuln_nonce_reuse/04_origin_substituted_consistent.json"
+        },
+        "05_origin_claim_mismatch_message": {
+          "category": "origin",
+          "title": "origin claim inconsistent with signed message",
+          "expected": "4xx",
+          "observed": "status=400 (origin_mismatch)",
+          "passed": true,
+          "detail": {
+            "status": 400
+          },
+          "transcript": "results/transcripts/vuln_nonce_reuse/05_origin_claim_mismatch_message.json"
+        },
+        "06_chain_id_substituted_consistent": {
+          "category": "chain",
+          "title": "message signed for another chain id -> reject",
+          "expected": "4xx",
+          "observed": "status=400 (chain_id_mismatch)",
+          "passed": true,
+          "detail": {
+            "status": 400
+          },
+          "transcript": "results/transcripts/vuln_nonce_reuse/06_chain_id_substituted_consistent.json"
+        },
+        "07_chain_id_claim_mismatch_message": {
+          "category": "chain",
+          "title": "chain id claim inconsistent with signed message",
+          "expected": "4xx",
+          "observed": "status=400 (chain_id_mismatch)",
+          "passed": true,
+          "detail": {
+            "status": 400
+          },
+          "transcript": "results/transcripts/vuln_nonce_reuse/07_chain_id_claim_mismatch_message.json"
+        },
+        "08_nonce_expired": {
+          "category": "expiry",
+          "title": "nonce past lifetime -> reject",
+          "expected": "4xx",
+          "observed": "fired 2.50s after issue -> status=400 (nonce_expired)",
+          "passed": true,
+          "detail": {
+            "status": 400,
+            "age_at_fire": 2.5
+          },
+          "transcript": "results/transcripts/vuln_nonce_reuse/08_nonce_expired.json"
+        },
+        "09_expiry_exact_boundary": {
+          "category": "expiry",
+          "title": "exactly at expiry -> reject",
+          "expected": "4xx",
+          "observed": "fired at expires_at+0.05 -> status=400 (nonce_expired)",
+          "passed": true,
+          "detail": {
+            "status": 400
+          },
+          "transcript": "results/transcripts/vuln_nonce_reuse/09_expiry_exact_boundary.json"
+        },
+        "10_expiry_one_second_before": {
+          "category": "expiry",
+          "title": "one second before expiry -> accept",
+          "expected": "200 + session",
+          "observed": "fired at expires_at-1.0 -> status=200 session=yes",
+          "passed": true,
+          "detail": {
+            "status": 200
+          },
+          "transcript": "results/transcripts/vuln_nonce_reuse/10_expiry_one_second_before.json"
+        },
+        "11_sig_truncated": {
+          "category": "signature",
+          "title": "truncated signature -> reject",
+          "expected": "4xx",
+          "observed": "status=400 sig_len=112 (bad_signature)",
+          "passed": true,
+          "detail": {
+            "status": 400,
+            "sig_len": 112
+          },
+          "transcript": "results/transcripts/vuln_nonce_reuse/11_sig_truncated.json"
+        },
+        "12_sig_wrong_length": {
+          "category": "signature",
+          "title": "signature with wrong length -> reject",
+          "expected": "4xx",
+          "observed": "status=400 sig_len=134 (bad_signature)",
+          "passed": true,
+          "detail": {
+            "status": 400,
+            "sig_len": 134
+          },
+          "transcript": "results/transcripts/vuln_nonce_reuse/12_sig_wrong_length.json"
+        },
+        "13_sig_non_hex": {
+          "category": "signature",
+          "title": "non-hex signature -> reject",
+          "expected": "4xx",
+          "observed": "status=400 (bad_signature)",
+          "passed": true,
+          "detail": {
+            "status": 400
+          },
+          "transcript": "results/transcripts/vuln_nonce_reuse/13_sig_non_hex.json"
+        },
+        "14_sig_all_zero": {
+          "category": "signature",
+          "title": "all-zero signature -> reject",
+          "expected": "4xx",
+          "observed": "status=400 (bad_signature)",
+          "passed": true,
+          "detail": {
+            "status": 400
+          },
+          "transcript": "results/transcripts/vuln_nonce_reuse/14_sig_all_zero.json"
+        },
+        "15_sig_from_different_message": {
+          "category": "signature",
+          "title": "valid sig over different message -> reject",
+          "expected": "4xx",
+          "observed": "status=400 (bad_signature)",
+          "passed": true,
+          "detail": {
+            "status": 400
+          },
+          "transcript": "results/transcripts/vuln_nonce_reuse/15_sig_from_different_message.json"
+        },
+        "16_nonce_never_issued": {
+          "category": "nonce",
+          "title": "unknown nonce -> reject",
+          "expected": "4xx",
+          "observed": "status=400 (unknown_nonce)",
+          "passed": true,
+          "detail": {
+            "status": 400
+          },
+          "transcript": "results/transcripts/vuln_nonce_reuse/16_nonce_never_issued.json"
+        },
+        "17_nonce_other_address": {
+          "category": "nonce",
+          "title": "nonce issued for another address -> reject",
+          "expected": "4xx",
+          "observed": "status=400 (nonce_address_mismatch)",
+          "passed": true,
+          "detail": {
+            "status": 400
+          },
+          "transcript": "results/transcripts/vuln_nonce_reuse/17_nonce_other_address.json"
+        },
+        "18_message_reordered": {
+          "category": "message",
+          "title": "same nonce, reordered fields -> reject",
+          "expected": "4xx",
+          "observed": "status=400 (bad_signature)",
+          "passed": true,
+          "detail": {
+            "status": 400
+          },
+          "transcript": "results/transcripts/vuln_nonce_reuse/18_message_reordered.json"
+        },
+        "19_message_spliced": {
+          "category": "message",
+          "title": "nonce spliced into another template -> reject",
+          "expected": "4xx",
+          "observed": "status=400 (bad_signature)",
+          "passed": true,
+          "detail": {
+            "status": 400
+          },
+          "transcript": "results/transcripts/vuln_nonce_reuse/19_message_spliced.json"
+        },
+        "20_message_extra_trailing": {
+          "category": "message",
+          "title": "template plus trailing newline -> reject",
+          "expected": "4xx",
+          "observed": "status=400 (bad_signature)",
+          "passed": true,
+          "detail": {
+            "status": 400
+          },
+          "transcript": "results/transcripts/vuln_nonce_reuse/20_message_extra_trailing.json"
+        },
+        "21_missing_signature_field": {
+          "category": "fields",
+          "title": "missing signature field -> reject",
+          "expected": "4xx",
+          "observed": "status=400 (missing_field)",
+          "passed": true,
+          "detail": {
+            "status": 400
+          },
+          "transcript": "results/transcripts/vuln_nonce_reuse/21_missing_signature_field.json"
+        },
+        "22_missing_message_field": {
+          "category": "fields",
+          "title": "missing message field -> reject",
+          "expected": "4xx",
+          "observed": "status=400 (missing_field)",
+          "passed": true,
+          "detail": {
+            "status": 400
+          },
+          "transcript": "results/transcripts/vuln_nonce_reuse/22_missing_message_field.json"
+        },
+        "23_extra_unknown_field_ignored": {
+          "category": "fields",
+          "title": "extra unknown fields ignored -> accept",
+          "expected": "200 + session",
+          "observed": "status=200 session=yes",
+          "passed": true,
+          "detail": {
+            "status": 200
+          },
+          "transcript": "results/transcripts/vuln_nonce_reuse/23_extra_unknown_field_ignored.json"
+        },
+        "24_address_case_insensitive": {
+          "category": "address",
+          "title": "same address, different case -> accept",
+          "expected": "200 + session",
+          "observed": "status=200 claimed=0x62bd10c2fa700b336980e228091a74f47b3c6269",
+          "passed": true,
+          "detail": {
+            "status": 200
+          },
+          "transcript": "results/transcripts/vuln_nonce_reuse/24_address_case_insensitive.json"
+        },
+        "25_unicode_message_rejected": {
+          "category": "unicode",
+          "title": "validly signed unicode non-template -> reject",
+          "expected": "4xx",
+          "observed": "status=400 (bad_signature)",
+          "passed": true,
+          "detail": {
+            "status": 400
+          },
+          "transcript": "results/transcripts/vuln_nonce_reuse/25_unicode_message_rejected.json"
+        },
+        "26_session_token_reuse": {
+          "category": "session",
+          "title": "session token used twice -> reject",
+          "expected": "200, 200, 4xx",
+          "observed": "verify=200 first_use=200 second_use=400 (session_already_used)",
+          "passed": true,
+          "detail": {
+            "verify": 200,
+            "first_use": 200,
+            "second_use": 400
+          },
+          "transcript": "results/transcripts/vuln_nonce_reuse/26_session_token_reuse.json"
+        },
+        "27_session_token_forgery": {
+          "category": "session",
+          "title": "forged session token -> reject",
+          "expected": "4xx",
+          "observed": "status=400 (unknown_or_forged_session)",
+          "passed": true,
+          "detail": {
+            "status": 400
+          },
+          "transcript": "results/transcripts/vuln_nonce_reuse/27_session_token_forgery.json"
+        },
+        "28_concurrent_double_verify": {
+          "category": "concurrency",
+          "title": "two concurrent verifies: exactly one session",
+          "expected": "exactly one 200",
+          "observed": "statuses=[200, 200] successes=2 (exactly one required)",
+          "passed": false,
+          "detail": {
+            "statuses": [
+              200,
+              200
+            ],
+            "successes": 2
+          },
+          "transcript": "results/transcripts/vuln_nonce_reuse/28_concurrent_double_verify.json"
+        }
+      }
+    },
+    "vuln_origin_unbound": {
+      "verdict": "FAIL",
+      "caught": true,
+      "caught_by": "04_origin_substituted_consistent",
+      "cases_total": 28,
+      "cases_passed": 26,
+      "cases": {
+        "01_valid_signin": {
+          "category": "baseline",
+          "title": "valid sign-in issues session",
+          "expected": "200 + session",
+          "observed": "status=200 session=yes template_echo=True",
+          "passed": true,
+          "detail": {
+            "status": 200,
+            "has_session": true,
+            "template_echo_matches": true
+          },
+          "transcript": "results/transcripts/vuln_origin_unbound/01_valid_signin.json"
+        },
+        "02_nonce_replay_sequential": {
+          "category": "replay",
+          "title": "used nonce replayed -> reject",
+          "expected": "200 then 4xx",
+          "observed": "first=200 second=400 (nonce_already_used)",
+          "passed": true,
+          "detail": {
+            "first": 200,
+            "second": 400
+          },
+          "transcript": "results/transcripts/vuln_origin_unbound/02_nonce_replay_sequential.json"
+        },
+        "03_wrong_signer_diff_key": {
+          "category": "signer",
+          "title": "signature from a different key -> reject",
+          "expected": "4xx",
+          "observed": "status=400 (bad_signature)",
+          "passed": true,
+          "detail": {
+            "status": 400
+          },
+          "transcript": "results/transcripts/vuln_origin_unbound/03_wrong_signer_diff_key.json"
+        },
+        "04_origin_substituted_consistent": {
+          "category": "origin",
+          "title": "message signed for another origin -> reject",
+          "expected": "4xx",
+          "observed": "status=200 (None)",
+          "passed": false,
+          "detail": {
+            "status": 200
+          },
+          "transcript": "results/transcripts/vuln_origin_unbound/04_origin_substituted_consistent.json"
+        },
+        "05_origin_claim_mismatch_message": {
+          "category": "origin",
+          "title": "origin claim inconsistent with signed message",
+          "expected": "4xx",
+          "observed": "status=400 (message_template_mismatch)",
+          "passed": true,
+          "detail": {
+            "status": 400
+          },
+          "transcript": "results/transcripts/vuln_origin_unbound/05_origin_claim_mismatch_message.json"
+        },
+        "06_chain_id_substituted_consistent": {
+          "category": "chain",
+          "title": "message signed for another chain id -> reject",
+          "expected": "4xx",
+          "observed": "status=200 (None)",
+          "passed": false,
+          "detail": {
+            "status": 200
+          },
+          "transcript": "results/transcripts/vuln_origin_unbound/06_chain_id_substituted_consistent.json"
+        },
+        "07_chain_id_claim_mismatch_message": {
+          "category": "chain",
+          "title": "chain id claim inconsistent with signed message",
+          "expected": "4xx",
+          "observed": "status=400 (message_template_mismatch)",
+          "passed": true,
+          "detail": {
+            "status": 400
+          },
+          "transcript": "results/transcripts/vuln_origin_unbound/07_chain_id_claim_mismatch_message.json"
+        },
+        "08_nonce_expired": {
+          "category": "expiry",
+          "title": "nonce past lifetime -> reject",
+          "expected": "4xx",
+          "observed": "fired 2.50s after issue -> status=400 (nonce_expired)",
+          "passed": true,
+          "detail": {
+            "status": 400,
+            "age_at_fire": 2.5
+          },
+          "transcript": "results/transcripts/vuln_origin_unbound/08_nonce_expired.json"
+        },
+        "09_expiry_exact_boundary": {
+          "category": "expiry",
+          "title": "exactly at expiry -> reject",
+          "expected": "4xx",
+          "observed": "fired at expires_at+0.05 -> status=400 (nonce_expired)",
+          "passed": true,
+          "detail": {
+            "status": 400
+          },
+          "transcript": "results/transcripts/vuln_origin_unbound/09_expiry_exact_boundary.json"
+        },
+        "10_expiry_one_second_before": {
+          "category": "expiry",
+          "title": "one second before expiry -> accept",
+          "expected": "200 + session",
+          "observed": "fired at expires_at-1.0 -> status=200 session=yes",
+          "passed": true,
+          "detail": {
+            "status": 200
+          },
+          "transcript": "results/transcripts/vuln_origin_unbound/10_expiry_one_second_before.json"
+        },
+        "11_sig_truncated": {
+          "category": "signature",
+          "title": "truncated signature -> reject",
+          "expected": "4xx",
+          "observed": "status=400 sig_len=112 (bad_signature)",
+          "passed": true,
+          "detail": {
+            "status": 400,
+            "sig_len": 112
+          },
+          "transcript": "results/transcripts/vuln_origin_unbound/11_sig_truncated.json"
+        },
+        "12_sig_wrong_length": {
+          "category": "signature",
+          "title": "signature with wrong length -> reject",
+          "expected": "4xx",
+          "observed": "status=400 sig_len=134 (bad_signature)",
+          "passed": true,
+          "detail": {
+            "status": 400,
+            "sig_len": 134
+          },
+          "transcript": "results/transcripts/vuln_origin_unbound/12_sig_wrong_length.json"
+        },
+        "13_sig_non_hex": {
+          "category": "signature",
+          "title": "non-hex signature -> reject",
+          "expected": "4xx",
+          "observed": "status=400 (bad_signature)",
+          "passed": true,
+          "detail": {
+            "status": 400
+          },
+          "transcript": "results/transcripts/vuln_origin_unbound/13_sig_non_hex.json"
+        },
+        "14_sig_all_zero": {
+          "category": "signature",
+          "title": "all-zero signature -> reject",
+          "expected": "4xx",
+          "observed": "status=400 (bad_signature)",
+          "passed": true,
+          "detail": {
+            "status": 400
+          },
+          "transcript": "results/transcripts/vuln_origin_unbound/14_sig_all_zero.json"
+        },
+        "15_sig_from_different_message": {
+          "category": "signature",
+          "title": "valid sig over different message -> reject",
+          "expected": "4xx",
+          "observed": "status=400 (bad_signature)",
+          "passed": true,
+          "detail": {
+            "status": 400
+          },
+          "transcript": "results/transcripts/vuln_origin_unbound/15_sig_from_different_message.json"
+        },
+        "16_nonce_never_issued": {
+          "category": "nonce",
+          "title": "unknown nonce -> reject",
+          "expected": "4xx",
+          "observed": "status=400 (unknown_nonce)",
+          "passed": true,
+          "detail": {
+            "status": 400
+          },
+          "transcript": "results/transcripts/vuln_origin_unbound/16_nonce_never_issued.json"
+        },
+        "17_nonce_other_address": {
+          "category": "nonce",
+          "title": "nonce issued for another address -> reject",
+          "expected": "4xx",
+          "observed": "status=400 (nonce_address_mismatch)",
+          "passed": true,
+          "detail": {
+            "status": 400
+          },
+          "transcript": "results/transcripts/vuln_origin_unbound/17_nonce_other_address.json"
+        },
+        "18_message_reordered": {
+          "category": "message",
+          "title": "same nonce, reordered fields -> reject",
+          "expected": "4xx",
+          "observed": "status=400 (bad_signature)",
+          "passed": true,
+          "detail": {
+            "status": 400
+          },
+          "transcript": "results/transcripts/vuln_origin_unbound/18_message_reordered.json"
+        },
+        "19_message_spliced": {
+          "category": "message",
+          "title": "nonce spliced into another template -> reject",
+          "expected": "4xx",
+          "observed": "status=400 (bad_signature)",
+          "passed": true,
+          "detail": {
+            "status": 400
+          },
+          "transcript": "results/transcripts/vuln_origin_unbound/19_message_spliced.json"
+        },
+        "20_message_extra_trailing": {
+          "category": "message",
+          "title": "template plus trailing newline -> reject",
+          "expected": "4xx",
+          "observed": "status=400 (bad_signature)",
+          "passed": true,
+          "detail": {
+            "status": 400
+          },
+          "transcript": "results/transcripts/vuln_origin_unbound/20_message_extra_trailing.json"
+        },
+        "21_missing_signature_field": {
+          "category": "fields",
+          "title": "missing signature field -> reject",
+          "expected": "4xx",
+          "observed": "status=400 (missing_field)",
+          "passed": true,
+          "detail": {
+            "status": 400
+          },
+          "transcript": "results/transcripts/vuln_origin_unbound/21_missing_signature_field.json"
+        },
+        "22_missing_message_field": {
+          "category": "fields",
+          "title": "missing message field -> reject",
+          "expected": "4xx",
+          "observed": "status=400 (missing_field)",
+          "passed": true,
+          "detail": {
+            "status": 400
+          },
+          "transcript": "results/transcripts/vuln_origin_unbound/22_missing_message_field.json"
+        },
+        "23_extra_unknown_field_ignored": {
+          "category": "fields",
+          "title": "extra unknown fields ignored -> accept",
+          "expected": "200 + session",
+          "observed": "status=200 session=yes",
+          "passed": true,
+          "detail": {
+            "status": 200
+          },
+          "transcript": "results/transcripts/vuln_origin_unbound/23_extra_unknown_field_ignored.json"
+        },
+        "24_address_case_insensitive": {
+          "category": "address",
+          "title": "same address, different case -> accept",
+          "expected": "200 + session",
+          "observed": "status=200 claimed=0x62bd10c2fa700b336980e228091a74f47b3c6269",
+          "passed": true,
+          "detail": {
+            "status": 200
+          },
+          "transcript": "results/transcripts/vuln_origin_unbound/24_address_case_insensitive.json"
+        },
+        "25_unicode_message_rejected": {
+          "category": "unicode",
+          "title": "validly signed unicode non-template -> reject",
+          "expected": "4xx",
+          "observed": "status=400 (bad_signature)",
+          "passed": true,
+          "detail": {
+            "status": 400
+          },
+          "transcript": "results/transcripts/vuln_origin_unbound/25_unicode_message_rejected.json"
+        },
+        "26_session_token_reuse": {
+          "category": "session",
+          "title": "session token used twice -> reject",
+          "expected": "200, 200, 4xx",
+          "observed": "verify=200 first_use=200 second_use=400 (session_already_used)",
+          "passed": true,
+          "detail": {
+            "verify": 200,
+            "first_use": 200,
+            "second_use": 400
+          },
+          "transcript": "results/transcripts/vuln_origin_unbound/26_session_token_reuse.json"
+        },
+        "27_session_token_forgery": {
+          "category": "session",
+          "title": "forged session token -> reject",
+          "expected": "4xx",
+          "observed": "status=400 (unknown_or_forged_session)",
+          "passed": true,
+          "detail": {
+            "status": 400
+          },
+          "transcript": "results/transcripts/vuln_origin_unbound/27_session_token_forgery.json"
+        },
+        "28_concurrent_double_verify": {
+          "category": "concurrency",
+          "title": "two concurrent verifies: exactly one session",
+          "expected": "exactly one 200",
+          "observed": "statuses=[200, 400] successes=1 (exactly one required)",
+          "passed": true,
+          "detail": {
+            "statuses": [
+              200,
+              400
+            ],
+            "successes": 1
+          },
+          "transcript": "results/transcripts/vuln_origin_unbound/28_concurrent_double_verify.json"
+        }
+      }
+    },
+    "vuln_race": {
+      "verdict": "FAIL",
+      "caught": true,
+      "caught_by": "28_concurrent_double_verify",
+      "cases_total": 28,
+      "cases_passed": 27,
+      "cases": {
+        "01_valid_signin": {
+          "category": "baseline",
+          "title": "valid sign-in issues session",
+          "expected": "200 + session",
+          "observed": "status=200 session=yes template_echo=True",
+          "passed": true,
+          "detail": {
+            "status": 200,
+            "has_session": true,
+            "template_echo_matches": true
+          },
+          "transcript": "results/transcripts/vuln_race/01_valid_signin.json"
+        },
+        "02_nonce_replay_sequential": {
+          "category": "replay",
+          "title": "used nonce replayed -> reject",
+          "expected": "200 then 4xx",
+          "observed": "first=200 second=400 (nonce_already_used)",
+          "passed": true,
+          "detail": {
+            "first": 200,
+            "second": 400
+          },
+          "transcript": "results/transcripts/vuln_race/02_nonce_replay_sequential.json"
+        },
+        "03_wrong_signer_diff_key": {
+          "category": "signer",
+          "title": "signature from a different key -> reject",
+          "expected": "4xx",
+          "observed": "status=400 (bad_signature)",
+          "passed": true,
+          "detail": {
+            "status": 400
+          },
+          "transcript": "results/transcripts/vuln_race/03_wrong_signer_diff_key.json"
+        },
+        "04_origin_substituted_consistent": {
+          "category": "origin",
+          "title": "message signed for another origin -> reject",
+          "expected": "4xx",
+          "observed": "status=400 (origin_mismatch)",
+          "passed": true,
+          "detail": {
+            "status": 400
+          },
+          "transcript": "results/transcripts/vuln_race/04_origin_substituted_consistent.json"
+        },
+        "05_origin_claim_mismatch_message": {
+          "category": "origin",
+          "title": "origin claim inconsistent with signed message",
+          "expected": "4xx",
+          "observed": "status=400 (origin_mismatch)",
+          "passed": true,
+          "detail": {
+            "status": 400
+          },
+          "transcript": "results/transcripts/vuln_race/05_origin_claim_mismatch_message.json"
+        },
+        "06_chain_id_substituted_consistent": {
+          "category": "chain",
+          "title": "message signed for another chain id -> reject",
+          "expected": "4xx",
+          "observed": "status=400 (chain_id_mismatch)",
+          "passed": true,
+          "detail": {
+            "status": 400
+          },
+          "transcript": "results/transcripts/vuln_race/06_chain_id_substituted_consistent.json"
+        },
+        "07_chain_id_claim_mismatch_message": {
+          "category": "chain",
+          "title": "chain id claim inconsistent with signed message",
+          "expected": "4xx",
+          "observed": "status=400 (chain_id_mismatch)",
+          "passed": true,
+          "detail": {
+            "status": 400
+          },
+          "transcript": "results/transcripts/vuln_race/07_chain_id_claim_mismatch_message.json"
+        },
+        "08_nonce_expired": {
+          "category": "expiry",
+          "title": "nonce past lifetime -> reject",
+          "expected": "4xx",
+          "observed": "fired 2.50s after issue -> status=400 (nonce_expired)",
+          "passed": true,
+          "detail": {
+            "status": 400,
+            "age_at_fire": 2.5
+          },
+          "transcript": "results/transcripts/vuln_race/08_nonce_expired.json"
+        },
+        "09_expiry_exact_boundary": {
+          "category": "expiry",
+          "title": "exactly at expiry -> reject",
+          "expected": "4xx",
+          "observed": "fired at expires_at+0.05 -> status=400 (nonce_expired)",
+          "passed": true,
+          "detail": {
+            "status": 400
+          },
+          "transcript": "results/transcripts/vuln_race/09_expiry_exact_boundary.json"
+        },
+        "10_expiry_one_second_before": {
+          "category": "expiry",
+          "title": "one second before expiry -> accept",
+          "expected": "200 + session",
+          "observed": "fired at expires_at-1.0 -> status=200 session=yes",
+          "passed": true,
+          "detail": {
+            "status": 200
+          },
+          "transcript": "results/transcripts/vuln_race/10_expiry_one_second_before.json"
+        },
+        "11_sig_truncated": {
+          "category": "signature",
+          "title": "truncated signature -> reject",
+          "expected": "4xx",
+          "observed": "status=400 sig_len=112 (bad_signature)",
+          "passed": true,
+          "detail": {
+            "status": 400,
+            "sig_len": 112
+          },
+          "transcript": "results/transcripts/vuln_race/11_sig_truncated.json"
+        },
+        "12_sig_wrong_length": {
+          "category": "signature",
+          "title": "signature with wrong length -> reject",
+          "expected": "4xx",
+          "observed": "status=400 sig_len=134 (bad_signature)",
+          "passed": true,
+          "detail": {
+            "status": 400,
+            "sig_len": 134
+          },
+          "transcript": "results/transcripts/vuln_race/12_sig_wrong_length.json"
+        },
+        "13_sig_non_hex": {
+          "category": "signature",
+          "title": "non-hex signature -> reject",
+          "expected": "4xx",
+          "observed": "status=400 (bad_signature)",
+          "passed": true,
+          "detail": {
+            "status": 400
+          },
+          "transcript": "results/transcripts/vuln_race/13_sig_non_hex.json"
+        },
+        "14_sig_all_zero": {
+          "category": "signature",
+          "title": "all-zero signature -> reject",
+          "expected": "4xx",
+          "observed": "status=400 (bad_signature)",
+          "passed": true,
+          "detail": {
+            "status": 400
+          },
+          "transcript": "results/transcripts/vuln_race/14_sig_all_zero.json"
+        },
+        "15_sig_from_different_message": {
+          "category": "signature",
+          "title": "valid sig over different message -> reject",
+          "expected": "4xx",
+          "observed": "status=400 (bad_signature)",
+          "passed": true,
+          "detail": {
+            "status": 400
+          },
+          "transcript": "results/transcripts/vuln_race/15_sig_from_different_message.json"
+        },
+        "16_nonce_never_issued": {
+          "category": "nonce",
+          "title": "unknown nonce -> reject",
+          "expected": "4xx",
+          "observed": "status=400 (unknown_nonce)",
+          "passed": true,
+          "detail": {
+            "status": 400
+          },
+          "transcript": "results/transcripts/vuln_race/16_nonce_never_issued.json"
+        },
+        "17_nonce_other_address": {
+          "category": "nonce",
+          "title": "nonce issued for another address -> reject",
+          "expected": "4xx",
+          "observed": "status=400 (nonce_address_mismatch)",
+          "passed": true,
+          "detail": {
+            "status": 400
+          },
+          "transcript": "results/transcripts/vuln_race/17_nonce_other_address.json"
+        },
+        "18_message_reordered": {
+          "category": "message",
+          "title": "same nonce, reordered fields -> reject",
+          "expected": "4xx",
+          "observed": "status=400 (bad_signature)",
+          "passed": true,
+          "detail": {
+            "status": 400
+          },
+          "transcript": "results/transcripts/vuln_race/18_message_reordered.json"
+        },
+        "19_message_spliced": {
+          "category": "message",
+          "title": "nonce spliced into another template -> reject",
+          "expected": "4xx",
+          "observed": "status=400 (bad_signature)",
+          "passed": true,
+          "detail": {
+            "status": 400
+          },
+          "transcript": "results/transcripts/vuln_race/19_message_spliced.json"
+        },
+        "20_message_extra_trailing": {
+          "category": "message",
+          "title": "template plus trailing newline -> reject",
+          "expected": "4xx",
+          "observed": "status=400 (bad_signature)",
+          "passed": true,
+          "detail": {
+            "status": 400
+          },
+          "transcript": "results/transcripts/vuln_race/20_message_extra_trailing.json"
+        },
+        "21_missing_signature_field": {
+          "category": "fields",
+          "title": "missing signature field -> reject",
+          "expected": "4xx",
+          "observed": "status=400 (missing_field)",
+          "passed": true,
+          "detail": {
+            "status": 400
+          },
+          "transcript": "results/transcripts/vuln_race/21_missing_signature_field.json"
+        },
+        "22_missing_message_field": {
+          "category": "fields",
+          "title": "missing message field -> reject",
+          "expected": "4xx",
+          "observed": "status=400 (missing_field)",
+          "passed": true,
+          "detail": {
+            "status": 400
+          },
+          "transcript": "results/transcripts/vuln_race/22_missing_message_field.json"
+        },
+        "23_extra_unknown_field_ignored": {
+          "category": "fields",
+          "title": "extra unknown fields ignored -> accept",
+          "expected": "200 + session",
+          "observed": "status=200 session=yes",
+          "passed": true,
+          "detail": {
+            "status": 200
+          },
+          "transcript": "results/transcripts/vuln_race/23_extra_unknown_field_ignored.json"
+        },
+        "24_address_case_insensitive": {
+          "category": "address",
+          "title": "same address, different case -> accept",
+          "expected": "200 + session",
+          "observed": "status=200 claimed=0x62bd10c2fa700b336980e228091a74f47b3c6269",
+          "passed": true,
+          "detail": {
+            "status": 200
+          },
+          "transcript": "results/transcripts/vuln_race/24_address_case_insensitive.json"
+        },
+        "25_unicode_message_rejected": {
+          "category": "unicode",
+          "title": "validly signed unicode non-template -> reject",
+          "expected": "4xx",
+          "observed": "status=400 (bad_signature)",
+          "passed": true,
+          "detail": {
+            "status": 400
+          },
+          "transcript": "results/transcripts/vuln_race/25_unicode_message_rejected.json"
+        },
+        "26_session_token_reuse": {
+          "category": "session",
+          "title": "session token used twice -> reject",
+          "expected": "200, 200, 4xx",
+          "observed": "verify=200 first_use=200 second_use=400 (session_already_used)",
+          "passed": true,
+          "detail": {
+            "verify": 200,
+            "first_use": 200,
+            "second_use": 400
+          },
+          "transcript": "results/transcripts/vuln_race/26_session_token_reuse.json"
+        },
+        "27_session_token_forgery": {
+          "category": "session",
+          "title": "forged session token -> reject",
+          "expected": "4xx",
+          "observed": "status=400 (unknown_or_forged_session)",
+          "passed": true,
+          "detail": {
+            "status": 400
+          },
+          "transcript": "results/transcripts/vuln_race/27_session_token_forgery.json"
+        },
+        "28_concurrent_double_verify": {
+          "category": "concurrency",
+          "title": "two concurrent verifies: exactly one session",
+          "expected": "exactly one 200",
+          "observed": "statuses=[200, 200] successes=2 (exactly one required)",
+          "passed": false,
+          "detail": {
+            "statuses": [
+              200,
+              200
+            ],
+            "successes": 2
+          },
+          "transcript": "results/transcripts/vuln_race/28_concurrent_double_verify.json"
+        }
+      }
+    }
+  },
+  "summary": {
+    "hardened_pass": true,
+    "vulns_caught": {
+      "vuln_nonce_reuse": true,
+      "vuln_origin_unbound": true,
+      "vuln_race": true
+    },
+    "suite_result": "PASS",
+    "elapsed_seconds": 32.7
+  }
+}
