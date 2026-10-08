@@ -5,3 +5,4 @@ __pycache__/
 .agent-wallet.json
 .agent-key.json
 *.log
+wallets/

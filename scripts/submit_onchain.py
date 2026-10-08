@@ -47,14 +47,18 @@ def curl_json(method: str, path: str, payload: dict | None = None,
 
 
 def main() -> int:
-    wallet = json.loads((ROOT / ".agent-wallet.json").read_text())
+    wallet_path = pathlib.Path(
+        next((sys.argv[i + 1] for i, a in enumerate(sys.argv) if a == "--wallet"),
+             ROOT / "wallets" / "imdworks-submitter.json"))
+    wallet = json.loads(wallet_path.read_text())
     pk = wallet["private_key"]
     addr = wallet["address"]
     plan = json.loads((RESULTS / "submissions_plan.json").read_text())
 
     balance = int(subprocess.run([CAST, "balance", addr, "--rpc-url", RPC],
                                  capture_output=True, text=True).stdout.strip())
-    print(f"submitter {addr} balance {balance} wei ({balance / 1e18:.9f} ETH)")
+    print(f"submitter {addr} (key file {wallet_path}) balance {balance} wei "
+          f"({balance / 1e18:.9f} ETH)")
     if balance < 5_000_000_000_000:  # 0.000005 ETH
         print("ERROR: not enough gas on Robinhood Chain (chain 4663). "
               "Fund the wallet with at least 0.00005 ETH and re-run.")
