@@ -1,0 +1,162 @@
+[
+  {
+    "number": 6,
+    "bounty_id": "bb5bb8eb-14e4-4f07-b86e-565ab2c37972",
+    "claim": {
+      "status": 200,
+      "body": {
+        "ok": true
+      }
+    },
+    "submission": {
+      "status": 409,
+      "body": {
+        "error": "This bounty is funded on-chain. Submit proof, select a winner or refund through the escrow contract; use /api/escrow/:id/sync to index a confirmed transaction."
+      }
+    }
+  },
+  {
+    "number": 7,
+    "bounty_id": "13608b4b-68c5-463e-9aed-ed734c0ef51f",
+    "claim": {
+      "status": 200,
+      "body": {
+        "ok": true
+      }
+    },
+    "submission": {
+      "status": 409,
+      "body": {
+        "error": "This bounty is funded on-chain. Submit proof, select a winner or refund through the escrow contract; use /api/escrow/:id/sync to index a confirmed transaction."
+      }
+    }
+  },
+  {
+    "number": 8,
+    "bounty_id": "80c238e8-dd8c-4d0a-8f60-711142f1a496",
+    "claim": {
+      "status": 200,
+      "body": {
+        "ok": true
+      }
+    },
+    "submission": {
+      "status": 409,
+      "body": {
+        "error": "This bounty is funded on-chain. Submit proof, select a winner or refund through the escrow contract; use /api/escrow/:id/sync to index a confirmed transaction."
+      }
+    }
+  },
+  {
+    "number": 9,
+    "bounty_id": "ffd0cae1-21e9-4378-bc3d-8c814377be97",
+    "claim": {
+      "status": 200,
+      "body": {
+        "ok": true
+      }
+    },
+    "submission": {
+      "status": 409,
+      "body": {
+        "error": "This bounty is funded on-chain. Submit proof, select a winner or refund through the escrow contract; use /api/escrow/:id/sync to index a confirmed transaction."
+      }
+    }
+  },
+  {
+    "number": 10,
+    "bounty_id": "bc53559e-b4cc-4288-b9fe-dac309053a98",
+    "claim": {
+      "status": 200,
+      "body": {
+        "ok": true
+      }
+    },
+    "submission": {
+      "status": 409,
+      "body": {
+        "error": "This bounty is funded on-chain. Submit proof, select a winner or refund through the escrow contract; use /api/escrow/:id/sync to index a confirmed transaction."
+      }
+    }
+  },
+  {
+    "number": 11,
+    "bounty_id": "aebb7dd8-20a6-48bc-a813-524eac05cc49",
+    "claim": {
+      "status": 200,
+      "body": {
+        "ok": true
+      }
+    },
+    "submission": {
+      "status": 409,
+      "body": {
+        "error": "This bounty is funded on-chain. Submit proof, select a winner or refund through the escrow contract; use /api/escrow/:id/sync to index a confirmed transaction."
+      }
+    }
+  },
+  {
+    "number": 12,
+    "bounty_id": "24146710-62fd-4705-8c2a-f8eb8fe3f79c",
+    "claim": {
+      "status": 200,
+      "body": {
+        "ok": true
+      }
+    },
+    "submission": {
+      "status": 409,
+      "body": {
+        "error": "This bounty is funded on-chain. Submit proof, select a winner or refund through the escrow contract; use /api/escrow/:id/sync to index a confirmed transaction."
+      }
+    }
+  },
+  {
+    "number": 13,
+    "bounty_id": "633062af-7ef8-433d-af44-74f34a3e72fc",
+    "claim": {
+      "status": 200,
+      "body": {
+        "ok": true
+      }
+    },
+    "submission": {
+      "status": 409,
+      "body": {
+        "error": "This bounty is funded on-chain. Submit proof, select a winner or refund through the escrow contract; use /api/escrow/:id/sync to index a confirmed transaction."
+      }
+    }
+  },
+  {
+    "number": 14,
+    "bounty_id": "863d4bb0-630a-42b3-9ce3-fdf329ddc339",
+    "claim": {
+      "status": 200,
+      "body": {
+        "ok": true
+      }
+    },
+    "submission": {
+      "status": 409,
+      "body": {
+        "error": "This bounty is funded on-chain. Submit proof, select a winner or refund through the escrow contract; use /api/escrow/:id/sync to index a confirmed transaction."
+      }
+    }
+  },
+  {
+    "number": 15,
+    "bounty_id": "78b729e1-288b-48ea-9253-c8a60754e312",
+    "claim": {
+      "status": 200,
+      "body": {
+        "ok": true
+      }
+    },
+    "submission": {
+      "status": 409,
+      "body": {
+        "error": "This bounty is funded on-chain. Submit proof, select a winner or refund through the escrow contract; use /api/escrow/:id/sync to index a confirmed transaction."
+      }
+    }
+  }
+]

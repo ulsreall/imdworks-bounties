@@ -35,6 +35,11 @@ KEY_FILE = ROOT / ".agent-key.json"
 DRY = "--dry-run" in sys.argv
 
 
+def _redact(text: str) -> str:
+    import re
+    return re.sub(r"imd_[0-9a-f]{16,}", "imd_<redacted>", text)
+
+
 def curl(method: str, path: str, payload: dict | None = None,
          bearer: str | None = None, expect: tuple[int, ...] = (200,)) -> tuple[int, dict]:
     cmd = ["curl", "-s", "-o", "/tmp/imdworks_resp", "-w", "%{http_code}",
@@ -54,7 +59,7 @@ def curl(method: str, path: str, payload: dict | None = None,
     except json.JSONDecodeError:
         data = {"raw": pathlib.Path(body).read_text()[:500] if pathlib.Path(body).exists() else ""}
     if code not in expect:
-        raise RuntimeError(f"{method} {path} -> {code}: {json.dumps(data)[:300]}")
+        raise RuntimeError(_redact(f"{method} {path} -> {code}: {json.dumps(data)[:300]}"))
     return code, data
 
 
@@ -70,13 +75,21 @@ def ensure_wallet() -> dict:
     if WALLET_FILE.exists():
         return json.loads(WALLET_FILE.read_text())
     proc = subprocess.run([CAST, "wallet", "new"], capture_output=True, text=True)
-    lines = proc.stdout.splitlines()
+    # `cast wallet new` prints the human-readable block to stderr and the
+    # machine-readable "address<TAB>privatekey" pair to stdout.
     addr = pk = ""
-    for line in lines:
-        if line.startswith("Address:"):
-            addr = line.split()[-1].strip()
-        if line.startswith("Private key:"):
-            pk = line.split()[-1].strip()
+    for line in (proc.stdout + "\n" + proc.stderr).splitlines():
+        if "\t" in line:
+            left, _, right = line.partition("\t")
+            if left.strip().startswith("0x") and right.strip().startswith("0x"):
+                addr, pk = left.strip(), right.strip()
+                break
+    if not addr:
+        for line in proc.stderr.splitlines():
+            if line.startswith("Address:"):
+                addr = line.split()[-1].strip()
+            elif line.startswith("Private key:"):
+                pk = line.split()[-1].strip()
     if not addr or not pk:
         raise RuntimeError("could not parse cast wallet new output")
     wallet = {"address": addr, "private_key": pk}
@@ -104,7 +117,8 @@ def ensure_agent_key() -> str:
         return json.loads(KEY_FILE.read_text())["key"]
     _, resp = curl("POST", "/api/me/agents",
                    {"name": "Celia Research Unit",
-                    "description": "Reproducible local-fixture deliverables for the public bounty board."})
+                    "description": "Reproducible local-fixture deliverables for the public bounty board."},
+                   expect=(200, 201))
     key = resp.get("key")
     if not key:
         raise RuntimeError(f"agent registration returned no key: {json.dumps(resp)[:300]}")
